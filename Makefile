@@ -1,9 +1,11 @@
 NIXADDR ?= unset
 NIXPORT ?= 22
-NIXUSER ?= lluchkaa
+NIXUSER ?= root
+
+SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
 vm/bootstrap0:
-	ssh -p $(NIXPORT) root@$(NIXADDR) "\
+	ssh $(SSH_OPTIONS) -p $(NIXPORT) root@$(NIXADDR) "\
 		parted /dev/nvme0n1 -- mklabel gpt;\
 		parted /dev/nvme0n1 -- mkpart root ext4 512MB -8GB;\
 		parted /dev/nvme0n1 -- mkpart swap linux-swap -8GB 100\%;\
@@ -33,3 +35,8 @@ vm/bootstrap0:
 		\
 		nixos-install --no-root-passwd && reboot;\
 	"
+
+vm/copy-secrets:
+	rsync -av -e 'ssh $(SSH_OPTIONS)'\
+		--exclude='environment'\
+		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
