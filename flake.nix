@@ -3,10 +3,22 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs }: {
-
-
+  outputs = { self, nixpkgs, home-manager }@inputs: let
+    make = import ./lib/make.nix {
+      inherit nixpkgs inputs;
+    };
+  in {
+    nixosConfigurations.vm-aarch64 = make {
+      name = "vm-aarch64";
+      system = "aarch64-linux";
+      username = "lluchkaa";
+    };
   };
 }

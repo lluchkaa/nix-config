@@ -4,6 +4,12 @@ NIXUSER ?= root
 
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
+MAKEFILE_DIR=$(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+
+UNAME := $(shell uname)
+
+NIXNAME ?= default
+
 vm/bootstrap0:
 	ssh $(SSH_OPTIONS) -p $(NIXPORT) root@$(NIXADDR) "\
 		parted /dev/nvme0n1 -- mklabel gpt;\
@@ -36,7 +42,41 @@ vm/bootstrap0:
 		nixos-install --no-root-passwd && reboot;\
 	"
 
+vm/bootstrap:
+	NIXUSER=root $(MAKE) vm/copy
+	NIXUSER=root $(MAKE) vm/switch
+	$(MAKE) vm/secrets
+	ssh $(SSH_OPTIONS) -p$(NIXPORT) $(NIXUSER)@$(NIXADDR) " \
+		sudo reboot; \
+	"
+
 vm/copy-secrets:
+	rsync -av -e 'ssh $(SSH_OPTIONS)' \
+		--exclude='.#*' \
+		--exclude='S.*' \
+		--exclude='*.conf' \
+		$(HOME)/.gnupg/ $(NIXUSER)@$(NIXADDR):~/.gnupg
+
 	rsync -av -e 'ssh $(SSH_OPTIONS)'\
 		--exclude='environment'\
 		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
+
+vm/copy-config:
+	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
+		--rsync-path="sudo rsync" \
+		$(HOME)/.config/ $(NIXUSER)@$(NIXADDR):/tmp/.config
+
+vm/copy:
+	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
+		--exclude='vendor/' \
+		--exclude='.git/' \
+		--exclude='.git-crypt/' \
+		--exclude='.jj/' \
+		--exclude='iso/' \
+		--rsync-path="sudo rsync" \
+		$(MAKEFILE_DIR)/ $(NIXUSER)@$(NIXADDR):/nix-config
+
+vm/switch:
+	ssh $(SSH_OPTIONS) -p$(NIXPORT) $(NIXUSER)@$(NIXADDR) " \
+		sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake \"/nix-config#${NIXNAME}\" \
+	"
