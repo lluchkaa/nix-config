@@ -4,20 +4,12 @@
   pkgs,
   ...
 }@inputs: {
-
   imports = [
     ./packages.nix
+    ./user.nix
   ];
+
   system.stateVersion = "25.05";
-
-  users.users.${username} = {
-    isNormalUser = true;
-    description = username;
-    extraGroups = ["wheel" "networkmanager" "docker"];
-
-    # TODO: convert to hashed password
-    initialPassword = "root";
-  };
 
   nix.settings = {
     trusted-users = [username];
@@ -55,5 +47,4 @@
     };
     openFirewall = true;
   };
-
 }

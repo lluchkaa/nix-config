@@ -8,5 +8,6 @@
     pkgs.wget
     pkgs.curl
     pkgs.gcc
+    pkgs.cachix
   ];
 }
