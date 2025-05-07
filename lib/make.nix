@@ -10,6 +10,8 @@
   hostConfig = ../hosts/${name};
   userOSConfig = ../users/${username}/nixos.nix;
   userHomeConfig = ../users/${username}/home.nix;
+
+  catppuccin = inputs.catppuccin;
 in systemFunc {
   inherit system;
 
@@ -26,7 +28,12 @@ in systemFunc {
 
       home-manager.extraSpecialArgs = { inherit username; };
 
-      home-manager.users.${username} = import userHomeConfig;
+      home-manager.users.${username} = {
+        imports = [
+          userHomeConfig
+          catppuccin.homeModules.catppuccin
+        ];
+      };
     }
   ];
 }

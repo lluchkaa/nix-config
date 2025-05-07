@@ -1,6 +1,6 @@
 { pkgs, ... }@inputs: {
   imports = [
-    ./starship.nix
+    ./starship
     ./variables.nix
   ];
 
@@ -13,9 +13,7 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
     defaultKeymap = "viins";
-
     plugins = [
       {
         name = "zsh-vi-mode";
@@ -27,5 +25,10 @@
 
   programs.fish = {
     enable = true;
+    shellInitLast = ''
+      fish_vi_key_bindings
+      fish_vi_cursor
+      enable_transience
+    '';
   };
 }

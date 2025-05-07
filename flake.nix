@@ -8,9 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager }@inputs: let
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
     make = import ./lib/make.nix {
       inherit nixpkgs inputs;
     };

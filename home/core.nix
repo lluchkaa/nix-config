@@ -8,4 +8,8 @@
   };
 
   programs.home-manager.enable = true;
+
+  catppuccin.enable = true;
+  catppuccin.mako.enable = false;
+  catppuccin.gtk.enable = true;
 }

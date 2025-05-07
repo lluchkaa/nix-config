@@ -35,6 +35,7 @@
 
   nix.package = pkgs.nixVersions.latest;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 
   time.timeZone = "Europe/Kyiv";
 
