@@ -63,7 +63,6 @@ vm/copy-secrets:
 
 vm/copy-config:
 	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
-		--rsync-path="sudo rsync" \
 		$(HOME)/.config/ $(NIXUSER)@$(NIXADDR):/tmp/.config
 
 vm/copy:

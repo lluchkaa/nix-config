@@ -4,12 +4,16 @@
   pkgs,
   ...
 }@inputs: {
+
+  imports = [
+    ./packages.nix
+  ];
   system.stateVersion = "25.05";
 
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    extraGroups = ["wheel" "docker"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
 
     # TODO: convert to hashed password
     initialPassword = "root";
@@ -22,9 +26,11 @@
 
     substituters = [
       "https://nix-community.cachix.org"
+      "https://lluchkaa.cachix.org"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "lluchkaa.cachix.org-1:OZsJHkBMAfwSUm1gHwqKMA/iaLiyRuC9X90Bp+kX7UI="
     ];
     builders-use-substitutes = true;
   };
@@ -44,15 +50,10 @@
     enable = true;
     settings = {
       PasswordAuthentication = true;
-      PermitRootLogin = "no";
+      # TODO: do not use root login
+      PermitRootLogin = "yes";
     };
     openFirewall = true;
   };
 
-  environment.systemPackages = [
-    pkgs.vim
-    pkgs.wget
-    pkgs.curl
-    pkgs.git
-  ];
 }
