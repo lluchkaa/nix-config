@@ -9,7 +9,13 @@
 
   programs.home-manager.enable = true;
 
-  catppuccin.enable = true;
-  catppuccin.mako.enable = false;
-  catppuccin.gtk.enable = true;
+  catppuccin = {
+    enable = true;
+
+    cava.enable = false;
+    gh-dash.enable = false;
+    imv.enable = false;
+    swaylock.enable = false;
+    mako.enable = false;
+  };
 }

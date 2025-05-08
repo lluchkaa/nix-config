@@ -1,7 +1,7 @@
 { pkgs, ... }@inputs: {
   services.xserver = {
     enable = true;
-    xkb.layout = "us";
+    xkb.layout = "us,ua";
     dpi = 220;
 
     desktopManager = {
@@ -17,11 +17,6 @@
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 200 40
         '';
-    };
-
-    virtualScreen = {
-      x = 2560;
-      y = 1440;
     };
 
     windowManager = {

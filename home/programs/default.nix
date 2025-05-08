@@ -1,14 +1,29 @@
-{ pkgs, ... }@inputs: {
+{ username, pkgs, ... }@inputs: {
+  imports = [
+    ./ghostty.nix
+  ];
+
   home.packages = [
-    pkgs.google-chrome
+    pkgs.chromium
     pkgs.ghostty
 
     pkgs.neovim
 
-    pkgs.go
+    pkgs.sqlite
     pkgs.rustup
     pkgs.zig
     pkgs.ocaml
     pkgs.nodejs
   ];
+
+  programs.go = {
+    enable = true;
+    goPath = "dev/go";
+  };
+
+  programs.git = {
+    enable = true;
+    userName = username;
+    userEmail = "lluchkaa@gmail.com";
+  };
 }

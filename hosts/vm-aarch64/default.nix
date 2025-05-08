@@ -13,5 +13,9 @@
     # if the clipboard sill works.
     # https://github.com/mitchellh/nixos-config/blob/main/machines/vm-shared.nix#L115
     pkgs.gtkmm3
+
+    (pkgs.writeShellScriptBin "xrandr-auto" ''
+      xranrd --output Virtual-1 --auto
+    '')
   ];
 }
