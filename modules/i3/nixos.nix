@@ -10,8 +10,6 @@
     };
 
     displayManager = {
-      lightdm.enable = true;
-
       # AARCH64: For now, on Apple Silicon, we must manually set the
       # display resolution. This is a known issue with VMware Fusion.
       sessionCommands = ''
@@ -22,6 +20,7 @@
     windowManager = {
       i3 = {
         enable = true;
+
         # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/modules/i3.nix
         # extraPackages = with pkgs; [
         #   rofi # application launcher, the same as dmenu
@@ -42,6 +41,13 @@
         #   sysstat # get system information
         # ];
       };
+    };
+  };
+
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      package = pkgs.kdePackages.sddm;
     };
   };
 

@@ -1,7 +1,7 @@
-{ ... }@inputs: {
-
+{ pkgs, ... }@inputs: {
   home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "Monaspace" "FiraCode" ]; })
+    pkgs.monaspace
+    pkgs.nerd-fonts.fira-code
   ];
 
   fonts.fontconfig = {

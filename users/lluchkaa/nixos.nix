@@ -1,6 +1,7 @@
 { username, pkgs, ... }@inputs: {
   imports = [
-    ../../modules/i3
+    ../../modules/i3/nixos.nix
+    ../../modules/theme/nixos.nix
   ];
 
   users.users.${username} = {

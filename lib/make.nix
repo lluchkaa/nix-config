@@ -35,5 +35,7 @@ in systemFunc {
         ];
       };
     }
+
+    catppuccin.nixosModules.catppuccin
   ];
 }
