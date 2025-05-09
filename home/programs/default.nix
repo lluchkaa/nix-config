@@ -26,4 +26,8 @@
     userName = username;
     userEmail = "lluchkaa@gmail.com";
   };
+
+  programs.command-not-found = {
+    dbPath = "${pkgs.sqlite}";
+  };
 }

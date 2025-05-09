@@ -1,12 +1,55 @@
 set $mod Mod1
+###############################################################################
+# Look
+###############################################################################
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
 font pango:monospace 8
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+floating_minimum_size 400 x 300
+floating_maximum_size -1 x -1
+
+focus_follows_mouse no
+
+# Colors
+set_from_resource $rosewater rosewater #f5e0dc
+set_from_resource $flamingo flamingo #f2cdcd
+set_from_resource $pink pink #f5c2e7
+set_from_resource $mauve mauve #cba6f7
+set_from_resource $red red #f38ba8
+set_from_resource $maroon maroon #eba0ac
+set_from_resource $peach peach #fab387
+set_from_resource $yellow yellow #f9e2af
+set_from_resource $green green #a6e3a1
+set_from_resource $teal teal #94e2d5
+set_from_resource $sky sky #89dceb
+set_from_resource $sapphire sapphire #74c7ec
+set_from_resource $blue blue #89b4fa
+set_from_resource $lavender lavender #b4befe
+set_from_resource $text text #cdd6f4
+set_from_resource $subtext1 subtext1 #bac2de
+set_from_resource $subtext0 subtext0 #a6adc8
+set_from_resource $overlay2 overlay2 #9399b2
+set_from_resource $overlay1 overlay1 #7f849c
+set_from_resource $overlay0 overlay0 #6c7086
+set_from_resource $surface2 surface2 #585b70
+set_from_resource $surface1 surface1 #45475a
+set_from_resource $surface0 surface0 #313244
+set_from_resource $base base #1e1e2e
+set_from_resource $mantle mantle #181825
+set_from_resource $crust crust #11111b
+
+# class                     border      backgr. text    indicator   child_border
+client.focused              $lavender   $base   $text   $rosewater  $lavender
+client.focused_inactive     $overlay0   $base   $text   $rosewater  $overlay0
+client.unfocused            $overlay0   $base   $text   $rosewater  $overlay0
+client.urgent               $peach      $base   $peach  $overlay0   $peach
+client.placeholder          $overlay0   $base   $text   $overlay0   $overlay0
+client.background           $base
+
+
+###############################################################################
+# Startup
+###############################################################################
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -23,6 +66,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# No background
+exec --no-startup-id xsetroot -solid $base
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -38,7 +84,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec ghostty --gtk
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -52,10 +98,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -64,10 +110,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+colon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -76,10 +122,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+V split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -175,6 +221,22 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    status_command i3status
+
+    font pango:monospace 8
+    colors {
+        background          $base
+        statusline          $text
+        separator           $base
+        focused_statusline  $text
+        focused_separator   $base
+
+        # <colorclass>      <border>    <background>    <text>
+        focused_workspace   $base       $mauve          $crust
+        active_workspace    $base       $surface2       $text
+        inactive_workspace  $base       $base           $text
+        urgent_workspace    $base       $red            $crust
+        binding_mode        $base       $base           $crust
+    }
 }
 

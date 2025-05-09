@@ -1,4 +1,4 @@
-{ pkgs, ... }@inputs: {
+{ username, pkgs, ... }@inputs: {
   services.xserver = {
     enable = true;
     xkb.layout = "us,ua";
@@ -10,8 +10,11 @@
     };
 
     displayManager = {
+
       lightdm = {
         enable = true;
+
+        background = pkgs.nixos-artwork.wallpapers.dracula.gnomeFilePath;
 
         greeters.gtk = {
           theme = {
@@ -28,6 +31,11 @@
             name = "Dracula-cursors";
             package = pkgs.dracula-theme;
           };
+
+          extraConfig = ''
+            show-user-list=false
+            show-session=false
+          '';
         };
       };
 
@@ -65,8 +73,14 @@
     };
   };
 
-  services.displayManager = {
-    defaultSession = "none+i3";
+  services = {
+    displayManager = {
+      autoLogin = {
+        enable = false;     # Do not auto-login
+        user = username;    # This gets pre-selected if user list is shown
+      };
+      defaultSession = "none+i3";
+    };
   };
 
   services.gvfs.enable = true;
