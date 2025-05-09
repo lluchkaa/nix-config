@@ -15,8 +15,12 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+    overlays = [
+      (import ./packages)
+    ];
+
     make = import ./lib/make.nix {
-      inherit nixpkgs inputs;
+      inherit nixpkgs overlays inputs;
     };
   in {
     nixosConfigurations.vm-aarch64 = make {

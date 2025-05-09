@@ -1,4 +1,4 @@
-{ nixpkgs, inputs }: 
+{ nixpkgs, overlays, inputs }:
 {
   name,
   system,
@@ -18,6 +18,8 @@ in systemFunc {
   specialArgs = { inherit username; };
 
   modules = [
+    { nixpkgs.overlays = overlays; }
+
     hostConfig
 
     userOSConfig
