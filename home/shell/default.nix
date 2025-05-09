@@ -32,9 +32,4 @@
       enable_transience
     '';
   };
-
-  xdg.configFile = {
-    # fish completions for nix
-    "fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
-  };
 }
