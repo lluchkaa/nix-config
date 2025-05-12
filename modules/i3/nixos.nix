@@ -55,7 +55,7 @@
         enable = true;
 
         # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/modules/i3.nix
-        extraPackages = [];
+        # extraPackages = [];
       };
     };
   };

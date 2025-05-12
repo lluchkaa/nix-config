@@ -15,9 +15,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: let
-    overlays = [
-      (import ./packages)
-    ];
+    overlays = import ./overlays;
 
     make = import ./lib/make.nix {
       inherit nixpkgs overlays inputs;
