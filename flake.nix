@@ -25,6 +25,7 @@
       name = "vm-aarch64";
       system = "aarch64-linux";
       username = "lluchkaa";
+      os = "linux";
     };
   };
 }

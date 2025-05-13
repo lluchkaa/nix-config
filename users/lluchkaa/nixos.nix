@@ -1,11 +1,8 @@
-{ username, pkgs, ... }@inputs: {
+{ ... }@inputs: {
   imports = [
-    ../../modules/i3/nixos.nix
-    ../../modules/theme/nixos.nix
+    ../../modules/core/system
+    ../../modules/core/shell
+    ../../modules/styles
+    ../../modules/xserver
   ];
-
-  users.users.${username} = {
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
-  };
 }

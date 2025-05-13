@@ -1,10 +1,15 @@
 { ... }@inputs: {
   imports = [
-    ../../home/core.nix
-    ../../home/shell
-    ../../home/programs
-    ../../home/fonts
-    ../../modules/i3/home.nix
-    ../../modules/theme/home.nix
+    ../../modules/core/home/home.nix
+    ../../modules/core/shell/home.nix
+    ../../modules/core/xdg/home.nix
+    ../../modules/xserver/home.nix
+    ../../modules/programs/home.nix
+    ../../modules/styles/home.nix
   ];
+
+  programs.git = {
+    userName = "Yura Luchka";
+    userEmail = "lluchkaa@gmail.com";
+  };
 }

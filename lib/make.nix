@@ -3,6 +3,7 @@
   name,
   system,
   username,
+  os,
 }: let 
   systemFunc = nixpkgs.lib.nixosSystem;
   home-manager = inputs.home-manager.nixosModules.home-manager;
@@ -15,7 +16,7 @@
 in systemFunc {
   inherit system;
 
-  specialArgs = { inherit username; };
+  specialArgs = { inherit username os; };
 
   modules = [
     { nixpkgs.overlays = overlays; }
@@ -28,7 +29,7 @@ in systemFunc {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
 
-      home-manager.extraSpecialArgs = { inherit username; };
+      home-manager.extraSpecialArgs = { inherit username os; };
 
       home-manager.users.${username} = {
         imports = [

@@ -1,4 +1,8 @@
-{ ... }@inputs: {
+{ pkgs, ... }@inputs: {
+  home.file = {
+    ".background-image".source = pkgs.nixos-artwork.wallpapers.catppuccin-mocha.gnomeFilePath;
+  };
+
   programs.i3status = {
     enable = true;
 

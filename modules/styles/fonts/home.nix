@@ -9,8 +9,8 @@
 
     defaultFonts = {
       monospace = [ "Monaspace Krypton Var" "FiraCode Nerd Font Mono" ];
-      sansSerif = [ "Monaspace Argon Var" "FiraCode Nerd Font" ];
-      serif = [ "Monaspace Argon Var" "FiraCode Nerd Font" ];
+      sansSerif = [ "FiraCode Nerd Font" "Monaspace Argon Var" ];
+      serif = [ "FiraCode Nerd Font" "Monaspace Argon Var" ];
     };
   };
 }
