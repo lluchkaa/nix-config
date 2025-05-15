@@ -6,6 +6,7 @@
     ../../modules/xserver/home.nix
     ../../modules/programs/home.nix
     ../../modules/styles/home.nix
+    ../../modules/scripts/home.nix
   ];
 
   programs.git = {
