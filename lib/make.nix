@@ -12,8 +12,7 @@
   userOSConfig = ../users/${username}/nixos.nix;
   userHomeConfig = ../users/${username}/home.nix;
 
-  catppuccin = inputs.catppuccin;
-  nix-index-database = inputs.nix-index-database;
+  inherit (inputs) nix-index-database catppuccin stylix;
 in systemFunc {
   inherit system;
 
@@ -35,12 +34,19 @@ in systemFunc {
       home-manager.users.${username} = {
         imports = [
           userHomeConfig
+
+          nix-index-database.hmModules.nix-index
           catppuccin.homeModules.catppuccin
+          stylix.nixosModules.stylix
         ];
       };
     }
 
-    catppuccin.nixosModules.catppuccin
-    nix-index-database.nixosModules.nix-index
+    (if os == "linux" then nix-index-database.nixosModules.nix-index else {})
+    (if os == "linux" then catppuccin.nixosModules.catppuccin else {})
+    (if os == "linux" then stylix.nixosModules.stylix else {})
+
+    (if os == "darwin" then nix-index-database.darwinModules.nix-index else {})
+    (if os == "darwin" then stylix.darwinModules.stylix else {})
   ];
 }
