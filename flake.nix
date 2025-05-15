@@ -2,7 +2,9 @@
   description = "Nix and NixOS system and tools by lluchkaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,6 +13,11 @@
 
     catppuccin = {
       url = "github:catppuccin/nix/main";
+    };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

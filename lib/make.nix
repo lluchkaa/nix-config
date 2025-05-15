@@ -13,6 +13,7 @@
   userHomeConfig = ../users/${username}/home.nix;
 
   catppuccin = inputs.catppuccin;
+  nix-index-database = inputs.nix-index-database;
 in systemFunc {
   inherit system;
 
@@ -40,5 +41,6 @@ in systemFunc {
     }
 
     catppuccin.nixosModules.catppuccin
+    nix-index-database.nixosModules.nix-index
   ];
 }
