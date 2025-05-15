@@ -1,0 +1,16 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+command_timeout = 2000
+
+# handled by catppuccin.nix
+# palette = "catppuccin_mocha"
+# [palettes.catppuccin_mocha]
+
+[package]
+disabled = true
+
+[gcloud]
+disabled = true

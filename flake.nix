@@ -13,6 +13,7 @@
 
     catppuccin = {
       url = "github:catppuccin/nix/main";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-index-database = {

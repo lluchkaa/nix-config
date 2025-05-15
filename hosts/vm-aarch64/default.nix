@@ -1,7 +1,7 @@
 { pkgs, ... }@inputs: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/vm/vmware
+    ../../modules/nixos/optional/vm/vmware
   ];
 
   boot.loader.systemd-boot.enable = true;

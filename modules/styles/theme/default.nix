@@ -1,5 +1,0 @@
-{ ... }@inputs: {
-  catppuccin = {
-    enable = true;
-  };
-}
