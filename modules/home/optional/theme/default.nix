@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }@inputs: {
+{ pkgs, ... }@inputs: {
   imports = [
     ./cursor
     ./fonts
@@ -9,7 +9,7 @@
   };
 
   catppuccin = {
-    enable = lib.mkDefault true;
+    enable = true;
 
     cava.enable = false;
     gh-dash.enable = false;
@@ -17,4 +17,10 @@
     swaylock.enable = false;
     mako.enable = false;
   };
+
+  # stylix = {
+  #   enable = false;
+  #   autoEnable = false;
+  #   base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  # };
 }

@@ -27,11 +27,6 @@
     goPath = "dev/go";
   };
 
-  programs.command-not-found = {
-    enable = lib.mkDefault true;
-    dbPath = "${pkgs.sqlite}";
-  };
-  
   programs.direnv = {
     enable = lib.mkDefault true;
   };

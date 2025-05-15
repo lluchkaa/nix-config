@@ -6,7 +6,7 @@
   os,
 }: let 
   systemFunc = nixpkgs.lib.nixosSystem;
-  home-manager = inputs.home-manager.nixosModules.home-manager;
+  home-manager = if os == "darwin" then home-manager.darwinModules.home-manager else inputs.home-manager.nixosModules.home-manager;
 
   hostConfig = ../hosts/${name};
   userOSConfig = ../users/${username}/nixos.nix;
@@ -22,7 +22,6 @@ in systemFunc {
     { nixpkgs.overlays = overlays; }
 
     hostConfig
-
     userOSConfig
 
     home-manager {
@@ -37,16 +36,13 @@ in systemFunc {
 
           nix-index-database.hmModules.nix-index
           catppuccin.homeModules.catppuccin
-          stylix.nixosModules.stylix
+          # stylix.homeManagerModules.stylix
         ];
       };
     }
 
-    (if os == "linux" then nix-index-database.nixosModules.nix-index else {})
-    (if os == "linux" then catppuccin.nixosModules.catppuccin else {})
-    (if os == "linux" then stylix.nixosModules.stylix else {})
-
-    (if os == "darwin" then nix-index-database.darwinModules.nix-index else {})
-    (if os == "darwin" then stylix.darwinModules.stylix else {})
+    (if os == "darwin" then nix-index-database.darwinModules.nix-index else nix-index-database.nixosModules.nix-index )
+    (if os == "darwin" then {} else catppuccin.nixosModules.catppuccin)
+    # (if os == "darwin" then stylix.darwinModules.stylix else stylix.nixosModules.stylix)
   ];
 }

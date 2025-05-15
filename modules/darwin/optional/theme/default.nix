@@ -1,8 +1,4 @@
 { pkgs, ... }@inputs: {
-  catppuccin = {
-    enable = true;
-  };
-
   # stylix = {
   #   enable = false;
   #   autoEnable = false;
