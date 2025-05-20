@@ -1,12 +1,16 @@
 set $mod Mod1
+
 ###############################################################################
-# Look
+# Look & Feel
 ###############################################################################
 
 font pango:monospace 8
 
 floating_minimum_size 400 x 300
 floating_maximum_size -1 x -1
+
+default_border pixel
+default_floating_border pixel
 
 focus_follows_mouse no
 
@@ -46,7 +50,6 @@ client.urgent               $peach      $base   $peach  $overlay0   $peach
 client.placeholder          $overlay0   $base   $text   $overlay0   $overlay0
 client.background           $base
 
-
 ###############################################################################
 # Startup
 ###############################################################################
@@ -66,6 +69,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Input methods
+exec --no-startup-id fcitx5 -d
+
 # No background
 exec --no-startup-id xsetroot -solid $base
 
@@ -76,6 +82,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+###############################################################################
+# Keybindings
+###############################################################################
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -84,7 +94,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec ghostty --gtk
+bindsym $mod+Return exec ghostty --gtk-single-instance=true
 
 # kill focused window
 bindsym $mod+Shift+q kill
