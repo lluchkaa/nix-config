@@ -5,6 +5,7 @@
     ../../modules/home/core/scripts
     ../../modules/home/core/shell
     ../../modules/home/core/xdg
+    ../../modules/home/core/apps
 
     ../../modules/home/optional/desktop/xserver
     ../../modules/home/optional/theme

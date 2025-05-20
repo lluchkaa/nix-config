@@ -1,25 +1,29 @@
 { os, lib, pkgs, ... }@inputs: {
   imports = [
     ./ghostty
+    ./neovim
+    ./tmux
   ];
 
   home.packages = [
-    pkgs.ghostty
-
-    pkgs.neovim
-
-    pkgs.sqlite
     pkgs.rustup
     pkgs.zig
     pkgs.ocaml
     pkgs.nodejs
-  ] ++ (lib.optionals (os == "linux") [
-    pkgs.chromium
-  ]);
+
+    pkgs.sqlite
+    pkgs.gcc
+
+    pkgs.yq
+  ];
 
   programs.git = {
     enable = lib.mkDefault true;
     # rest should be set in users/*/home.nix file
+  };
+
+  programs.direnv = {
+    enable = lib.mkDefault true;
   };
 
   programs.go = {
@@ -27,7 +31,31 @@
     goPath = "dev/go";
   };
 
-  programs.direnv = {
+  programs.fzf = {
+    enable = lib.mkDefault true;
+  };
+
+  programs.ripgrep = {
+    enable = lib.mkDefault true;
+  };
+
+  programs.jq = {
+    enable = lib.mkDefault true;
+  };
+
+  programs.btop = {
+    enable = lib.mkDefault true;
+  };
+
+  programs.gh = {
+    enable = lib.mkDefault true;
+  };
+
+  programs.lazygit = {
+    enable = lib.mkDefault true;
+  };
+
+  programs.lazydocker = {
     enable = lib.mkDefault true;
   };
 }
