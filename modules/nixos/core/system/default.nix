@@ -1,11 +1,11 @@
-{ system, ... }@inputs: {
+{ system, self, ... }@inputs: {
   imports = [
     ./i18n
     ./ssh
     ./time
   ];
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
   nixpkgs.hostPlatform = system;

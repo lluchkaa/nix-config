@@ -5,7 +5,7 @@
   username,
   os,
 }: let 
-  inherit (inputs) nix-index-database catppuccin stylix;
+  inherit (inputs) self nix-index-database catppuccin stylix;
 
   systemFunc = if os == "darwin" then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
   homeManagerFunc = if os == "darwin" then inputs.home-manager.darwinModules.home-manager else inputs.home-manager.nixosModules.home-manager;
@@ -16,7 +16,7 @@
 in systemFunc {
   inherit system;
 
-  specialArgs = { inherit username os; };
+  specialArgs = { inherit self username os system; };
 
   modules = [
     { nixpkgs.overlays = overlays; }

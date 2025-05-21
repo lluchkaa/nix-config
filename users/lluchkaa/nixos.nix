@@ -5,6 +5,7 @@
     ../../modules/nixos/core/shell
     ../../modules/nixos/core/system
     ../../modules/nixos/core/xdg
+    ../../modules/nixos/core/home
 
     ../../modules/nixos/optional/desktop/xserver
     ../../modules/nixos/optional/theme

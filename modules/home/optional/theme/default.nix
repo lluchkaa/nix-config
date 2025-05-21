@@ -1,10 +1,10 @@
-{ pkgs, ... }@inputs: {
+{ os, lib, pkgs, ... }@inputs: {
   imports = [
     ./cursor
     ./fonts
   ];
 
-  home.file = {
+  home.file = lib.mkIf (os == "linux") {
     ".background-image".source = pkgs.nixos-artwork.wallpapers.catppuccin-mocha.gnomeFilePath;
   };
 

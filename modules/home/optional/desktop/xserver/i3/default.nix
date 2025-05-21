@@ -1,6 +1,6 @@
-{ lib, ... }@inputs: {
+{ os, lib, ... }@inputs: {
   programs.i3status = {
-    enable = lib.mkDefault true;
+    enable = lib.mkDefault os == "linux";
 
     general = {
       colors = true;
