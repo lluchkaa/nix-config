@@ -3,6 +3,7 @@
     ./ghostty
     ./neovim
     ./tmux
+    ./gh
   ];
 
   home.packages = [

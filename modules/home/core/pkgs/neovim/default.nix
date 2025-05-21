@@ -1,5 +1,5 @@
-{ ... }@inputs: {
+{ lib, ... }@inputs: {
   programs.neovim = {
-    enable = true;
+    enable = lib.mkDefault true;
   };
 }

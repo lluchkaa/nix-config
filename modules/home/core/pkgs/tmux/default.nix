@@ -1,5 +1,5 @@
-{ ... }@inputs: {
+{ lib, ... }@inputs: {
   programs.tmux = {
-    enable = true;
+    enable = lib.mkDefault true;
   };
 }

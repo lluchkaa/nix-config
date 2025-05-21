@@ -19,7 +19,7 @@
       {
         name = "zsh-vi-mode";
         src = pkgs.zsh-vi-mode;
-        file = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
     ];
   };
@@ -29,7 +29,6 @@
     shellInitLast = ''
       fish_vi_key_bindings
       fish_vi_cursor
-      enable_transience
     '';
   };
 }
