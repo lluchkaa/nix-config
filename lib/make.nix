@@ -5,14 +5,14 @@
   username,
   os,
 }: let 
-  systemFunc = nixpkgs.lib.nixosSystem;
-  home-manager = if os == "darwin" then home-manager.darwinModules.home-manager else inputs.home-manager.nixosModules.home-manager;
+  inherit (inputs) nix-index-database catppuccin stylix;
+
+  systemFunc = if os == "darwin" then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+  homeManagerFunc = if os == "darwin" then inputs.home-manager.darwinModules.home-manager else inputs.home-manager.nixosModules.home-manager;
 
   hostConfig = ../hosts/${name};
-  userOSConfig = ../users/${username}/nixos.nix;
+  userOSConfig = ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix;
   userHomeConfig = ../users/${username}/home.nix;
-
-  inherit (inputs) nix-index-database catppuccin stylix;
 in systemFunc {
   inherit system;
 
@@ -24,7 +24,7 @@ in systemFunc {
     hostConfig
     userOSConfig
 
-    home-manager {
+    homeManagerFunc {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
 

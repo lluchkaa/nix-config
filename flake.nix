@@ -6,7 +6,7 @@
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
     };
 
-    darwin = {
+    nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -45,6 +45,13 @@
       system = "aarch64-linux";
       username = "lluchkaa";
       os = "linux";
+    };
+
+    darwinConfigurations.macbook-pro-m1 = make {
+      name = "macbook-pro-m1";
+      system = "aarch64-darwin";
+      username = "lluchkaa";
+      os = "darwin";
     };
   };
 }
