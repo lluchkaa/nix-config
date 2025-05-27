@@ -2,7 +2,6 @@
   imports = [
     ../../modules/home/core
     ../../modules/home/core/pkgs
-    ../../modules/home/core/scripts
     ../../modules/home/core/shell
     ../../modules/home/core/xdg
     ../../modules/home/core/apps
