@@ -5,6 +5,7 @@
     home = lib.mkDefault (if os == "darwin" then "/Users/${username}" else "/home/${username}");
 
     uid = 501;
+    shell = lib.mkDefault pkgs.fish;
   } // lib.optionalAttrs (os == "linux") {
     isNormalUser = true;
 
