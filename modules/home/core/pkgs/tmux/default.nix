@@ -1,9 +1,10 @@
 { lib, pkgs, ... }@inputs: {
-  programs.tmux = {
-    enable = lib.mkDefault true;
-  };
+  # programs.tmux = {
+  #   enable = lib.mkDefault true;
+  # };
 
   home.packages = [
+    pkgs.tmux
     (pkgs.writeShellScriptBin "tmux-sessionizer"
       (builtins.readFile ./tmux-sessionizer))
   ];
