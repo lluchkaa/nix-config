@@ -6,6 +6,7 @@
 
     uid = 501;
     shell = lib.mkDefault pkgs.fish;
+    ignoreShellProgramCheck = true;
   } // lib.optionalAttrs (os == "linux") {
     isNormalUser = true;
 
@@ -16,4 +17,8 @@
   };
 
   users.knownUsers = [username];
+
+  programs.fish = {
+    enable = true;
+  };
 }
