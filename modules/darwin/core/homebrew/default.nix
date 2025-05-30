@@ -1,0 +1,5 @@
+{ ... }@inputs: {
+  homebrew = {
+    enable = true;
+  };
+}
