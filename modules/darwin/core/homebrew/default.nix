@@ -1,6 +1,7 @@
 { ... }@inputs: {
   imports = [
     ./casks
+    ./mas
   ];
 
   homebrew = {
