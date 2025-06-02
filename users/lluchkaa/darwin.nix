@@ -5,6 +5,7 @@
     ../../modules/nixos/core/pkgs
     ../../modules/nixos/core/home
     ../../modules/darwin/core/homebrew
+    ../../modules/darwin/core/security
 
     ../../modules/users/me
   ];
