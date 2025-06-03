@@ -4,6 +4,7 @@
     "clearvpn"
     "discord"
     "docker"
+    "ghostty"
     "google-chrome"
     "keycastr"
     "notion"
