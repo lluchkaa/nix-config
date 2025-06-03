@@ -1,5 +1,5 @@
 { ... }@inputs: {
   xdg.configFile = {
-    "ngrok/ngrok.yml".source = builtins.readFile ./ngrok.yml;
+    "ngrok/ngrok.yml".source = ./ngrok.yml;
   };
 }
