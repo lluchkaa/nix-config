@@ -12,7 +12,7 @@
     '';
 
     settings = {
-      trusted-users = [username];
+      trusted-users = ["root" "@admin" username];
 
       experimental-features = ["nix-command" "flakes"];
 

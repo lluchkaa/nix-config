@@ -1,5 +1,6 @@
 { ... }@inputs: {
   homebrew.casks = [
+    "nikitabobko/tap/aerospace"
     "aldente"
     "clearvpn"
     "discord"
@@ -16,5 +17,9 @@
     "vial"
     "visual-studio-code"
     "vmware-fusion"
+  ];
+
+  homebrew.taps = [
+    "nikitabobko/tap"
   ];
 }

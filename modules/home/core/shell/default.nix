@@ -27,6 +27,8 @@
   programs.fish = {
     enable = true;
     shellInitLast = ''
+      set -g fish_greeting ""
+
       fish_vi_key_bindings
       fish_vi_cursor
       for mode in default insert replace visual; set -g fish_cursor_$mode block; end
