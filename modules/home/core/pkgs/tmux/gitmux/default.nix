@@ -1,6 +1,6 @@
 { config, lib, ... }@inputs: {
   xdg.configFile = {
-    "gitmux/gitmux.conf".text = builtins.readFile ./gitmux.conf;
+    "gitmux/gitmux.conf".source = ./gitmux.conf;
   };
 
   home.file = {
