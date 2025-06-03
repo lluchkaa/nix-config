@@ -17,6 +17,9 @@
     "vial"
     "visual-studio-code"
     "vmware-fusion"
+
+    "font-fira-code-nerd-font"
+    "font-monaspace"
   ];
 
   homebrew.taps = [
