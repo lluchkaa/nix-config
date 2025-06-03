@@ -36,13 +36,13 @@ in systemFunc {
 
           nix-index-database.hmModules.nix-index
           catppuccin.homeModules.catppuccin
-          # stylix.homeManagerModules.stylix
+          stylix.homeModules.stylix
         ];
       };
     }
 
     (if os == "darwin" then nix-index-database.darwinModules.nix-index else nix-index-database.nixosModules.nix-index )
     (if os == "darwin" then {} else catppuccin.nixosModules.catppuccin)
-    # (if os == "darwin" then stylix.darwinModules.stylix else stylix.nixosModules.stylix)
+    (if os == "darwin" then stylix.darwinModules.stylix else stylix.nixosModules.stylix)
   ];
 }
