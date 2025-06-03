@@ -1,4 +1,8 @@
 { lib, pkgs, ... }@inputs: {
+  imports = [
+    ./gitmux
+  ];
+
   # programs.tmux = {
   #   enable = lib.mkDefault true;
   # };

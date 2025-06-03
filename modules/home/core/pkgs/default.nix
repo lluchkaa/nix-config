@@ -17,6 +17,7 @@
     pkgs.sqlite
     pkgs.gcc
     pkgs.luajit
+    pkgs.pnpm
 
     pkgs.yq
 
