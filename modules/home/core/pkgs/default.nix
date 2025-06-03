@@ -5,6 +5,7 @@
     ./ghostty
     ./git
     ./neovim
+    ./ngrok
     ./tmux
   ];
 
