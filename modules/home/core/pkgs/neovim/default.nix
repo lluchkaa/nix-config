@@ -1,13 +1,10 @@
 { lib, pkgs, ... }@inputs: {
-  # programs.neovim = {
-  #   enable = lib.mkDefault true;
-  # };
+  programs.neovim = {
+    enable = lib.mkDefault true;
+  };
 
-  home.packages = [
-    pkgs.neovim
-  ];
-
-  xdg.configFile = {
-    "nvim".source = ./nvim;
+  xdg.configFile.nvim = {
+    source = ./nvim;
+    recursive = true;
   };
 }

@@ -34,9 +34,10 @@ return {
         { desc = "toggle harpoon UI" }
       )
 
-      vim.keymap.set("n", "<C-j>", function() harpoon:list():select(1) end, { desc = "navigate to file 1" })
-      vim.keymap.set("n", "<C-k>", function() harpoon:list():select(2) end, { desc = "navigate to file 2" })
-      vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end, { desc = "navigate to file 3" })
+      -- Disabled this because of vim-tmux-navigator
+      -- vim.keymap.set("n", "<C-j>", function() harpoon:list():select(1) end, { desc = "navigate to file 1" })
+      -- vim.keymap.set("n", "<C-k>", function() harpoon:list():select(2) end, { desc = "navigate to file 2" })
+      -- vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end, { desc = "navigate to file 3" })
     end,
   },
 }
