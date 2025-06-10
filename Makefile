@@ -45,25 +45,21 @@ vm/bootstrap0:
 vm/bootstrap:
 	NIXUSER=root $(MAKE) vm/copy
 	NIXUSER=root $(MAKE) vm/switch
-	$(MAKE) vm/secrets
+	$(MAKE) vm/copy-secrets
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) $(NIXUSER)@$(NIXADDR) " \
 		sudo reboot; \
 	"
 
 vm/copy-secrets:
-	rsync -av -e 'ssh $(SSH_OPTIONS)' \
-		--exclude='.#*' \
-		--exclude='S.*' \
-		--exclude='*.conf' \
-		$(HOME)/.gnupg/ $(NIXUSER)@$(NIXADDR):~/.gnupg
+	# rsync -av -e 'ssh $(SSH_OPTIONS)' \
+	# 	--exclude='.#*' \
+	# 	--exclude='S.*' \
+	# 	--exclude='*.conf' \
+	# 	$(HOME)/.gnupg/ $(NIXUSER)@$(NIXADDR):~/.gnupg
 
 	rsync -av -e 'ssh $(SSH_OPTIONS)'\
 		--exclude='environment'\
 		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
-
-vm/copy-config:
-	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
-		$(HOME)/.config/ $(NIXUSER)@$(NIXADDR):/tmp/.config
 
 vm/copy:
 	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \

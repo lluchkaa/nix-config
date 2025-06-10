@@ -4,8 +4,7 @@
 
     home = lib.mkDefault (if os == "darwin" then "/Users/${username}" else "/home/${username}");
 
-    uid = 501;
-    shell = lib.mkDefault pkgs.fish;
+    shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   } // lib.optionalAttrs (os == "linux") {
     isNormalUser = true;
@@ -14,9 +13,11 @@
 
     # TODO: convert to hashed password
     initialPassword = "root";
+  } // lib.optionalAttrs (os == "darwin") {
+    uid = 501;
   };
 
-  users.knownUsers = [username];
+  users.knownUsers = lib.mkIf (os == "darwin") [username];
 
   programs.fish = {
     enable = true;
