@@ -1,9 +1,5 @@
 { ... }@inputs: {
-  homebrew.caskArgs = {
-    greedy = true;
-  };
-
-  homebrew.casks = [
+  homebrew.casks = builtins.map (cask: { name = cask; greedy = true; }) [
     "nikitabobko/tap/aerospace"
     "aldente"
     "clearvpn"
