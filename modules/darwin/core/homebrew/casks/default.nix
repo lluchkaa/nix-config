@@ -1,4 +1,8 @@
 { ... }@inputs: {
+  homebrew.caskArgs = {
+    greedy = true;
+  };
+
   homebrew.casks = [
     "nikitabobko/tap/aerospace"
     "aldente"
