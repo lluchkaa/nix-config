@@ -17,9 +17,9 @@
     uid = 501;
   };
 
-  users.knownUsers = lib.mkIf (os == "darwin") [username];
-
   programs.fish = {
     enable = true;
   };
+} // lib.optionalAttrs (os == "darwin") {
+  users.knownUsers = [username];
 }
