@@ -5,7 +5,5 @@
 
     name = "macOS";
     package = pkgs.apple-cursor;
-
-    size = 128;
   };
 }
