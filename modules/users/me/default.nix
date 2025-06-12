@@ -20,6 +20,4 @@
   programs.fish = {
     enable = true;
   };
-} // lib.optionalAttrs (os == "darwin") {
-  users.knownUsers = [username];
 }
