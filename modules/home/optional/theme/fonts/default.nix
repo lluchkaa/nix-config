@@ -12,13 +12,5 @@
       sansSerif = [ "FiraCode Nerd Font" "Monaspace Argon Var" ];
       serif = [ "FiraCode Nerd Font" "Monaspace Argon Var" ];
     };
-
-    hinting = {
-      autohint = true;
-    };
-
-    subpixel = {
-      rgba = "rgb";
-    };
   };
 }

@@ -1,4 +1,8 @@
 { pkgs, ... }@inputs: {
+  imports = [
+    ./fonts
+  ];
+
   catppuccin = {
     enable = true;
   };
