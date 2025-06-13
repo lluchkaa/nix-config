@@ -1,6 +1,6 @@
 { lib, ... }@inputs: {
   programs.git = {
-    enable = lib.mkDefault true;
+    enable = true;
 
     ignores = [".DS_Store"];
 

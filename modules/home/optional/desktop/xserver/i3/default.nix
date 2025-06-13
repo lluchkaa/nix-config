@@ -1,6 +1,6 @@
 { os, lib, ... }@inputs: {
   programs.i3status = {
-    enable = lib.mkDefault os == "linux";
+    enable = os == "linux";
 
     general = {
       colors = true;
@@ -12,7 +12,8 @@
     modules = {
       ipv6.enable = false;
       "wireless _first_".enable = false;
-      "battery all".enable = false;
+      "ethernet _first_".enable = false;
+      "disk /".enable = false;
     };
   };
 

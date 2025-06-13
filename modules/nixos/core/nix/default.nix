@@ -24,15 +24,15 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           "lluchkaa.cachix.org-1:OZsJHkBMAfwSUm1gHwqKMA/iaLiyRuC9X90Bp+kX7UI="
       ];
-      builders-use-substitutes = lib.mkDefault true;
+      builders-use-substitutes = true;
     };
 
     gc = {
-      automatic = lib.mkDefault true;
-      options = lib.mkDefault "--delete-older-than 7d";
+      automatic = true;
+      options = "--delete-older-than 7d";
     };
   };
 
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
-  nixpkgs.config.allowUnsupportedSystem = lib.mkDefault true;
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 }

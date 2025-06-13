@@ -28,35 +28,35 @@
   ];
 
   programs.btop = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 
   programs.direnv = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 
   programs.fzf = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 
   programs.go = {
-    enable = lib.mkDefault true;
+    enable = true;
     goPath = "dev/go";
   };
 
   programs.jq = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 
   programs.lazygit = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 
   programs.lazydocker = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 
   programs.ripgrep = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 }

@@ -1,6 +1,6 @@
 { os, lib, ... }@inputs: {
   programs.ghostty = {
-    enable = lib.mkDefault true;
+    enable = true;
     settings = {
       font-family = "Monaspace Krypton Var";
       font-variation = "wght=300";

@@ -2,7 +2,7 @@
   home.preferXdgDirectories = true;
 
   xdg.portal = lib.mkIf (os == "linux") {
-    enable = lib.mkDefault true;
+    enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "*";
   };

@@ -1,6 +1,6 @@
 { lib, pkgs, ... }@inputs: {
   programs.gh = {
-    enable = lib.mkDefault true;
+    enable = true;
 
     extensions = [
       pkgs.gh-copilot

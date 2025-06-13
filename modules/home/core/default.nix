@@ -5,7 +5,7 @@
     stateVersion = "24.11";
   };
 
-  programs.home-manager.enable = lib.mkDefault true;
+  programs.home-manager.enable = true;
 
   home.homeDirectory = if os == "darwin" then "/Users/${username}" else "/home/${username}";
 }

@@ -1,6 +1,6 @@
 { lib, pkgs, ... }@inputs: {
   programs.neovim = {
-    enable = lib.mkDefault true;
+    enable = true;
   };
 
   xdg.configFile.nvim = {

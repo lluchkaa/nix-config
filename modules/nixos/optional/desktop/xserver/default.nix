@@ -6,12 +6,12 @@
 
   services.xserver = {
     enable = true;
-    xkb.layout = lib.mkDefault "us,ua";
-    dpi = lib.mkDefault 227;
+    xkb.layout = "us,ua";
+    dpi = 180;
 
     desktopManager = {
-      xterm.enable = lib.mkDefault false;
-      wallpaper.mode = lib.mkDefault "fill";
+      xterm.enable = false;
+      wallpaper.mode = "fill";
     };
 
     displayManager = {

@@ -2,7 +2,7 @@
   users.users.${username} = {
     description = username;
 
-    home = lib.mkDefault (if os == "darwin" then "/Users/${username}" else "/home/${username}");
+    home = (if os == "darwin" then "/Users/${username}" else "/home/${username}");
 
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;

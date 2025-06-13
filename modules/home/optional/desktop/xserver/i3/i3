@@ -4,7 +4,7 @@ set $mod Mod1
 # Look & Feel
 ###############################################################################
 
-font pango:monospace 8
+font pango:monospace 13
 
 floating_minimum_size 400 x 300
 floating_maximum_size -1 x -1
@@ -233,7 +233,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
 
-    font pango:monospace 8
+    font pango:monospace 13
     colors {
         background          $base
         statusline          $text

@@ -5,7 +5,7 @@
   ];
 
   programs.tmux = {
-    enable = lib.mkDefault true;
+    enable = true;
 
     terminal = "screen-256color";
     shortcut = "a";
