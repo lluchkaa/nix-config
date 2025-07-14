@@ -3,7 +3,12 @@ return {
     "stevearc/oil.nvim",
     dependencies = { "echasnovski/mini.icons" },
     config = function()
-      require("oil").setup({
+      local oil = require("oil")
+      oil.setup({
+        keymaps = {
+          ["<C-h>"] = false,
+          ["<C-l>"] = false,
+        },
         win_options = {
           signcolumn = "yes",
         },
@@ -11,6 +16,7 @@ return {
           show_hidden = true,
         },
       })
+
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open oil" })
     end,
   },

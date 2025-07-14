@@ -37,7 +37,7 @@
     ];
 
     extraConfig = (builtins.readFile ./tmux.conf)
-      + "set -g default-command ${pkgs.fish}/bin/fish";
+      + "set -g default-command ${pkgs.zsh}/bin/zsh";
   };
 
   catppuccin.tmux = {

@@ -3,6 +3,7 @@
     "nikitabobko/tap/aerospace"
     "aldente"
     "clearvpn"
+    "cursor"
     "discord"
     "docker"
     "ghostty"
