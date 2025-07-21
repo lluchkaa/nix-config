@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
 
-    ignores = [".DS_Store"];
+    ignores = [".DS_Store" ".ignore/"];
 
     extraConfig = {
       init = {

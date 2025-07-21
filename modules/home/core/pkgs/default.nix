@@ -13,7 +13,7 @@
     pkgs.rustup
     pkgs.zig
     pkgs.ocaml
-    pkgs.nodejs
+    # pkgs.nodejs
 
     pkgs.sqlite
     pkgs.gcc

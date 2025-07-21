@@ -47,7 +47,7 @@ on-focus-changed = ["move-mouse window-lazy-center"]
 
 exec-on-workspace-change = [
   '/bin/bash/', '-c',
-  'aerospace move-node-to-workspace --window-id $(aerospace list-windows --monitor focused --app-bundle-id com.google.Chrome --format "%{window-id} %{window-title}" | awk "\$0 ~ /Picture in Picture/ {print \$1}") $AEROSPACE_FOCUSED_WORKSPACE'
+  'aerospace move-node-to-workspace --window-id $(aerospace list-windows --monitor focused --app-bundle-id com.google.Chrome --format "%{window-id} %{window-title}" | awk "\$0 ~ /Picture in Picture|Meet - / {print \$1}") $AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).

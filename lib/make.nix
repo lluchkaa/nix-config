@@ -34,7 +34,7 @@ in systemFunc {
         imports = [
           userHomeConfig
 
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           catppuccin.homeModules.catppuccin
           stylix.homeModules.stylix
         ];

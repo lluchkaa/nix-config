@@ -1,5 +1,6 @@
 { ... }@inputs: {
   imports = [
+    ./brews
     ./casks
     ./mas
   ];
