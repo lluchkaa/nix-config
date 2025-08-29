@@ -1,6 +1,6 @@
 return {
   "nvimtools/none-ls.nvim",
-  enabled = false,
+  enabled = true,
   dependencies = {
     "davidmh/cspell.nvim",
   },

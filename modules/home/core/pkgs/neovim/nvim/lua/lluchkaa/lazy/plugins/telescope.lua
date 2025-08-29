@@ -47,29 +47,38 @@ return {
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require("telescope").setup({
-        -- You can put your default mappings / updates / etc. in here
-        --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          file_ignore_patterns = {
+            "^node_modules/",
+            "^.git/",
+            "^dist/",
+            "^vendor/",
+            "^.worktrees/",
+            "^.turbo/",
+            "^.venv/",
+          },
+        },
         pickers = {
           find_files = {
-            find_command = {
-              "rg",
-              "--no-ignore",
-              "--hidden",
-              "--files",
-              "-g",
-              "!**/node_modules/*",
-              "-g",
-              "!**/.git/*",
-              "-g",
-              "!**/.worktrees/*",
-            },
+            hidden = true,
+            no_ignore = false,
+            follow = true,
+            -- find_command = {
+            --   "rg",
+            --   "--no-ignore",
+            --   "--hidden",
+            --   "--files",
+            --   "-g",
+            --   "!**/node_modules/*",
+            --   "-g",
+            --   "!**/.git/*",
+            --   "-g",
+            --   "!**/dist/*",
+            --   "-g",
+            --   "!**/vendor/*",
+            --   "-g",
+            --   "!**/.worktrees/*",
+            -- },
           },
         },
         extensions = {

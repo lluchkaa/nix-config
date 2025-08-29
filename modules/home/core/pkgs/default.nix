@@ -56,6 +56,10 @@
     enable = true;
   };
 
+  programs.lazysql = {
+    enable = true;
+  };
+
   programs.ripgrep = {
     enable = true;
   };

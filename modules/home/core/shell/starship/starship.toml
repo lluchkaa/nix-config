@@ -9,8 +9,11 @@ command_timeout = 2000
 # palette = "catppuccin_mocha"
 # [palettes.catppuccin_mocha]
 
-[package]
+[aws]
 disabled = true
 
 [gcloud]
+disabled = true
+
+[package]
 disabled = true

@@ -16,7 +16,7 @@ return {
         which_key = true,
         telescope = {
           enabled = true,
-          style = "nvchad",
+          style = "classic",
         },
       },
     },

@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }@inputs: {
+{ config, lib, pkgs, ... }@inputs: {
   imports = [
     ./starship
     ./variables
@@ -10,7 +10,7 @@
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
