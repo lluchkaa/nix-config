@@ -23,6 +23,8 @@
     pkgs.yq
 
     pkgs.gitmux
+
+    pkgs.cursor-cli
   ] ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods
   ];
