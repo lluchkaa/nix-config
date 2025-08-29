@@ -12,6 +12,7 @@ return {
       sources = {
         cspell.diagnostics.with({
           method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+          diagnostics_postprocess = function(diagnostic) diagnostic.severity = vim.diagnostic.severity.HINT end,
         }),
       },
     })
