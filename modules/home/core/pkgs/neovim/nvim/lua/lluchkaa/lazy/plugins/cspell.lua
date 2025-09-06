@@ -1,6 +1,7 @@
 return {
   "nvimtools/none-ls.nvim",
-  enabled = true,
+  -- deprecate, use lsp-config with cspell_ls
+  enabled = false,
   dependencies = {
     "davidmh/cspell.nvim",
   },
