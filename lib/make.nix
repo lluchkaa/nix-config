@@ -5,7 +5,7 @@
   username,
   os,
 }: let 
-  inherit (inputs) self nix-index-database catppuccin stylix;
+  inherit (inputs) self nix-index-database catppuccin /* stylix */;
 
   systemFunc = if os == "darwin" then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
   homeManagerFunc = if os == "darwin" then inputs.home-manager.darwinModules.home-manager else inputs.home-manager.nixosModules.home-manager;
@@ -36,13 +36,13 @@ in systemFunc {
 
           nix-index-database.homeModules.nix-index
           catppuccin.homeModules.catppuccin
-          stylix.homeModules.stylix
+          # stylix.homeModules.stylix
         ];
       };
     }
 
     (if os == "darwin" then nix-index-database.darwinModules.nix-index else nix-index-database.nixosModules.nix-index )
     (if os == "darwin" then {} else catppuccin.nixosModules.catppuccin)
-    (if os == "darwin" then stylix.darwinModules.stylix else stylix.nixosModules.stylix)
+    # (if os == "darwin" then stylix.darwinModules.stylix else stylix.nixosModules.stylix)
   ];
 }
