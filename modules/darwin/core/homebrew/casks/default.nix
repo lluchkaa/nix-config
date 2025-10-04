@@ -2,6 +2,7 @@
   homebrew.casks = builtins.map (cask: { name = cask; greedy = true; }) [
     "nikitabobko/tap/aerospace"
     "aldente"
+    "thebrowsercompany-dia"
     "clearvpn"
     "cursor"
     "discord"

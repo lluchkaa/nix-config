@@ -9,7 +9,7 @@
         defaultBranch = "main";
       };
       core = {
-        ignorecase = true;
+        ignorecase = false;
       };
     };
 
