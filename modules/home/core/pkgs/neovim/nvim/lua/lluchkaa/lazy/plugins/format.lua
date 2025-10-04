@@ -26,11 +26,15 @@ return {
         css = { "prettierd", "prettier", stop_after_first = true },
 
         go = { "gofmt", "gofumpt" },
-        rust = { "rustfmt", lsp_format = "fallback" },
-        python = { "ruff_fix", "ruff_format", "ruff_organize_imports", lsp_format = "fallback" },
+        rust = { "rustfmt" },
+        python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
         nix = { "nixfmt" },
 
         ["*"] = { "injected" },
+        ["_"] = { "trim_whitespace" },
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
       },
     },
   },
