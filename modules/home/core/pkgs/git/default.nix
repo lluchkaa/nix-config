@@ -1,8 +1,12 @@
-{ lib, ... }@inputs: {
+{ lib, ... }@inputs:
+{
   programs.git = {
     enable = true;
 
-    ignores = [".DS_Store" ".ignore/"];
+    ignores = [
+      ".DS_Store"
+      ".ignore/"
+    ];
 
     extraConfig = {
       init = {

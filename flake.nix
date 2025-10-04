@@ -33,25 +33,33 @@
     # };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
-    overlays = import ./overlays;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      overlays = import ./overlays;
 
-    make = import ./lib/make.nix {
-      inherit nixpkgs overlays inputs;
-    };
-  in {
-    nixosConfigurations.vm-aarch64 = make {
-      name = "vm-aarch64";
-      system = "aarch64-linux";
-      username = "lluchkaa";
-      os = "linux";
-    };
+      make = import ./lib/make.nix {
+        inherit nixpkgs overlays inputs;
+      };
+    in
+    {
+      nixosConfigurations.vm-aarch64 = make {
+        name = "vm-aarch64";
+        system = "aarch64-linux";
+        username = "lluchkaa";
+        os = "linux";
+      };
 
-    darwinConfigurations.macbook-pro-m1 = make {
-      name = "macbook-pro-m1";
-      system = "aarch64-darwin";
-      username = "lluchkaa";
-      os = "darwin";
+      darwinConfigurations.macbook-pro-m1 = make {
+        name = "macbook-pro-m1";
+        system = "aarch64-darwin";
+        username = "lluchkaa";
+        os = "darwin";
+      };
     };
-  };
 }

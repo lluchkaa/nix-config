@@ -1,3 +1,4 @@
-{ pkgs, ... }@inputs: {
+{ pkgs, ... }@inputs:
+{
   home-manager.backupFileExtension = "bak";
 }

@@ -1,4 +1,5 @@
-{ os, lib, ... }@inputs: {
+{ os, lib, ... }@inputs:
+{
   programs.ghostty = {
     enable = true;
     settings = {
@@ -24,8 +25,9 @@
       window-colorspace = "display-p3";
 
       keybind = "cmd+t=unbind";
-    }; 
-  } // lib.optionalAttrs (os == "darwin") {
+    };
+  }
+  // lib.optionalAttrs (os == "darwin") {
     package = null;
   };
 }

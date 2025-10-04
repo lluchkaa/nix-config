@@ -1,4 +1,5 @@
-{ lib, ... }@inputs: {
+{ lib, ... }@inputs:
+{
   programs.gpg = {
     enable = true;
   };

@@ -1,4 +1,5 @@
-{ os, lib, ... }@inputs: {
+{ os, lib, ... }@inputs:
+{
   programs.aerospace = {
     enable = os == "darwin";
     package = null;

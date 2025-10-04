@@ -1,4 +1,10 @@
-{ os, lib, pkgs, ... }@inputs: {
+{
+  os,
+  lib,
+  pkgs,
+  ...
+}@inputs:
+{
   imports = [
     ./aerospace
     ./gh
@@ -18,6 +24,7 @@
     pkgs.sqlite
     pkgs.gcc
     pkgs.luajit
+    pkgs.nixfmt-rfc-style
     pkgs.pnpm
 
     pkgs.yq
@@ -25,7 +32,8 @@
     pkgs.gitmux
 
     pkgs.cursor-cli
-  ] ++ lib.optionals (os == "darwin") [
+  ]
+  ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods
   ];
 
@@ -43,7 +51,9 @@
 
   programs.go = {
     enable = true;
-    goPath = "dev/go";
+    env = {
+      GOPATH = "dev/go";
+    };
   };
 
   programs.jq = {

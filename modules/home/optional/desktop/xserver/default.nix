@@ -1,4 +1,5 @@
-{ os, lib, ... }@inputs: {
+{ os, lib, ... }@inputs:
+{
   imports = [
     ./i3
   ];

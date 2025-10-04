@@ -1,4 +1,10 @@
-{ os, lib, pkgs, ... }@inputs: {
+{
+  os,
+  lib,
+  pkgs,
+  ...
+}@inputs:
+{
   home.preferXdgDirectories = true;
 
   xdg.portal = lib.mkIf (os == "linux") {

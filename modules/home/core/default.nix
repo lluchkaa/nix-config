@@ -1,4 +1,10 @@
-{ username, os, lib, ... }@inputs: {
+{
+  username,
+  os,
+  lib,
+  ...
+}@inputs:
+{
   home = {
     inherit username;
 

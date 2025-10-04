@@ -1,4 +1,11 @@
-{ username, os, lib, pkgs, ... }@inputs: {
+{
+  username,
+  os,
+  lib,
+  pkgs,
+  ...
+}@inputs:
+{
   users.users.${username} = {
     description = username;
 
@@ -6,14 +13,20 @@
 
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
-  } // lib.optionalAttrs (os == "linux") {
+  }
+  // lib.optionalAttrs (os == "linux") {
     isNormalUser = true;
 
-    extraGroups = lib.mkIf (os == "linux") ["wheel" "networkmanager" "docker"];
+    extraGroups = lib.mkIf (os == "linux") [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
 
     # TODO: convert to hashed password
     initialPassword = "root";
-  } // lib.optionalAttrs (os == "darwin") {
+  }
+  // lib.optionalAttrs (os == "darwin") {
     uid = 501;
   };
 

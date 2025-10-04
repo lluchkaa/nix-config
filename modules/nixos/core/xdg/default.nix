@@ -1,3 +1,7 @@
-{ ... }@inputs: {
-  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+{ ... }@inputs:
+{
+  environment.pathsToLink = [
+    "/share/xdg-desktop-portal"
+    "/share/applications"
+  ];
 }

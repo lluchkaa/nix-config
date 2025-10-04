@@ -1,4 +1,5 @@
-{ system, self, ... }@inputs: {
+{ system, self, ... }@inputs:
+{
   imports = [
     ./i18n
     ./ssh

@@ -1,4 +1,5 @@
-{ pkgs, ... }@inputs: {
+{ pkgs, ... }@inputs:
+{
   environment.systemPackages = [
     pkgs.git
     pkgs.vim

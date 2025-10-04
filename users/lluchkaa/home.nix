@@ -1,4 +1,5 @@
-{ ... }@inputs: {
+{ ... }@inputs:
+{
   imports = [
     ../../modules/home/core
     ../../modules/home/core/pkgs

@@ -1,4 +1,5 @@
-{ ... }@inputs: {
+{ ... }@inputs:
+{
   system.defaults = {
     dock = {
       autohide = true;
@@ -45,7 +46,7 @@
       NSNavPanelExpandedStateForSaveMode2 = true;
       PMPrintingExpandedStateForPrint = true;
       PMPrintingExpandedStateForPrint2 = true;
-      
+
       "com.apple.mouse.tapBehavior" = 1;
       "com.apple.sound.beep.volume" = 0.0;
       "com.apple.sound.beep.feedback" = 0;

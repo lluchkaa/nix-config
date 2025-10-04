@@ -36,8 +36,7 @@
       })
     ];
 
-    extraConfig = (builtins.readFile ./tmux.conf)
-      + "set -g default-command ${pkgs.zsh}/bin/zsh";
+    extraConfig = (builtins.readFile ./tmux.conf) + "set -g default-command ${pkgs.zsh}/bin/zsh";
   };
 
   catppuccin.tmux = {
@@ -45,8 +44,7 @@
   };
 
   home.packages = [
-    (pkgs.writeShellScriptBin "tmux-sessionizer"
-      (builtins.readFile ./tmux-sessionizer))
+    (pkgs.writeShellScriptBin "tmux-sessionizer" (builtins.readFile ./tmux-sessionizer))
   ];
 
   home.shellAliases = {

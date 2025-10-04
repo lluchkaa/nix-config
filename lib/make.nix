@@ -1,22 +1,43 @@
-{ nixpkgs, overlays, inputs }:
+{
+  nixpkgs,
+  overlays,
+  inputs,
+}:
 {
   name,
   system,
   username,
   os,
-}: let 
-  inherit (inputs) self nix-index-database catppuccin /* stylix */;
+}:
+let
+  inherit (inputs)
+    self
+    nix-index-database
+    catppuccin # stylix
+    ;
 
   systemFunc = if os == "darwin" then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
-  homeManagerFunc = if os == "darwin" then inputs.home-manager.darwinModules.home-manager else inputs.home-manager.nixosModules.home-manager;
+  homeManagerFunc =
+    if os == "darwin" then
+      inputs.home-manager.darwinModules.home-manager
+    else
+      inputs.home-manager.nixosModules.home-manager;
 
   hostConfig = ../hosts/${name};
   userOSConfig = ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix;
   userHomeConfig = ../users/${username}/home.nix;
-in systemFunc {
+in
+systemFunc {
   inherit system;
 
-  specialArgs = { inherit self username os system; };
+  specialArgs = {
+    inherit
+      self
+      username
+      os
+      system
+      ;
+  };
 
   modules = [
     { nixpkgs.overlays = overlays; }
@@ -24,7 +45,8 @@ in systemFunc {
     hostConfig
     userOSConfig
 
-    homeManagerFunc {
+    homeManagerFunc
+    {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
 
@@ -41,8 +63,13 @@ in systemFunc {
       };
     }
 
-    (if os == "darwin" then nix-index-database.darwinModules.nix-index else nix-index-database.nixosModules.nix-index )
-    (if os == "darwin" then {} else catppuccin.nixosModules.catppuccin)
+    (
+      if os == "darwin" then
+        nix-index-database.darwinModules.nix-index
+      else
+        nix-index-database.nixosModules.nix-index
+    )
+    (if os == "darwin" then { } else catppuccin.nixosModules.catppuccin)
     # (if os == "darwin" then stylix.darwinModules.stylix else stylix.nixosModules.stylix)
   ];
 }

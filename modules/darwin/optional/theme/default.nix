@@ -1,4 +1,5 @@
-{ pkgs, ... }@inputs: {
+{ pkgs, ... }@inputs:
+{
   # stylix = {
   #   enable = false;
   #   autoEnable = true;

@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }@inputs: {
+{ lib, pkgs, ... }@inputs:
+{
   imports = [
     ./display-manager/lightdm
     ./window-manager/i3

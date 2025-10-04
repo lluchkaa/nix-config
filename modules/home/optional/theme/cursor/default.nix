@@ -1,4 +1,10 @@
-{ os, lib, pkgs, ... }@inputs: {
+{
+  os,
+  lib,
+  pkgs,
+  ...
+}@inputs:
+{
   home.pointerCursor = lib.mkIf (os == "linux") {
     enable = true;
     x11.enable = true;

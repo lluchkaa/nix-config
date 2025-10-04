@@ -1,4 +1,5 @@
-{ pkgs, ... }@inputs: {
+{ pkgs, ... }@inputs:
+{
   services.xserver.displayManager = {
     lightdm = {
       enable = true;

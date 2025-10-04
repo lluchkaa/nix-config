@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }@inputs: {
+{ lib, pkgs, ... }@inputs:
+{
   programs.neovim = {
     enable = true;
   };

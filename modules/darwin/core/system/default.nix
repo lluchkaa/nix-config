@@ -1,4 +1,10 @@
-{ username, system, self, ... }@inputs: {
+{
+  username,
+  system,
+  self,
+  ...
+}@inputs:
+{
   imports = [
     ./defaults
     ./keyboard

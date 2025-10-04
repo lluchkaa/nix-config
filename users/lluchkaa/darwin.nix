@@ -1,4 +1,5 @@
-{ ... }@inputs: {
+{ ... }@inputs:
+{
   imports = [
     ../../modules/nixos/core/nix
     ../../modules/darwin/core/system

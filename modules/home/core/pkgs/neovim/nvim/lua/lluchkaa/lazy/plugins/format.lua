@@ -27,6 +27,7 @@ return {
 
         go = { "gofmt", "gofumpt" },
         rust = { "rustfmt", lsp_format = "fallback" },
+        python = { "ruff", lsp_format = "fallback" },
         nix = { "nixfmt" },
 
         ["*"] = { "injected" },
