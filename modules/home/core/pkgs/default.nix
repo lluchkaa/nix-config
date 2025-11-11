@@ -7,12 +7,15 @@
 {
   imports = [
     ./aerospace
+    ./copilot
     ./gh
     ./ghostty
     ./git
+    ./jujutsu
     ./neovim
     ./ngrok
     ./tmux
+    ./zed
   ];
 
   home.packages = [
@@ -26,12 +29,14 @@
     pkgs.luajit
     pkgs.nixfmt-rfc-style
     pkgs.pnpm
+    pkgs.uv
 
     pkgs.yq
 
     pkgs.gitmux
 
     pkgs.cursor-cli
+    pkgs.ngrok
   ]
   ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods
@@ -51,9 +56,6 @@
 
   programs.go = {
     enable = true;
-    env = {
-      GOPATH = "dev/go";
-    };
   };
 
   programs.jq = {

@@ -65,10 +65,10 @@ exec-on-workspace-change = [
 [gaps]
 inner.horizontal = 8
 inner.vertical =   8
-outer.left =       [{ monitor."secondary" = 16 }, 0]
-outer.bottom =     [{ monitor."secondary" = 16 }, 0]
-outer.top =        [{ monitor."secondary" = 16 }, 0]
-outer.right =      [{ monitor."secondary" = 16 }, 0]
+outer.left =       [{ monitor."secondary" = 0 }, 0]
+outer.bottom =     [{ monitor."secondary" = 0 }, 0]
+outer.top =        [{ monitor."secondary" = 0 }, 0]
+outer.right =      [{ monitor."secondary" = 0 }, 0]
 
 [workspace-to-monitor-force-assignment]
 1 = ['secondary', 'built-in']
@@ -76,10 +76,11 @@ outer.right =      [{ monitor."secondary" = 16 }, 0]
 3 = ['secondary', 'built-in']
 4 = ['secondary', 'built-in']
 5 = ['secondary', 'built-in']
-6 = ['built-in']
+6 = ['secondary', 'built-in']
 7 = ['built-in']
 8 = ['built-in']
 9 = ['built-in']
+0 = ['built-in']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -111,17 +112,16 @@ alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h = 'focus left --ignore-floating --boundaries all-monitors-outer-frame'
+alt-j = 'focus down --ignore-floating --boundaries all-monitors-outer-frame'
+alt-k = 'focus up --ignore-floating --boundaries all-monitors-outer-frame'
+alt-l = 'focus right --ignore-floating --boundaries all-monitors-outer-frame'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
-
+alt-shift-h = 'move left --boundaries all-monitors-outer-frame'
+alt-shift-j = 'move down --boundaries all-monitors-outer-frame'
+alt-shift-k = 'move up --boundaries all-monitors-outer-frame'
+alt-shift-l = 'move right --boundaries all-monitors-outer-frame'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'

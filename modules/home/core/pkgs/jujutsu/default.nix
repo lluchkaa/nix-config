@@ -1,6 +1,6 @@
 { ... }@inputs:
 {
-  programs.gh = {
+  programs.jujutsu = {
     enable = true;
   };
 }

@@ -1,4 +1,4 @@
-{ lib, ... }@inputs:
+{ ... }@inputs:
 {
   programs.git = {
     enable = true;
@@ -6,9 +6,10 @@
     ignores = [
       ".DS_Store"
       ".ignore/"
+      ".worktrees/"
     ];
 
-    extraConfig = {
+    settings = {
       init = {
         defaultBranch = "main";
       };

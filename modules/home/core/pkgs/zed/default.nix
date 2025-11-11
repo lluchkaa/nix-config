@@ -1,6 +1,6 @@
 { ... }@inputs:
 {
-  programs.gh = {
+  programs.zed-editor = {
     enable = true;
   };
 }

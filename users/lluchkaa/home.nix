@@ -12,7 +12,20 @@
   ];
 
   programs.git = {
-    userName = "Yura Luchka";
-    userEmail = "lluchkaa@gmail.com";
+    settings = {
+      user = {
+        name = "Yura Luchka";
+        email = "lluchkaa@gmail.com";
+      };
+    };
+  };
+
+  programs.jujutsu = {
+    settings = {
+      user = {
+        name = "Yura Luchka";
+        email = "lluchkaa@gmail.com";
+      };
+    };
   };
 }
