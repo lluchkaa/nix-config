@@ -23,6 +23,7 @@
     pkgs.zig
     pkgs.ocaml
     # pkgs.nodejs
+    pkgs.nodejs_24
 
     pkgs.sqlite
     pkgs.gcc

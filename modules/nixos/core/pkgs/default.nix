@@ -7,5 +7,6 @@
     pkgs.curl
     pkgs.gcc
     pkgs.cachix
+    pkgs.fish
   ];
 }

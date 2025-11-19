@@ -21,6 +21,9 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "viins";
+    history = {
+      share = false;
+    };
     plugins = [
       {
         name = "zsh-vi-mode";
