@@ -21,6 +21,16 @@ return {
     end,
   },
   {
+    "A7Lavinraj/fyler.nvim",
+    dependencies = { "nvim-mini/mini.icons" },
+    branch = "stable", -- Use stable branch for production
+    config = function(_, opts)
+      local fyler = require("fyler")
+      fyler.setup(opts)
+      vim.keymap.set("n", "<leader>e", fyler.open, { desc = "Open fyler View" })
+    end,
+  },
+  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },

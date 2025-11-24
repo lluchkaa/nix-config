@@ -9,7 +9,8 @@
       [
         "nikitabobko/tap/aerospace"
         "aldente"
-        "chatgpt-atlas"
+        "antigravity"
+        "brave-browser"
         "clearvpn"
         "cursor"
         "discord"
