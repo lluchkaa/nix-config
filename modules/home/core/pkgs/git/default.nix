@@ -16,6 +16,9 @@
       core = {
         ignorecase = false;
       };
+      push = {
+        autoSetupRemote = true;
+      };
     };
 
     # rest should be set in users/*/home.nix file

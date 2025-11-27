@@ -22,8 +22,23 @@ return {
   },
   {
     "A7Lavinraj/fyler.nvim",
+    enabled = false,
     dependencies = { "nvim-mini/mini.icons" },
     branch = "stable", -- Use stable branch for production
+    opts = {
+      views = {
+        finder = {
+          win = {
+            win_opts = {
+              cursorline = true,
+              number = true,
+              relativenumber = true,
+              signcolumn = "yes",
+            },
+          },
+        },
+      },
+    },
     config = function(_, opts)
       local fyler = require("fyler")
       fyler.setup(opts)
