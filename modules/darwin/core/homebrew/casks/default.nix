@@ -7,7 +7,6 @@
         greedy = true;
       })
       [
-        "nikitabobko/tap/aerospace"
         "aldente"
         "antigravity"
         "brave-browser"
@@ -33,8 +32,4 @@
         "font-fira-code-nerd-font"
         "font-monaspace"
       ];
-
-  homebrew.taps = [
-    "nikitabobko/tap"
-  ];
 }

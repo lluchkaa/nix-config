@@ -26,7 +26,7 @@
       pkgs.tmuxPlugins.vim-tmux-navigator
       (pkgs.tmuxPlugins.mkTmuxPlugin {
         pluginName = "tmux-nerd-font-window-name";
-        version = "2.1.2";
+        version = "2.2.0";
         src = pkgs.fetchFromGitHub {
           owner = "joshmedeski";
           repo = "tmux-nerd-font-window-name";

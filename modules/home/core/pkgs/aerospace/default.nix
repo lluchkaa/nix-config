@@ -2,7 +2,8 @@
 {
   programs.aerospace = {
     enable = os == "darwin";
-    package = null;
-    userSettings = lib.importTOML ./aerospace.toml;
+    # package = null;
+    settings = lib.importTOML ./aerospace.toml;
+    launchd.enable = true;
   };
 }
