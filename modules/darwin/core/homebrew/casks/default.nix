@@ -8,7 +8,6 @@
       })
       [
         "aldente"
-        "antigravity"
         "brave-browser"
         "clearvpn"
         "cursor"

@@ -72,6 +72,7 @@ return {
         rust = { "rustfmt" },
         python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
         nix = { "nixfmt" },
+        zig = { "zigfmt" },
 
         ["*"] = { "injected" },
         ["_"] = { "trim_whitespace" },
