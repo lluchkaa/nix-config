@@ -28,7 +28,7 @@
     pkgs.sqlite
     pkgs.gcc
     pkgs.luajit
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
     pkgs.pnpm
     pkgs.uv
 

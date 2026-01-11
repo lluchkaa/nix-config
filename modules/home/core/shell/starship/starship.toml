@@ -17,3 +17,9 @@ disabled = true
 
 [package]
 disabled = true
+
+[custom.jj]
+command = "jj-starship"
+detect_folders = [".jj", ".git"]
+shell = ["sh"]
+format = "$output "

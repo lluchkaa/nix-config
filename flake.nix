@@ -31,6 +31,11 @@
     #   url = "github:danth/stylix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    jj-starship = {
+      url = "github:dmmulroy/jj-starship";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -38,10 +43,11 @@
       self,
       nixpkgs,
       home-manager,
+      jj-starship,
       ...
     }@inputs:
     let
-      overlays = import ./overlays;
+      overlays = import ./overlays { jj-starship = jj-starship; };
 
       make = import ./lib/make.nix {
         inherit nixpkgs overlays inputs;
