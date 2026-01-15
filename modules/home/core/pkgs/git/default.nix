@@ -7,6 +7,7 @@
       ".DS_Store"
       ".ignore/"
       ".worktrees/"
+      ".direnv/"
     ];
 
     settings = {
