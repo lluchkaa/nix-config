@@ -20,6 +20,6 @@ disabled = true
 
 [custom.jj]
 command = "jj-starship"
-detect_folders = [".jj", ".git"]
+detect_folders = [".jj"]
 shell = ["sh"]
 format = "$output "
