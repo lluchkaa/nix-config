@@ -39,6 +39,7 @@
 
     pkgs.cursor-cli
     pkgs.ngrok
+    pkgs.watchman
   ]
   ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods
