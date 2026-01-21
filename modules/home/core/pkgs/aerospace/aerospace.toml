@@ -229,9 +229,8 @@ run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'YouTube Music'
-run = "move-node-to-workspace 5"
+run = "move-node-to-workspace 0"
 
 [[on-window-detected]]
 check-further-callbacks = true
-run = ['layout floating']
-# run = ['layout floating', 'move-node-to-workspace 7']
+run = ['layout floating', 'move-node-to-workspace 1']
