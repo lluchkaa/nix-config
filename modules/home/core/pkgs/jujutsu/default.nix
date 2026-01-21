@@ -5,6 +5,7 @@
     settings = {
       ui = {
         editor = "vim";
+        diff-editor = "vimdiff";
       };
     };
   };
