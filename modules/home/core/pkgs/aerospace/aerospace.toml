@@ -233,4 +233,4 @@ run = "move-node-to-workspace 0"
 
 [[on-window-detected]]
 check-further-callbacks = true
-run = ['layout floating', 'move-node-to-workspace 1']
+run = ['layout floating']
