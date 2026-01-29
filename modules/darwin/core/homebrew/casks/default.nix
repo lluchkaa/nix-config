@@ -9,7 +9,6 @@
       [
         "aldente"
         "brave-browser"
-        "clearvpn"
         "cursor"
         "discord"
         "docker-desktop"
