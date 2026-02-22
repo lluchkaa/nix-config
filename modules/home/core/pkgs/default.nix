@@ -40,6 +40,8 @@
     pkgs.cursor-cli
     pkgs.ngrok
     pkgs.watchman
+    pkgs.nmap
+    pkgs.awscli2
   ]
   ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods

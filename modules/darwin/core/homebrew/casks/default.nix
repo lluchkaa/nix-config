@@ -19,6 +19,7 @@
         "notion"
         "obsidian"
         "raycast"
+        "raspberry-pi-imager"
         "shottr"
         "tailscale-app"
         "todoist-app"
