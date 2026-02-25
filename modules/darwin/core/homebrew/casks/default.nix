@@ -9,6 +9,7 @@
       [
         "aldente"
         "brave-browser"
+        "coderabbit"
         "cursor"
         "discord"
         "docker-desktop"
