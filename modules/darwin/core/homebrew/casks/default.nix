@@ -11,6 +11,7 @@
         "brave-browser"
         "coderabbit"
         "cursor"
+        "datagrip"
         "discord"
         "docker-desktop"
         "ghostty"

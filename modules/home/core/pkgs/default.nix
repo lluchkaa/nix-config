@@ -25,6 +25,7 @@
     pkgs.ocaml
     # pkgs.nodejs
     pkgs.nodejs_24
+    pkgs.python3
 
     pkgs.sqlite
     pkgs.gcc
@@ -41,7 +42,6 @@
     pkgs.ngrok
     pkgs.watchman
     pkgs.nmap
-    pkgs.awscli2
   ]
   ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods

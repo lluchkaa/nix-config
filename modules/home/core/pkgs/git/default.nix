@@ -3,6 +3,8 @@
   programs.git = {
     enable = true;
 
+    signing.format = null;
+
     ignores = [
       ".DS_Store"
       ".ignore/"
