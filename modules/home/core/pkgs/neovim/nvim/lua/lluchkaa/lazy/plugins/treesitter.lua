@@ -11,12 +11,16 @@ return {
       -- lua is bundled in neovim 0.12 but nvim-treesitter's queries override the bundled ones;
       -- install via nvim-treesitter to keep parser and queries in sync
       require("nvim-treesitter").install({
-        "javascript", "typescript", "tsx",
+        "javascript",
+        "typescript",
+        "tsx",
         "go",
         "rust",
         "lua",
         "nix",
-        "yaml", "json", "toml",
+        "yaml",
+        "json",
+        "toml",
       })
 
       vim.api.nvim_create_autocmd("FileType", {

@@ -27,6 +27,9 @@ return {
         html = { "prettierd", "prettier", stop_after_first = true },
         css = { "prettierd", "prettier", stop_after_first = true },
 
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+
         go = { "gofmt" },
         rust = { "rustfmt" },
         python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },

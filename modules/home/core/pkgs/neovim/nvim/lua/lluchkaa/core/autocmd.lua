@@ -10,9 +10,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local line_count = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= line_count then
-      vim.api.nvim_win_set_cursor(0, mark)
-    end
+    if mark[1] > 0 and mark[1] <= line_count then vim.api.nvim_win_set_cursor(0, mark) end
   end,
 })
 
@@ -28,8 +26,6 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
   callback = function()
     local ft = vim.bo.filetype
     local no_spell = { "terminal", "help", "man", "checkhealth", "qf", "TelescopePrompt", "trouble", "fyler" }
-    if vim.tbl_contains(no_spell, ft) then
-      vim.opt_local.spell = false
-    end
+    if vim.tbl_contains(no_spell, ft) then vim.opt_local.spell = false end
   end,
 })

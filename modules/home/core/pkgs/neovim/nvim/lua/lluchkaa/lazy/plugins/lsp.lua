@@ -78,8 +78,14 @@ return {
         rust_analyzer = { filetypes = { "rust" } },
         ts_ls = { filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
         html = { filetypes = { "html" } },
+        cssls = { filetypes = { "css", "scss", "less" } },
         ruff = { filetypes = { "python" } },
         pyright = { filetypes = { "python" } },
+        clangd = { filetypes = { "c", "cpp", "objc", "objcpp" } },
+
+        -- installed via nix — not managed by Mason
+        zls = { filetypes = { "zig", "zir" } },
+        nixd = { filetypes = { "nix" } },
 
         cspell_ls = {},
 
@@ -95,10 +101,14 @@ return {
         },
       }
 
+      -- nixd is installed via nix (pkgs.nixd), not Mason
+      local nix_managed = { "nixd" }
+
       -- Configure each server before mason-lspconfig enables them
       for server_name, config in pairs(servers) do
         config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
         vim.lsp.config(server_name, config)
+        if vim.tbl_contains(nix_managed, server_name) then vim.lsp.enable(server_name) end
       end
 
       require("mason").setup()
@@ -106,7 +116,10 @@ return {
       -- stylua must be installed manually: :MasonInstall stylua
       -- mason-lspconfig v2 auto-enables installed servers via vim.lsp.enable()
       require("mason-lspconfig").setup({
-        ensure_installed = vim.tbl_keys(servers),
+        ensure_installed = vim.tbl_filter(
+          function(s) return not vim.tbl_contains(nix_managed, s) end,
+          vim.tbl_keys(servers)
+        ),
       })
     end,
   },

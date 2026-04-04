@@ -8,17 +8,17 @@ return {
     "lewis6991/gitsigns.nvim",
     opts = {
       signs = {
-        add          = { text = "┃" },
-        change       = { text = "┃" },
-        delete       = { text = "▼" },
-        topdelete    = { text = "▲" },
+        add = { text = "┃" },
+        change = { text = "┃" },
+        delete = { text = "▼" },
+        topdelete = { text = "▲" },
         changedelete = { text = "┃" },
       },
       signs_staged = {
-        add          = { text = "▎" },
-        change       = { text = "▎" },
-        delete       = { text = "▾" },
-        topdelete    = { text = "▴" },
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "▾" },
+        topdelete = { text = "▴" },
         changedelete = { text = "▎" },
       },
       signs_staged_enable = true,
@@ -31,13 +31,19 @@ return {
 
         -- Hunk navigation (smart: works in diff mode too)
         vim.keymap.set("n", "]h", function()
-          if vim.wo.diff then vim.cmd.normal({ "]c", bang = true })
-          else gs.nav_hunk("next") end
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gs.nav_hunk("next")
+          end
         end, { buffer = bufnr, desc = "Git: Next [H]unk" })
 
         vim.keymap.set("n", "[h", function()
-          if vim.wo.diff then vim.cmd.normal({ "[c", bang = true })
-          else gs.nav_hunk("prev") end
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gs.nav_hunk("prev")
+          end
         end, { buffer = bufnr, desc = "Git: Prev [H]unk" })
 
         map("<leader>gs", gs.stage_hunk, "[S]tage hunk")

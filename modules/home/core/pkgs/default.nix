@@ -26,9 +26,11 @@
 
     pkgs.sqlite
     pkgs.gcc
+    pkgs.clang-tools
     pkgs.tree-sitter
     pkgs.luajit
     pkgs.nixfmt
+    pkgs.nixd
     pkgs.pnpm
     pkgs.uv
 

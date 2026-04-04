@@ -9,7 +9,7 @@ return {
       },
       spec = {
         { "<leader>a", group = "[A]I" },
-      { "<leader>h", group = "[H]arpoon" },
+        { "<leader>h", group = "[H]arpoon" },
         { "<leader>c", group = "[C]ode" },
         { "<leader>d", group = "[D]ocument" },
         { "<leader>g", group = "[G]it" },

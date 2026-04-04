@@ -3,9 +3,7 @@ return {
     "echasnovski/mini.icons",
     lazy = false,
     opts = {},
-    init = function()
-      require("mini.icons").mock_nvim_web_devicons()
-    end,
+    init = function() require("mini.icons").mock_nvim_web_devicons() end,
   },
   {
     "catppuccin/nvim",
@@ -41,39 +39,39 @@ return {
 
       local bg = options.transparent_background and "transparent" or palette.mantle
       local colors = {
-        bg       = bg,
-        fg       = palette.text,
-        yellow   = palette.yellow,
-        cyan     = palette.teal,
+        bg = bg,
+        fg = palette.text,
+        yellow = palette.yellow,
+        cyan = palette.teal,
         darkblue = palette.blue,
-        green    = palette.green,
-        orange   = palette.peach,
-        violet   = palette.mauve,
-        magenta  = palette.pink,
-        blue     = palette.sky,
-        red      = palette.red,
+        green = palette.green,
+        orange = palette.peach,
+        violet = palette.mauve,
+        magenta = palette.pink,
+        blue = palette.sky,
+        red = palette.red,
       }
 
       local mode_color = {
-        n      = colors.red,
-        i      = colors.green,
-        v      = colors.blue,
-        [""]  = colors.red,
-        V      = colors.blue,
-        c      = colors.magenta,
-        no     = colors.red,
-        s      = colors.orange,
-        S      = colors.orange,
-        ic     = colors.yellow,
-        R      = colors.violet,
-        Rv     = colors.violet,
-        cv     = colors.red,
-        ce     = colors.red,
-        r      = colors.cyan,
-        rm     = colors.cyan,
+        n = colors.red,
+        i = colors.green,
+        v = colors.blue,
+        [""] = colors.red,
+        V = colors.blue,
+        c = colors.magenta,
+        no = colors.red,
+        s = colors.orange,
+        S = colors.orange,
+        ic = colors.yellow,
+        R = colors.violet,
+        Rv = colors.violet,
+        cv = colors.red,
+        ce = colors.red,
+        r = colors.cyan,
+        rm = colors.cyan,
         ["r?"] = colors.cyan,
-        ["!"]  = colors.red,
-        t      = colors.red,
+        ["!"] = colors.red,
+        t = colors.red,
       }
 
       local function mode_fg() return { fg = mode_color[vim.fn.mode()] } end
@@ -85,7 +83,7 @@ return {
           component_separators = "",
           section_separators = "",
           theme = {
-            normal   = { c = { fg = colors.fg, bg = colors.bg } },
+            normal = { c = { fg = colors.fg, bg = colors.bg } },
             inactive = { c = { fg = colors.fg, bg = colors.bg } },
           },
         },
@@ -110,9 +108,9 @@ return {
         "diff",
         symbols = { added = " ", modified = "󰝤 ", removed = " " },
         diff_color = {
-          added    = { fg = colors.green },
+          added = { fg = colors.green },
           modified = { fg = colors.orange },
-          removed  = { fg = colors.red },
+          removed = { fg = colors.red },
         },
         cond = wide_enough,
       })
@@ -123,8 +121,8 @@ return {
         symbols = { error = " ", warn = " ", info = " " },
         diagnostics_color = {
           error = { fg = colors.red },
-          warn  = { fg = colors.yellow },
-          info  = { fg = colors.cyan },
+          warn = { fg = colors.yellow },
+          info = { fg = colors.cyan },
         },
       })
       right({ "filesize", cond = buf_not_empty })

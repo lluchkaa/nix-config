@@ -1,6 +1,10 @@
 return {
   {
+    -- sidekick.nvim starts its own GitHub Copilot LSP client for NES support,
+    -- making this plugin redundant (causes two copilot LSP clients). Remove if
+    -- sidekick's NES works well without it.
     "github/copilot.vim",
+    enabled = false,
     event = "VeryLazy",
   },
   {
