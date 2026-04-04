@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
   group = vim.api.nvim_create_augroup("spell-exceptions", { clear = true }),
   callback = function()
     local ft = vim.bo.filetype
-    local no_spell = { "terminal", "help", "man", "checkhealth", "qf", "TelescopePrompt", "trouble" }
+    local no_spell = { "terminal", "help", "man", "checkhealth", "qf", "TelescopePrompt", "trouble", "fyler" }
     if vim.tbl_contains(no_spell, ft) then
       vim.opt_local.spell = false
     end
