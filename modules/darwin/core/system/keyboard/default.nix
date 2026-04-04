@@ -1,4 +1,4 @@
-{ ... }@inputs:
+{ ... }:
 {
   system.keyboard = {
     enableKeyMapping = true;

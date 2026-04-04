@@ -1,4 +1,4 @@
-{ ... }@inputs:
+{ ... }:
 {
   environment.pathsToLink = [
     "/share/xdg-desktop-portal"

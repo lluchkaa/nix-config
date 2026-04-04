@@ -1,4 +1,4 @@
-{ ... }@inputs:
+{ ... }:
 {
   homebrew.casks =
     builtins.map

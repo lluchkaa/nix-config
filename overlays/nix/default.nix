@@ -1,5 +1,5 @@
-(self: super: {
-  nix = super.nix.overrideAttrs (old: {
+(_self: super: {
+  nix = super.nix.overrideAttrs (_old: {
     doInstallCheck = false;
   });
 })

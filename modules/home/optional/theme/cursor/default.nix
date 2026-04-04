@@ -3,7 +3,7 @@
   lib,
   pkgs,
   ...
-}@inputs:
+}:
 {
   home.pointerCursor = lib.mkIf (os == "linux") {
     enable = true;

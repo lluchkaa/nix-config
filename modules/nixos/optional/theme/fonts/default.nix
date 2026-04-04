@@ -1,9 +1,7 @@
 {
   os,
-  lib,
-  pkgs,
   ...
-}@inputs:
+}:
 {
   fonts.fontconfig = {
     enable = os == "linux";

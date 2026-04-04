@@ -1,9 +1,8 @@
 {
   os,
-  lib,
   pkgs,
   ...
-}@inputs:
+}:
 {
   home.packages = [
     pkgs.monaspace

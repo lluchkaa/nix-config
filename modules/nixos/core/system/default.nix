@@ -1,4 +1,4 @@
-{ system, self, ... }@inputs:
+{ system, self, ... }:
 {
   imports = [
     ./i18n

@@ -1,4 +1,4 @@
-{ config, lib, ... }@inputs:
+{ config, ... }:
 {
   xdg.configFile = {
     "gitmux/gitmux.conf".source = ./gitmux.conf;

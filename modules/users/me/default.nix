@@ -4,7 +4,7 @@
   lib,
   pkgs,
   ...
-}@inputs:
+}:
 {
   users.users.${username} = {
     description = username;

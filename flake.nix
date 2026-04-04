@@ -40,9 +40,7 @@
 
   outputs =
     {
-      self,
       nixpkgs,
-      home-manager,
       jj-starship,
       ...
     }@inputs:

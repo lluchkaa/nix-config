@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }@inputs:
+{ pkgs, ... }:
 {
   imports = [
     ./display-manager/lightdm

@@ -3,7 +3,7 @@
   lib,
   pkgs,
   ...
-}@inputs:
+}:
 {
   imports = [
     ./cursor

@@ -1,4 +1,4 @@
-{ ... }@inputs:
+{ ... }:
 {
   homebrew.brews = [
     "nvm"

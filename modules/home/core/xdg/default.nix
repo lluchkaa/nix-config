@@ -3,7 +3,7 @@
   lib,
   pkgs,
   ...
-}@inputs:
+}:
 {
   home.preferXdgDirectories = true;
 

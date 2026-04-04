@@ -1,9 +1,8 @@
 {
   username,
-  lib,
   pkgs,
   ...
-}@inputs:
+}:
 {
   nix = {
     package = pkgs.nixVersions.latest;

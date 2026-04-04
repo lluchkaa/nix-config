@@ -1,4 +1,4 @@
-{ os, lib, ... }@inputs:
+{ os, ... }:
 {
   programs.i3status = {
     enable = os == "linux";

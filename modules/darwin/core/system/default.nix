@@ -3,7 +3,7 @@
   system,
   self,
   ...
-}@inputs:
+}:
 {
   imports = [
     ./defaults

@@ -1,4 +1,4 @@
-{ ... }@inputs:
+{ ... }:
 {
   system.defaults = {
     dock = {
