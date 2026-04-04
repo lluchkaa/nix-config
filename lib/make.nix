@@ -28,8 +28,6 @@ let
   userHomeConfig = ../users/${username}/home.nix;
 in
 systemFunc {
-  inherit system;
-
   specialArgs = {
     inherit
       self
