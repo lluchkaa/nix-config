@@ -26,12 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: add usage of this module
-    # stylix = {
-    #   url = "github:danth/stylix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     jj-starship = {
       url = "github:dmmulroy/jj-starship";
       inputs.nixpkgs.follows = "nixpkgs";

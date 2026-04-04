@@ -1,24 +1,20 @@
 return {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
-  enabled = false,
-  ---@type snacks.Config
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    -- bigfile = { enabled = false },
-    -- dashboard = { enabled = false },
-    -- explorer = { enabled = false },
-    -- indent = { enabled = false },
-    -- input = { enabled = false },
-    -- picker = { enabled = true },
-    -- notifier = { enabled = false },
-    -- quickfile = { enabled = false },
-    -- scope = { enabled = false },
-    -- scroll = { enabled = false },
-    -- statuscolumn = { enabled = false },
-    -- words = { enabled = false },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+      image = { enabled = true },
+      lazygit = { enabled = true },
+      zen = { enabled = true },
+      gitbrowse = { enabled = true },
+    },
+    keys = {
+      { "<leader>gg", function() Snacks.lazygit() end, desc = "[G]it lazygit" },
+      { "<leader>gB", function() Snacks.gitbrowse() end, desc = "[G]it [B]rowse" },
+    },
   },
 }

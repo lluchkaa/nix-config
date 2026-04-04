@@ -2,5 +2,5 @@
 [
   (import ./nix)
   (import ./dmenu)
-  jj-starship.overlays.default
+  (import ./jj-starship { inherit jj-starship; })
 ]

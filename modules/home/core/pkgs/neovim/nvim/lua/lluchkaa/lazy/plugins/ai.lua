@@ -2,7 +2,6 @@ return {
   {
     "github/copilot.vim",
     event = "VeryLazy",
-    config = function() vim.g.copilot_assume_mapped = true end,
   },
   {
     "folke/sidekick.nvim",
@@ -65,7 +64,6 @@ return {
         mode = { "n", "x" },
         desc = "Sidekick Select Prompt",
       },
-      -- Example of a keybinding to open Claude directly
       {
         "<leader>ac",
         function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,

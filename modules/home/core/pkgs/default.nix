@@ -14,21 +14,19 @@
     ./git
     ./jujutsu
     ./neovim
-    ./ngrok
     ./tmux
-    ./zed
   ];
 
   home.packages = [
     pkgs.rustup
     pkgs.zig
     pkgs.ocaml
-    # pkgs.nodejs
     pkgs.nodejs_24
     pkgs.python3
 
     pkgs.sqlite
     pkgs.gcc
+    pkgs.tree-sitter
     pkgs.luajit
     pkgs.nixfmt
     pkgs.pnpm
@@ -39,7 +37,6 @@
     pkgs.gitmux
 
     pkgs.cursor-cli
-    pkgs.ngrok
     pkgs.watchman
     pkgs.nmap
   ]

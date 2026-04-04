@@ -7,19 +7,22 @@ return {
       icons = {
         mappings = vim.g.have_nerd_font,
       },
-    },
-    keys = {
-      { "<leader>c", desc = "[C]ode" },
-      { "<leader>d", desc = "[D]ocument" },
-      { "<leader>g", desc = "[G]it" },
-      { "<leader>r", desc = "[R]ename" },
-      { "<leader>s", desc = "[S]earch" },
-      { "<leader>w", desc = "[W]orkspace" },
+      spec = {
+        { "<leader>a", group = "[A]I" },
+      { "<leader>h", group = "[H]arpoon" },
+        { "<leader>c", group = "[C]ode" },
+        { "<leader>d", group = "[D]ocument" },
+        { "<leader>g", group = "[G]it" },
+        { "<leader>r", group = "[R]ename" },
+        { "<leader>s", group = "[S]earch" },
+        { "<leader>w", group = "[W]orkspace" },
+        { "<leader>x", group = "[X] Diagnostics" },
+      },
     },
   },
   {
     "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    dependencies = { "MunifTanjim/nui.nvim" },
     event = "VeryLazy",
     opts = {
       disable_mouse = false,

@@ -1,33 +1,41 @@
 return {
   {
     "stevearc/oil.nvim",
-    dependencies = { "echasnovski/mini.icons" },
-    config = function()
-      local oil = require("oil")
-      oil.setup({
-        keymaps = {
-          ["<C-h>"] = false,
-          ["<C-l>"] = false,
-        },
-        win_options = {
-          signcolumn = "yes",
-        },
-        view_options = {
-          show_hidden = true,
-        },
-      })
-
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open oil" })
-    end,
+    enabled = false,
+    lazy = false,
+    keys = {
+      { "-", "<cmd>Oil<cr>", desc = "Open oil" },
+    },
+    opts = {
+      keymaps = {
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+      },
+      win_options = {
+        signcolumn = "yes",
+      },
+      view_options = {
+        show_hidden = true,
+      },
+    },
   },
   {
     "A7Lavinraj/fyler.nvim",
-    enabled = false,
-    dependencies = { "nvim-mini/mini.icons" },
-    branch = "stable", -- Use stable branch for production
+    branch = "stable",
+    lazy = false,
+    dependencies = { "echasnovski/mini.icons" },
+    keys = {
+      { "-", function() require("fyler").open() end, desc = "Open fyler" },
+    },
     opts = {
+      integrations = {
+        icon = "mini_icons",
+        winpick = "snacks",
+      },
       views = {
         finder = {
+          default_explorer = true,
+          follow_current_file = true,
           win = {
             win_opts = {
               cursorline = true,
@@ -39,36 +47,25 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      local fyler = require("fyler")
-      fyler.setup(opts)
-      vim.keymap.set("n", "<leader>e", fyler.open, { desc = "Open fyler View" })
-    end,
   },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local harpoon = require("harpoon")
-      harpoon:setup({
+      require("harpoon"):setup({
         settings = {
           save_on_toggle = true,
         },
       })
-
-      vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "add file to harpoon" })
-      vim.keymap.set(
-        "n",
-        "<leader>he",
-        function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-        { desc = "toggle harpoon UI" }
-      )
-
-      -- Disabled this because of vim-tmux-navigator
-      -- vim.keymap.set("n", "<C-j>", function() harpoon:list():select(1) end, { desc = "navigate to file 1" })
-      -- vim.keymap.set("n", "<C-k>", function() harpoon:list():select(2) end, { desc = "navigate to file 2" })
-      -- vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end, { desc = "navigate to file 3" })
     end,
+    keys = {
+      { "<leader>ha", function() require("harpoon"):list():add() end, desc = "[H]arpoon [A]dd file" },
+      {
+        "<leader>he",
+        function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end,
+        desc = "[H]arpoon [E]xplorer",
+      },
+    },
   },
 }

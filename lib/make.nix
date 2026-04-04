@@ -13,7 +13,7 @@ let
   inherit (inputs)
     self
     nix-index-database
-    catppuccin # stylix
+    catppuccin
     ;
 
   systemFunc = if os == "darwin" then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
@@ -28,6 +28,8 @@ let
   userHomeConfig = ../users/${username}/home.nix;
 in
 systemFunc {
+  inherit system;
+
   specialArgs = {
     inherit
       self
@@ -56,7 +58,6 @@ systemFunc {
 
           nix-index-database.homeModules.nix-index
           catppuccin.homeModules.catppuccin
-          # stylix.homeModules.stylix
         ];
       };
     }
@@ -68,6 +69,5 @@ systemFunc {
         nix-index-database.nixosModules.nix-index
     )
     (if os == "darwin" then { } else catppuccin.nixosModules.catppuccin)
-    # (if os == "darwin" then stylix.darwinModules.stylix else stylix.nixosModules.stylix)
   ];
 }

@@ -2,18 +2,14 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = { "rafamadriz/friendly-snippets" },
-    version = "*",
+    version = "1.*",
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
       keymap = {
         preset = "default",
-        ["<C-space>"] = { "fallback" },
         ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
-
-        ["<C-b>"] = { "fallback" },
-        ["<C-f>"] = { "fallback" },
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
       },
@@ -21,7 +17,6 @@ return {
       cmdline = {
         keymap = {
           preset = "default",
-          ["<C-space>"] = { "fallback" },
           ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
           ["<Tab>"] = { "show", "select_and_accept", "fallback" },
         },
@@ -44,26 +39,17 @@ return {
       },
 
       sources = {
-        -- add lazydev to your completion providers
-        default = {
-          "lazydev",
-          "lsp",
-          --"path",
-          "snippets",
-          "buffer",
-        },
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
         providers = {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
-            -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
           },
         },
       },
 
       appearance = {
-        use_nvim_cmp_as_default = true,
         nerd_font_variant = "mono",
       },
 
