@@ -36,10 +36,19 @@ return {
 
           -- Diagnostics
           map("<leader>xe", vim.diagnostic.open_float, "Show [E]rror float")
-          map("[d", vim.diagnostic.goto_prev, "Previous [D]iagnostic")
-          map("]d", vim.diagnostic.goto_next, "Next [D]iagnostic")
+          map("[d", function() vim.diagnostic.jump({ count = -1 }) end, "Previous [D]iagnostic")
+          map("]d", function() vim.diagnostic.jump({ count = 1 }) end, "Next [D]iagnostic")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          -- cspell_ls: disable sign column icons (only keep underline/virtual text)
+          if client and client.name == "cspell_ls" then
+            vim.diagnostic.config(
+              { signs = false, underline = false },
+              vim.lsp.diagnostic.get_namespace(client.id)
+            )
+          end
+
           if client and client.server_capabilities.documentHighlightProvider then
             local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
