@@ -7,7 +7,7 @@
 {
   imports = [
     ./aerospace
-    # ./claude-code
+    ./claude-code
     ./copilot
     ./gh
     ./ghostty

@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    enabled = false,
+    enabled = true,
     lazy = false,
     keys = {
       { "-", "<cmd>Oil<cr>", desc = "Open oil" },
@@ -21,6 +21,7 @@ return {
   },
   {
     "A7Lavinraj/fyler.nvim",
+    enabled = false,
     branch = "stable",
     lazy = false,
     dependencies = { "echasnovski/mini.icons" },

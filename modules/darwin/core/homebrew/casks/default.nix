@@ -7,9 +7,7 @@
         greedy = true;
       })
       [
-        "aldente"
         "brave-browser"
-        "claude-code"
         "coderabbit"
         "cursor"
         "datagrip"
