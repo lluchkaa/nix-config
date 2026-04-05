@@ -7,7 +7,7 @@
   programs.tmux = {
     enable = true;
 
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     shortcut = "a";
     keyMode = "vi";
     customPaneNavigationAndResize = true;
@@ -15,8 +15,8 @@
     baseIndex = 1;
     clock24 = true;
     disableConfirmationPrompt = true;
-    escapeTime = 100;
-    historyLimit = 10000;
+    escapeTime = 0;
+    historyLimit = 50000;
     focusEvents = true;
     resizeAmount = 10;
 
@@ -26,12 +26,12 @@
       pkgs.tmuxPlugins.vim-tmux-navigator
       (pkgs.tmuxPlugins.mkTmuxPlugin {
         pluginName = "tmux-nerd-font-window-name";
-        version = "2.2.0";
+        version = "3.0.0";
         src = pkgs.fetchFromGitHub {
           owner = "joshmedeski";
           repo = "tmux-nerd-font-window-name";
-          rev = "main";
-          sha256 = "sha256-UcfEsq7BqJMeYXtGDNMoi/E+iEnEe9iM2KVoi7ektOE=";
+          rev = "v3.0.0";
+          sha256 = "sha256-0goD7Rl0KtNxipQUsKdI2TrrTR7AuuIS46tQtTMIQtg=";
         };
       })
     ];
