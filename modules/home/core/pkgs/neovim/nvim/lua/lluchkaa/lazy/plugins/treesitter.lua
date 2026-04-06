@@ -8,24 +8,30 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
-      -- lua is bundled in neovim 0.12 but nvim-treesitter's queries override the bundled ones;
-      -- install via nvim-treesitter to keep parser and queries in sync
+      -- eagerly install parsers for languages used daily so they're ready on first open
       require("nvim-treesitter").install({
+        "lua",
         "javascript",
         "typescript",
         "tsx",
         "go",
         "rust",
-        "lua",
+        "python",
         "nix",
         "yaml",
         "json",
         "toml",
+        "c",
+        "zig",
       })
 
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("treesitter-features", { clear = true }),
-        callback = function()
+        callback = function(args)
+          -- auto-install parser for any other filetype on first open
+          local lang = vim.treesitter.language.get_lang(args.match)
+          if lang then require("nvim-treesitter").install({ lang }) end
+
           local ok = pcall(vim.treesitter.start)
           if not ok then return end
           vim.wo[0][0].foldmethod = "expr"
