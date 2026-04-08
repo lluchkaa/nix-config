@@ -30,6 +30,11 @@
       url = "github:dmmulroy/jj-starship";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    claude-plugins = {
+      url = "github:anthropics/claude-plugins-official";
+      flake = false;
+    };
   };
 
   outputs =

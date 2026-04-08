@@ -21,6 +21,22 @@
         "type": "github"
       }
     },
+    "claude-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775666114,
+        "narHash": "sha256-KyHM9eQR6MiajN9zvGiWycVjAhjuk4ynGGkUHWIOy2s=",
+        "owner": "anthropics",
+        "repo": "claude-plugins-official",
+        "rev": "62f2063abcd3bf325577e7777346ecb270233c80",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anthropics",
+        "repo": "claude-plugins-official",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -139,6 +155,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "claude-plugins": "claude-plugins",
         "home-manager": "home-manager",
         "jj-starship": "jj-starship",
         "nix-darwin": "nix-darwin",

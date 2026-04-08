@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(curl -s https://raw.githubusercontent.com/folke/sidekick.nvim/main/README.md)",
-      "Bash(curl -s https://raw.githubusercontent.com/folke/sidekick.nvim/main/lua/sidekick/init.lua)"
+      "Bash(curl -s https://raw.githubusercontent.com/folke/sidekick.nvim/main/lua/sidekick/init.lua)",
+      "WebFetch(domain:nix-community.github.io)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(nix-prefetch-github anthropics:*)",
+      "Bash(nix flake:*)"
     ]
   }
 }
