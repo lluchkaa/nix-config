@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://raw.githubusercontent.com/folke/sidekick.nvim/main/README.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/folke/sidekick.nvim/main/lua/sidekick/init.lua)"
+    ]
+  }
+}

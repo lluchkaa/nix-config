@@ -30,7 +30,9 @@ return {
         callback = function(args)
           -- auto-install parser for any other filetype on first open
           local lang = vim.treesitter.language.get_lang(args.match)
-          if lang then require("nvim-treesitter").install({ lang }) end
+          local l = lang and lang:lower()
+          local skip = l and (l == "oil" or l:find("telescope") or l:find("sidekick"))
+          if lang and not skip then require("nvim-treesitter").install({ lang }) end
 
           local ok = pcall(vim.treesitter.start)
           if not ok then return end
