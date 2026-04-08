@@ -8,6 +8,7 @@
     ../../modules/home/core/apps
 
     ../../modules/home/optional/desktop/xserver
+    ../../modules/home/optional/icons
     ../../modules/home/optional/theme
   ];
 
