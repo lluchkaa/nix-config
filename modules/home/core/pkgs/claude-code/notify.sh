@@ -90,7 +90,23 @@ if [ -n "$TMUX_SOCKET" ]; then
   done < <(tmux -S "$TMUX_SOCKET" list-clients -t "$SESSION_NAME" -F '#{client_name}|#{client_pid}' 2>/dev/null | grep -v "^$TMUX_CLIENT|")
 fi
 
-ICON="@iconsDir@/claude.png"
+ICON="@iconsDir@/claude-code.png"
+
+is_active() {
+  local frontmost
+  frontmost=$(osascript -e 'tell application "System Events" to get bundle identifier of first process whose frontmost is true' 2>/dev/null)
+  [ "$frontmost" != "$APP" ] && return 1
+
+  if [ -n "$TMUX_SOCKET" ]; then
+    local pane_active window_active
+    pane_active=$(tmux -S "$TMUX_SOCKET" display-message -t "$TMUX_PANE" -p '#{pane_active}' 2>/dev/null)
+    window_active=$(tmux -S "$TMUX_SOCKET" display-message -t "$TMUX_PANE" -p '#{window_active}' 2>/dev/null)
+    [ "$pane_active" = "1" ] && [ "$window_active" = "1" ] && return 0
+    return 1
+  fi
+
+  return 0
+}
 
 focus_app() {
   if [ "$APP" = "com.microsoft.VSCode" ] && [ -n "$PWD" ]; then
@@ -124,6 +140,7 @@ EOF
 
 (
   (
+    is_active && exit 0
     RESULT=$(alerter --title "$TITLE" --message "$MESSAGE" --app-icon "$ICON" --actions "Open" --timeout 60 --json --ignore-dnd)
     ACTION=$(echo "$RESULT" | grep -oE '"activationType"[[:space:]]*:[[:space:]]*"[^"]*"' | cut -d'"' -f4)
 
