@@ -142,6 +142,7 @@ return {
   },
   {
     "Bekaboo/dropbar.nvim",
+    event = "VeryLazy",
     keys = {
       { "<leader>;", function() require("dropbar.api").pick() end, desc = "Pick winbar symbol" },
       { "[;", function() require("dropbar.api").goto_context_start() end, desc = "Go to context start" },
