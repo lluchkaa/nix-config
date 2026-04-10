@@ -98,10 +98,20 @@ is_active() {
   [ "$frontmost" != "$APP" ] && return 1
 
   if [ -n "$TMUX_SOCKET" ]; then
-    local pane_active window_active
-    pane_active=$(tmux -S "$TMUX_SOCKET" display-message -t "$TMUX_PANE" -p '#{pane_active}' 2>/dev/null)
-    window_active=$(tmux -S "$TMUX_SOCKET" display-message -t "$TMUX_PANE" -p '#{window_active}' 2>/dev/null)
-    [ "$pane_active" = "1" ] && [ "$window_active" = "1" ] && return 0
+    local pane_active client_view target_view
+    pane_active=$(tmux -S "$TMUX_SOCKET" display-message -t "$TMUX_TARGET" -p '#{pane_active}' 2>/dev/null)
+    [ "$pane_active" != "1" ] && return 1
+    client_view=$(tmux -S "$TMUX_SOCKET" display-message -t "$TMUX_CLIENT" -p '#{session_name}:#{window_index}' 2>/dev/null)
+    target_view="${TMUX_TARGET%.*}"
+    [ "$client_view" = "$target_view" ] && return 0
+    return 1
+  fi
+
+  if [ "$APP" = "com.microsoft.VSCode" ] && [ -n "$PWD" ]; then
+    local ws focused_window
+    ws=$(basename "$PWD")
+    focused_window=$(osascript -e 'tell application "System Events" to tell process "Code" to get name of first window' 2>/dev/null)
+    echo "$focused_window" | grep -qF "$ws" && return 0
     return 1
   fi
 
