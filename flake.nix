@@ -35,6 +35,11 @@
       url = "github:anthropics/claude-plugins-official";
       flake = false;
     };
+
+    caveman = {
+      url = "github:JuliusBrussee/caveman";
+      flake = false;
+    };
   };
 
   outputs =
