@@ -65,22 +65,22 @@ exec-on-workspace-change = [
 [gaps]
 inner.horizontal = 8
 inner.vertical =   8
-outer.left =       [{ monitor."secondary" = 0 }, 0]
-outer.bottom =     [{ monitor."secondary" = 0 }, 0]
-outer.top =        [{ monitor."secondary" = 0 }, 0]
-outer.right =      [{ monitor."secondary" = 0 }, 0]
+outer.left =   0
+outer.bottom = 0
+outer.top =    0
+outer.right =  0
 
 [workspace-to-monitor-force-assignment]
-1 = ['secondary', 'built-in']
-2 = ['secondary', 'built-in']
-3 = ['secondary', 'built-in']
-4 = ['secondary', 'built-in']
-5 = ['secondary', 'built-in']
-6 = ['built-in']
-7 = ['built-in']
-8 = ['built-in']
-9 = ['built-in']
-0 = ['built-in']
+"1" = ['secondary', 'built-in']
+"2" = ['secondary', 'built-in']
+"3" = ['secondary', 'built-in']
+"4" = ['secondary', 'built-in']
+"5" = ['secondary', 'built-in']
+"6" = ['built-in']
+"7" = ['built-in']
+"8" = ['built-in']
+"9" = ['built-in']
+"0" = ['built-in']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

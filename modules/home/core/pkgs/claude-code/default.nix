@@ -91,6 +91,7 @@ in
     context = ./CLAUDE.md;
     plugins = map (l: "${claude-plugins}/plugins/${l.plugin}") (lib.filter (l: l.plugin != null) lsps);
     marketplaces = {
+      claude-plugins-official = claude-plugins;
       caveman = caveman;
     };
     hooks = {
@@ -101,7 +102,7 @@ in
     lspServers = lib.listToAttrs (
       map (l: {
         name = l.server.name;
-        value = builtins.removeAttrs l.server [ "name" ];
+        value = removeAttrs l.server [ "name" ];
       }) (lib.filter (l: l.server != null) lsps)
     );
     settings = {
