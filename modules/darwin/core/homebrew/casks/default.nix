@@ -1,14 +1,13 @@
 { ... }:
 {
   homebrew.casks =
-    builtins.map
+    map
       (cask: {
         name = cask;
         greedy = true;
       })
       [
         "brave-browser"
-        "coderabbit"
         "cursor"
         "datagrip"
         "discord"
