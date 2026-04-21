@@ -31,14 +31,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    claude-plugins = {
-      url = "github:anthropics/claude-plugins-official";
-      flake = false;
-    };
-
-    caveman = {
-      url = "github:JuliusBrussee/caveman";
-      flake = false;
+    claude-code-deps = {
+      url = "path:./modules/home/core/pkgs/claude-code";
     };
   };
 
