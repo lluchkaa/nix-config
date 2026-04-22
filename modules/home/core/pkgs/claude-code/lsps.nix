@@ -1,10 +1,10 @@
-{ pkgs, claude-plugins-official-marketplace }:
+{ pkgs, claude-plugins-official }:
 [
   {
     enabled = true;
     package = pkgs.typescript-language-server;
     plugin = "typescript-lsp";
-    marketplace = claude-plugins-official-marketplace;
+    marketplace = claude-plugins-official;
     server = {
       name = "typescript-lsp";
       command = "typescript-language-server";
@@ -21,7 +21,7 @@
     enabled = false;
     package = pkgs.gopls;
     plugin = "gopls-lsp";
-    marketplace = claude-plugins-official-marketplace;
+    marketplace = claude-plugins-official;
     server = {
       name = "gopls";
       command = "gopls";
@@ -50,7 +50,7 @@
     enabled = false;
     package = pkgs.lua-language-server;
     plugin = "lua-lsp";
-    marketplace = claude-plugins-official-marketplace;
+    marketplace = claude-plugins-official;
     server = {
       name = "lua-language-server";
       command = "lua-language-server";
@@ -63,7 +63,7 @@
     enabled = false;
     package = pkgs.rustup;
     plugin = "rust-analyzer-lsp";
-    marketplace = claude-plugins-official-marketplace;
+    marketplace = claude-plugins-official;
     server = {
       name = "rust-analyzer";
       command = "rust-analyzer";
@@ -76,14 +76,14 @@
     enabled = false;
     package = null;
     plugin = "clangd-lsp";
-    marketplace = claude-plugins-official-marketplace;
+    marketplace = claude-plugins-official;
     server = null;
   }
   {
     enabled = true;
     package = null;
     plugin = "pyright-lsp";
-    marketplace = claude-plugins-official-marketplace;
+    marketplace = claude-plugins-official;
     server = null;
   }
 ]

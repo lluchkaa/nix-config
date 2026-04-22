@@ -37,9 +37,26 @@
         "type": "github"
       }
     },
+    "chrome-devtools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776787665,
+        "narHash": "sha256-13bk/gU4aWXPBuWiIdzuZM55xlgeZU5ACGtWG4SzT9o=",
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "rev": "a1612be8e01401cf1711c64bc2ef5da5763ba956",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "type": "github"
+      }
+    },
     "claude-code-deps": {
       "inputs": {
         "caveman": "caveman",
+        "chrome-devtools": "chrome-devtools",
         "claude-plugins": "claude-plugins",
         "matt-pocock": "matt-pocock"
       },
@@ -56,11 +73,11 @@
     "claude-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1776794872,
-        "narHash": "sha256-j/UPsPUa7t6lX6tNgfvfR3cT6pZcpgOEm4YyhsjsMKY=",
+        "lastModified": 1776805458,
+        "narHash": "sha256-0ozJmSeqSy0J7gd9MEPi7PzG0JlxZ3tTtvHygWtyiJs=",
         "owner": "anthropics",
         "repo": "claude-plugins-official",
-        "rev": "9f103c621dbe3d3c5b5862e43b2cc56986f18239",
+        "rev": "cf62a6c02dc03db88da8eb7c61bdb9fd88da6326",
         "type": "github"
       },
       "original": {
@@ -171,11 +188,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776575850,
-        "narHash": "sha256-28Gqz0GDpGsBv8GtAn2dywEQRr+CtTDsD5J7VD6icBE=",
+        "lastModified": 1776829403,
+        "narHash": "sha256-oHVcvP2Ahhj1KUsEzp+2BQF55/r5VSa3QxdPdwE1p00=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "3b9653a107c736222b5ae0d4036dd3b885219065",
+        "rev": "c43246d4e9e506178b69baed075d797ec2d873e2",
         "type": "github"
       },
       "original": {

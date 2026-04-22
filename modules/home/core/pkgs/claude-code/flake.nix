@@ -16,6 +16,11 @@
       url = "github:mattpocock/skills";
       flake = false;
     };
+
+    chrome-devtools = {
+      url = "github:ChromeDevTools/chrome-devtools-mcp";
+      flake = false;
+    };
   };
 
   outputs =
@@ -23,9 +28,15 @@
       claude-plugins,
       caveman,
       matt-pocock,
+      chrome-devtools,
       ...
     }:
     {
-      inherit claude-plugins caveman matt-pocock;
+      inherit
+        claude-plugins
+        caveman
+        matt-pocock
+        chrome-devtools
+        ;
     };
 }

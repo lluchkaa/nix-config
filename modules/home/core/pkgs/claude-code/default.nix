@@ -6,11 +6,16 @@
   ...
 }:
 let
-  inherit (claude-code-deps) claude-plugins caveman matt-pocock;
-  claude-plugins-official-marketplace = "claude-plugins-official";
+  inherit (claude-code-deps)
+    claude-plugins
+    caveman
+    matt-pocock
+    chrome-devtools
+    ;
+  claude-plugins-official = "claude-plugins-official";
   lsps = import ./lsps.nix {
     inherit pkgs;
-    claude-plugins-official-marketplace = claude-plugins-official-marketplace;
+    claude-plugins-official = claude-plugins-official;
   };
 in
 {
@@ -24,6 +29,7 @@ in
     marketplaces = {
       claude-plugins-official = claude-plugins;
       caveman = caveman;
+      chrome-devtools-plugins = chrome-devtools;
     };
     skills = {
       grill-me = "${matt-pocock}/grill-me";
@@ -40,6 +46,7 @@ in
       }) (lib.filter (l: l.server != null) lsps)
     );
     settings = {
+      editorMode = "vim";
       enabledPlugins =
         lib.listToAttrs (
           map (l: {
@@ -49,9 +56,16 @@ in
         )
         // {
           "caveman@caveman" = true;
-          "superpowers@${claude-plugins-official-marketplace}" = true;
+          "superpowers@${claude-plugins-official}" = true;
+          "chrome-devtools-mcp@chrome-devtools-plugins" = true;
         };
       hooks = import ./hooks.nix;
+      allowedChannelPlugins = [
+        {
+          marketplace = "claude-plugins-official";
+          plugin = "telegram";
+        }
+      ];
     };
   };
 }
