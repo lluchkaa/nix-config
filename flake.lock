@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "anthropics": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776964038,
+        "narHash": "sha256-xFsg66TCtKzSgRIW6Ab771FWEIhei3jPgfE4byMiB44=",
+        "owner": "anthropics",
+        "repo": "skills",
+        "rev": "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anthropics",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": [
@@ -40,11 +56,11 @@
     "chrome-devtools": {
       "flake": false,
       "locked": {
-        "lastModified": 1776787665,
-        "narHash": "sha256-13bk/gU4aWXPBuWiIdzuZM55xlgeZU5ACGtWG4SzT9o=",
+        "lastModified": 1776969334,
+        "narHash": "sha256-vQ72zqzSxMOvSkB+6kC2mAdjXOGLTvdJitXhF68FQ3s=",
         "owner": "ChromeDevTools",
         "repo": "chrome-devtools-mcp",
-        "rev": "a1612be8e01401cf1711c64bc2ef5da5763ba956",
+        "rev": "136da6a350323d18b1992b22605833dacea21108",
         "type": "github"
       },
       "original": {
@@ -55,6 +71,7 @@
     },
     "claude-code-deps": {
       "inputs": {
+        "anthropics": "anthropics",
         "caveman": "caveman",
         "chrome-devtools": "chrome-devtools",
         "claude-plugins": "claude-plugins",
@@ -73,11 +90,11 @@
     "claude-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1776805458,
-        "narHash": "sha256-0ozJmSeqSy0J7gd9MEPi7PzG0JlxZ3tTtvHygWtyiJs=",
+        "lastModified": 1776980748,
+        "narHash": "sha256-ywyOB23pJaOQHf2nPvis1fNqpNPVUM59upxETzl6KCw=",
         "owner": "anthropics",
         "repo": "claude-plugins-official",
-        "rev": "cf62a6c02dc03db88da8eb7c61bdb9fd88da6326",
+        "rev": "020446a4294f09d9c32e60bff0c4ae8fb39205cb",
         "type": "github"
       },
       "original": {
@@ -111,11 +128,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776777932,
-        "narHash": "sha256-0R3Yow/NzSeVGUke5tL7CCkqmss4Vmi6BbV6idHzq/8=",
+        "lastModified": 1777004352,
+        "narHash": "sha256-SV+9PgNwZ8jHVCjK6YaCBzaheLSW7cDnm5DpOYrD8Vw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5d5640599a0050b994330328b9fd45709c909720",
+        "rev": "6012cf1fed3eba66115f3fd117b9be6bd2a15b2f",
         "type": "github"
       },
       "original": {
@@ -203,16 +220,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1776548001,
-        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
+        "lastModified": 1776969924,
+        "narHash": "sha256-e220PXd6yf0aScZ4FXGbnGbncaSy7P389JN5CeMzz9s=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
+        "rev": "2d09609e9db9e9871f7260483825b0ba0a7da6d6",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
       }

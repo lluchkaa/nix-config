@@ -8,6 +8,7 @@
 let
   inherit (claude-code-deps)
     claude-plugins
+    anthropics
     caveman
     matt-pocock
     chrome-devtools
@@ -33,6 +34,7 @@ in
     };
     skills = {
       grill-me = "${matt-pocock}/grill-me";
+      skill-creator = "${anthropics}/skills/skill-creator";
     };
     hooks = {
       "notify.sh" = builtins.replaceStrings [ "@iconsDir@" ] [ "${config.xdg.dataHome}/icons" ] (
@@ -56,13 +58,12 @@ in
         )
         // {
           "caveman@caveman" = true;
-          "superpowers@${claude-plugins-official}" = true;
           "chrome-devtools-mcp@chrome-devtools-plugins" = true;
         };
       hooks = import ./hooks.nix;
       allowedChannelPlugins = [
         {
-          marketplace = "claude-plugins-official";
+          marketplace = claude-plugins-official;
           plugin = "telegram";
         }
       ];

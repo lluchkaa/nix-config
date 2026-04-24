@@ -7,6 +7,11 @@
       flake = false;
     };
 
+    anthropics = {
+      url = "github:anthropics/skills";
+      flake = false;
+    };
+
     caveman = {
       url = "github:JuliusBrussee/caveman";
       flake = false;
@@ -26,6 +31,7 @@
   outputs =
     {
       claude-plugins,
+      anthropics,
       caveman,
       matt-pocock,
       chrome-devtools,
@@ -34,6 +40,7 @@
     {
       inherit
         claude-plugins
+        anthropics
         caveman
         matt-pocock
         chrome-devtools
