@@ -35,10 +35,10 @@
     pkgs.uv
 
     pkgs.yq
+    pkgs.coreutils
 
     pkgs.gitmux
 
-    pkgs.cursor-cli
     pkgs.watchman
     pkgs.nmap
   ]
