@@ -8,6 +8,7 @@
   imports = [
     ./defaults
     ./keyboard
+    ./linux-builder
     ./security
   ];
 
