@@ -9,6 +9,7 @@
     ./aerospace
     ./claude-code
     ./copilot
+    ./direnv
     ./gh
     ./ghostty
     ./git
@@ -47,43 +48,12 @@
     pkgs.cocoapods
   ];
 
-  programs.btop = {
-    enable = true;
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
-  };
-
-  programs.fzf = {
-    enable = true;
-  };
-
-  programs.go = {
-    enable = true;
-  };
-
-  programs.jq = {
-    enable = true;
-  };
-
-  programs.lazygit = {
-    enable = true;
-  };
-
-  programs.lazydocker = {
-    enable = true;
-  };
-
-  programs.lazysql = {
-    enable = true;
-  };
-
-  programs.ripgrep = {
-    enable = true;
-  };
+  programs.btop.enable = true;
+  programs.fzf.enable = true;
+  programs.go.enable = true;
+  programs.jq.enable = true;
+  programs.lazygit.enable = true;
+  programs.lazydocker.enable = true;
+  programs.lazysql.enable = true;
+  programs.ripgrep.enable = true;
 }

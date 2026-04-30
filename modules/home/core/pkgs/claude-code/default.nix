@@ -2,17 +2,14 @@
   pkgs,
   lib,
   config,
-  claude-code-deps,
+  claude-plugins,
+  anthropics-skills,
+  caveman,
+  matt-pocock-skills,
+  chrome-devtools-mcp,
   ...
 }:
 let
-  inherit (claude-code-deps)
-    claude-plugins
-    anthropics
-    caveman
-    matt-pocock
-    chrome-devtools
-    ;
   claude-plugins-official = "claude-plugins-official";
   lsps = import ./lsps.nix {
     inherit pkgs;
@@ -30,11 +27,11 @@ in
     marketplaces = {
       claude-plugins-official = claude-plugins;
       caveman = caveman;
-      chrome-devtools-plugins = chrome-devtools;
+      chrome-devtools-plugins = chrome-devtools-mcp;
     };
     skills = {
-      grill-me = "${matt-pocock}/grill-me";
-      skill-creator = "${anthropics}/skills/skill-creator";
+      grill-me = "${matt-pocock-skills}/grill-me";
+      skill-creator = "${anthropics-skills}/skills/skill-creator";
     };
     hooks = {
       "notify.sh" = builtins.replaceStrings [ "@iconsDir@" ] [ "${config.xdg.dataHome}/icons" ] (

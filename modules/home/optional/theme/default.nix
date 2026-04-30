@@ -14,6 +14,9 @@
     ".background-image".source = pkgs.nixos-artwork.wallpapers.catppuccin-mocha.gnomeFilePath;
   };
 
+  # Per-user app themes (zsh, btop, bat, fzf, gtk, ghostty, ...).
+  # System-level palette is set in modules/nixos/optional/theme.
+  # See https://nix.catppuccin.com/options/main/home/catppuccin/
   catppuccin = {
     enable = true;
 

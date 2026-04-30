@@ -74,16 +74,34 @@
   }
   {
     enabled = false;
-    package = null;
+    package = pkgs.clang-tools;
     plugin = "clangd-lsp";
     marketplace = claude-plugins-official;
-    server = null;
+    server = {
+      name = "clangd";
+      command = "clangd";
+      extensionToLanguage = {
+        ".c" = "c";
+        ".h" = "c";
+        ".cpp" = "cpp";
+        ".cc" = "cpp";
+        ".cxx" = "cpp";
+        ".hpp" = "cpp";
+      };
+    };
   }
   {
     enabled = true;
-    package = null;
+    package = pkgs.pyright;
     plugin = "pyright-lsp";
     marketplace = claude-plugins-official;
-    server = null;
+    server = {
+      name = "pyright";
+      command = "pyright-langserver";
+      args = [ "--stdio" ];
+      extensionToLanguage = {
+        ".py" = "python";
+      };
+    };
   }
 ]

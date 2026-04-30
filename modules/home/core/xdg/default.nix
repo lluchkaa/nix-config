@@ -5,6 +5,7 @@
   ...
 }:
 {
+  xdg.enable = true;
   home.preferXdgDirectories = true;
 
   xdg.portal = lib.mkIf (os == "linux") {

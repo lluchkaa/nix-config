@@ -36,7 +36,7 @@
       })
     ];
 
-    extraConfig = (builtins.readFile ./tmux.conf) + "set -g default-command $SHELL";
+    extraConfig = (builtins.readFile ./tmux.conf) + ''set -g default-command "''${SHELL}"'';
   };
 
   catppuccin.tmux = {

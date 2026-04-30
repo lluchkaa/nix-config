@@ -34,5 +34,7 @@
     };
   };
 
+  # Also enabled in window-manager/i3 so each module works in isolation.
+  # Nix merges identical bool values; safe duplication.
   services.gvfs.enable = true;
 }

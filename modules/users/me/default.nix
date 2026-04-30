@@ -12,7 +12,6 @@
     home = (if os == "darwin" then "/Users/${username}" else "/home/${username}");
 
     shell = pkgs.zsh;
-    ignoreShellProgramCheck = true;
   }
   // lib.optionalAttrs (os == "linux") {
     isNormalUser = true;

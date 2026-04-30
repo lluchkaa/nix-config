@@ -31,8 +31,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    claude-code-deps = {
-      url = "path:./modules/home/core/pkgs/claude-code";
+    # Claude Code plugin/skill sources (non-flake repos).
+    claude-plugins = {
+      url = "github:anthropics/claude-plugins-official";
+      flake = false;
+    };
+    anthropics-skills = {
+      url = "github:anthropics/skills";
+      flake = false;
+    };
+    caveman = {
+      url = "github:JuliusBrussee/caveman";
+      flake = false;
+    };
+    matt-pocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
+    chrome-devtools-mcp = {
+      url = "github:ChromeDevTools/chrome-devtools-mcp";
+      flake = false;
     };
   };
 

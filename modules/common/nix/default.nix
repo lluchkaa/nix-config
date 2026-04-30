@@ -6,10 +6,6 @@
 {
   nix = {
     package = pkgs.nixVersions.latest;
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-    '';
 
     settings = {
       trusted-users = [
