@@ -12,6 +12,7 @@
     ./gh
     ./ghostty
     ./git
+    ./gpg
     ./jujutsu
     ./neovim
     ./tmux

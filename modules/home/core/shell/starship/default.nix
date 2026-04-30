@@ -8,6 +8,6 @@
   };
 
   home.packages = [
-    pkgs.jj-starship
+    pkgs.jj-starship-no-git
   ];
 }

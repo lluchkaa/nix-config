@@ -1,11 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = [
-    pkgs.git
     pkgs.vim
     pkgs.wget
     pkgs.curl
-    pkgs.gcc
     pkgs.cachix
     pkgs.fish
   ];

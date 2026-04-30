@@ -23,7 +23,8 @@ let
     else
       inputs.home-manager.nixosModules.home-manager;
 
-  hostConfig = ../hosts/${name};
+  hostConfigPath = ../hosts/${name};
+  hostConfig = if builtins.pathExists hostConfigPath then hostConfigPath else { ... }: { };
   userOSConfig = ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix;
   userHomeConfig = ../users/${username}/home.nix;
 in
@@ -56,7 +57,6 @@ systemFunc {
         imports = [
           userHomeConfig
 
-          nix-index-database.homeModules.nix-index
           catppuccin.homeModules.catppuccin
         ];
       };

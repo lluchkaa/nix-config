@@ -17,14 +17,13 @@
   // lib.optionalAttrs (os == "linux") {
     isNormalUser = true;
 
-    extraGroups = lib.mkIf (os == "linux") [
+    extraGroups = [
       "wheel"
       "networkmanager"
       "docker"
     ];
 
-    # TODO: convert to hashed password
-    initialPassword = "root";
+    hashedPassword = "$6$br4rEN6o70zzfx0k$X5pX.LR3.KK8j5FmT./gEoq6SroEMEmjJcLVUDsTT3LsZM5k82l4ZJ4SZYkEThdSlVjaEpIEPTgDolgL8vLQ01";
   }
   // lib.optionalAttrs (os == "darwin") {
     uid = 501;
