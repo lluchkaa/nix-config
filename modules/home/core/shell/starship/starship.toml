@@ -19,7 +19,7 @@ disabled = true
 disabled = true
 
 [custom.jj]
-command = "jj-starship"
+command = "jj-starship < /dev/null"
 detect_folders = [".jj"]
 shell = ["sh"]
 format = "$output "

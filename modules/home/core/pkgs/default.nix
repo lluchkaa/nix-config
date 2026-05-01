@@ -13,6 +13,7 @@
     ./gh
     ./ghostty
     ./git
+    ./go
     ./gpg
     ./jujutsu
     ./neovim
@@ -50,7 +51,6 @@
 
   programs.btop.enable = true;
   programs.fzf.enable = true;
-  programs.go.enable = true;
   programs.jq.enable = true;
   programs.lazygit.enable = true;
   programs.lazydocker.enable = true;

@@ -64,6 +64,7 @@ in
           plugin = "telegram";
         }
       ];
+      agentPushNotifEnabled = true;
     };
   };
 }
