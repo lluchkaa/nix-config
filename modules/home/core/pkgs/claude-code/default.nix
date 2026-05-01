@@ -65,6 +65,10 @@ in
         }
       ];
       agentPushNotifEnabled = true;
+      statusLine = {
+        type = "command";
+        command = "starship statusline claude-code";
+      };
     };
   };
 }

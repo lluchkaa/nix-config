@@ -23,3 +23,6 @@ command = "jj-starship < /dev/null"
 detect_folders = [".jj"]
 shell = ["sh"]
 format = "$output "
+
+[profiles]
+claude-code = "$claude_model$claude_context$claude_cost"
