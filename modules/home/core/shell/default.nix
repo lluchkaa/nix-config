@@ -46,7 +46,11 @@
       export NVM_DIR="''${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
       _nvm_lazy_load() {
         unset -f nvm node npm npx
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        if [ -s "$NVM_DIR/nvm.sh" ]; then
+          \. "$NVM_DIR/nvm.sh"
+        elif [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+          \. "/opt/homebrew/opt/nvm/nvm.sh"
+        fi
       }
       nvm()  { _nvm_lazy_load; nvm  "$@"; }
       node() { _nvm_lazy_load; node "$@"; }

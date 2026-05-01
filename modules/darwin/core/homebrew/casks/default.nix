@@ -26,6 +26,5 @@
         "tor-browser"
         "vial"
         "visual-studio-code"
-        "vmware-fusion"
       ];
 }

@@ -1,12 +1,12 @@
 {
   username,
+  os,
   pkgs,
   ...
 }:
 {
   nix = {
-    package = pkgs.nixVersions.latest;
-
+    package = (if os == "darwin" then pkgs.lix else pkgs.nixVersions.latest);
     settings = {
       trusted-users = [
         "root"

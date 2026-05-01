@@ -3,11 +3,11 @@
   pkgs,
   ...
 }:
+let
+  fonts = import ../../../../common/theme/fonts.nix pkgs;
+in
 {
-  home.packages = [
-    pkgs.monaspace
-    pkgs.nerd-fonts.fira-code
-  ];
+  home.packages = fonts;
 
   fonts.fontconfig = {
     enable = os == "linux";

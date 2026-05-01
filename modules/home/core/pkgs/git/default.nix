@@ -10,6 +10,7 @@
       ".ignore/"
       ".worktrees/"
       ".direnv/"
+      "*.local.*"
     ];
 
     settings = {

@@ -10,6 +10,7 @@
     ./keyboard
     ./linux-builder
     ./security
+    ./theme
   ];
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
