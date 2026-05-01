@@ -12,10 +12,18 @@
     pkgs.jj-starship-no-git
   ];
 
-  # starship prompt reads from stdin and hangs in nested shells (VS Code, tmux,
-  # ghostty) where stdin is an inherited pipe. Override PROMPT/RPROMPT to
+  # BUG: starship prompt reads from stdin and hangs in nested shells (VS Code,
+  # tmux, ghostty) where stdin is an inherited pipe. Override PROMPT/RPROMPT to
   # redirect stdin to /dev/null. PROMPT2 runs $(starship prompt) synchronously
   # at startup — replace with a static string.
+  #
+  # RELATED (different bug, same symptom): wrap_colorseq_for_shell only wraps
+  # SGR sequences (\x1b[...m), leaving other CSI sequences (\x1b[K, \x1b[H,
+  # etc.) with escaped=true stuck, corrupting ZLE cursor position → terminal
+  # appears stuck accepting input. Upstream fix pending in PR #7436 (CSI only;
+  # reviewer also wants OSC sequences and a proper state machine before merge).
+  # Track: https://github.com/starship/starship/pull/7436
+  #
   # mkOrder 2000 ensures this runs after starship's own initContent (no mkOrder
   # = default 1000).
   programs.zsh.initContent = lib.mkOrder 2000 ''
