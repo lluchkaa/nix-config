@@ -2,9 +2,9 @@
 {
   programs.direnv = {
     enable = true;
+    config = {
+      disable_stdin = true;
+    };
     nix-direnv.enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableZshIntegration = false;
   };
 }

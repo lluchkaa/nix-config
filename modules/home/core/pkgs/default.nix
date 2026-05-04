@@ -27,6 +27,7 @@
     pkgs.nodejs_24
     pkgs.python3
 
+    pkgs.openssl
     pkgs.sqlite
     pkgs.gcc
     pkgs.clang-tools
