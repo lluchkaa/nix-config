@@ -30,7 +30,9 @@ in
       chrome-devtools-plugins = chrome-devtools-mcp;
     };
     skills = {
-      grill-me = "${matt-pocock-skills}/grill-me";
+      grill-me = "${matt-pocock-skills}/skills/productivity/grill-me";
+      grill-with-docs = "${matt-pocock-skills}/skills/engineering/grill-with-docs";
+      improve-codebase-architecture = "${matt-pocock-skills}/skills/engineering/improve-codebase-architecture";
       skill-creator = "${anthropics-skills}/skills/skill-creator";
     };
     hooks = {
@@ -54,7 +56,6 @@ in
           }) (lib.filter (l: l.plugin != null && l.enabled) lsps)
         )
         // {
-          "caveman@caveman" = true;
           "chrome-devtools-mcp@chrome-devtools-plugins" = true;
         };
       hooks = import ./hooks.nix;
