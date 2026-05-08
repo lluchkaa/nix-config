@@ -7,6 +7,7 @@ _: {
       })
       [
         "brave-browser"
+        "claude"
         "cursor"
         "datagrip"
         "discord"
