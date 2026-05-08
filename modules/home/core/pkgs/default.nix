@@ -50,11 +50,13 @@
     pkgs.cocoapods
   ];
 
-  programs.btop.enable = true;
-  programs.fzf.enable = true;
-  programs.jq.enable = true;
-  programs.lazygit.enable = true;
-  programs.lazydocker.enable = true;
-  programs.lazysql.enable = true;
-  programs.ripgrep.enable = true;
+  programs = {
+    btop.enable = true;
+    fzf.enable = true;
+    jq.enable = true;
+    lazygit.enable = true;
+    lazydocker.enable = true;
+    lazysql.enable = true;
+    ripgrep.enable = true;
+  };
 }

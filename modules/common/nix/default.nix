@@ -6,7 +6,7 @@
 }:
 {
   nix = {
-    package = (if os == "darwin" then pkgs.lix else pkgs.nixVersions.latest);
+    package = if os == "darwin" then pkgs.lix else pkgs.nixVersions.latest;
     settings = {
       trusted-users = [
         "root"

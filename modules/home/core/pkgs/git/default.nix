@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.git = {
     enable = true;
 
@@ -11,6 +10,7 @@
       ".worktrees/"
       ".direnv/"
       "*.local.*"
+      "*.bak"
     ];
 
     settings = {

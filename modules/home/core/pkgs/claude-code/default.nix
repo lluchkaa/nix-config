@@ -13,7 +13,7 @@ let
   claude-plugins-official = "claude-plugins-official";
   lsps = import ./lsps.nix {
     inherit pkgs;
-    claude-plugins-official = claude-plugins-official;
+    inherit claude-plugins-official;
   };
 in
 {
@@ -26,7 +26,7 @@ in
     plugins = [ ];
     marketplaces = {
       claude-plugins-official = claude-plugins;
-      caveman = caveman;
+      inherit caveman;
       chrome-devtools-plugins = chrome-devtools-mcp;
     };
     skills = {
@@ -42,7 +42,7 @@ in
     };
     lspServers = lib.listToAttrs (
       map (l: {
-        name = l.server.name;
+        inherit (l.server) name;
         value = removeAttrs l.server [ "name" ];
       }) (lib.filter (l: l.server != null) lsps)
     );

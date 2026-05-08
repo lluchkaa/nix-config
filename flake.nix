@@ -61,7 +61,7 @@
       ...
     }@inputs:
     let
-      overlays = import ./overlays { jj-starship = jj-starship; };
+      overlays = import ./overlays { inherit jj-starship; };
 
       make = import ./lib/make.nix {
         inherit nixpkgs overlays inputs;

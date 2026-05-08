@@ -24,7 +24,7 @@ let
       inputs.home-manager.nixosModules.home-manager;
 
   hostConfigPath = ../hosts/${name};
-  hostConfig = if builtins.pathExists hostConfigPath then hostConfigPath else { ... }: { };
+  hostConfig = if builtins.pathExists hostConfigPath then hostConfigPath else _: { };
   userOSConfig = ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix;
   userHomeConfig = ../users/${username}/home.nix;
 in
@@ -48,17 +48,20 @@ systemFunc {
 
     homeManagerFunc
     {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = {
+          inherit username os;
+        }
+        // inputs;
+        users.${username} = {
+          imports = [
+            userHomeConfig
 
-      home-manager.extraSpecialArgs = { inherit username os; } // inputs;
-
-      home-manager.users.${username} = {
-        imports = [
-          userHomeConfig
-
-          catppuccin.homeModules.catppuccin
-        ];
+            catppuccin.homeModules.catppuccin
+          ];
+        };
       };
     }
 

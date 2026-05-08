@@ -5,36 +5,36 @@
     ./window-manager/i3
   ];
 
-  services.xserver = {
-    enable = true;
-    xkb.layout = "us,ua";
-    dpi = 180;
-
-    desktopManager = {
-      xterm.enable = false;
-      wallpaper.mode = "fill";
-    };
-
-    displayManager = {
-      # AARCH64: For now, on Apple Silicon, we must manually set the
-      # display resolution. This is a known issue with VMware Fusion.
-      sessionCommands = ''
-        ${pkgs.xset}/bin/xset r rate 200 40
-      '';
-
-      setupCommands = ''
-        ${pkgs.xrandr}/bin/xrandr --output Virtual-1 --preferred
-      '';
-    };
-  };
-
   services = {
+    xserver = {
+      enable = true;
+      xkb.layout = "us,ua";
+      dpi = 180;
+
+      desktopManager = {
+        xterm.enable = false;
+        wallpaper.mode = "fill";
+      };
+
+      displayManager = {
+        # AARCH64: For now, on Apple Silicon, we must manually set the
+        # display resolution. This is a known issue with VMware Fusion.
+        sessionCommands = ''
+          ${pkgs.xset}/bin/xset r rate 200 40
+        '';
+
+        setupCommands = ''
+          ${pkgs.xrandr}/bin/xrandr --output Virtual-1 --preferred
+        '';
+      };
+    };
+
     displayManager = {
       defaultSession = "none+i3";
     };
-  };
 
-  # Also enabled in window-manager/i3 so each module works in isolation.
-  # Nix merges identical bool values; safe duplication.
-  services.gvfs.enable = true;
+    # Also enabled in window-manager/i3 so each module works in isolation.
+    # Nix merges identical bool values; safe duplication.
+    gvfs.enable = true;
+  };
 }

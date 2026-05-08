@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   # Spin up an aarch64-linux QEMU VM as a remote builder so darwin can
   # build NixOS configs (e.g. vm-aarch64) without an external builder.
   # Disabled by default; flip to true when testing aarch64-linux builds.
