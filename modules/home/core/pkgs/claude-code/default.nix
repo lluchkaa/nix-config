@@ -56,7 +56,7 @@ in
           }) (lib.filter (l: l.plugin != null && l.enabled) lsps)
         )
         // {
-          "chrome-devtools-mcp@chrome-devtools-plugins" = true;
+          "chrome-devtools-mcp@chrome-devtools-plugins" = false;
         };
       hooks = import ./hooks.nix;
       allowedChannelPlugins = [
