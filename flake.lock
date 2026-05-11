@@ -56,11 +56,11 @@
     "chrome-devtools-mcp": {
       "flake": false,
       "locked": {
-        "lastModified": 1778245945,
-        "narHash": "sha256-6q81TYxAhRAdJGk+dpeFwS42NUOuB1cG08NAVpGHs+s=",
+        "lastModified": 1778487393,
+        "narHash": "sha256-xyCQ9HXNPyDgEFnN/cvT+0WW5QuDWBqbLTHHAUJRz2A=",
         "owner": "ChromeDevTools",
         "repo": "chrome-devtools-mcp",
-        "rev": "88e543f53e2aeb3fbf74d56963718daa55fe6b00",
+        "rev": "be4a34c19abec571e0ae7abff8da5bac046ee9ad",
         "type": "github"
       },
       "original": {
@@ -147,11 +147,11 @@
     "matt-pocock-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1778443188,
-        "narHash": "sha256-nBvVsa8bYeXWQ5t3aGLgAPui685h8nNLqYqIIgi443E=",
+        "lastModified": 1778487181,
+        "narHash": "sha256-tIVneizmFopXJOS9zlGTxtFMd3YqllJUJwgpE/dEZz0=",
         "owner": "mattpocock",
         "repo": "skills",
-        "rev": "9fecab929abb904c68ce3366a1781df31ab22832",
+        "rev": "b6250ed602f8a2b401d49274eb31e15695a0637f",
         "type": "github"
       },
       "original": {
