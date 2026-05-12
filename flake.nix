@@ -52,16 +52,22 @@
       url = "github:ChromeDevTools/chrome-devtools-mcp";
       flake = false;
     };
+
+    claude-code-nix = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       jj-starship,
+      claude-code-nix,
       ...
     }@inputs:
     let
-      overlays = import ./overlays { inherit jj-starship; };
+      overlays = import ./overlays { inherit jj-starship claude-code-nix; };
 
       make = import ./lib/make.nix {
         inherit nixpkgs overlays inputs;
