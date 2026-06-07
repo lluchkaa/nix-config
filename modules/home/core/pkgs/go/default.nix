@@ -1,6 +1,6 @@
-_: {
+{ config, ... }: {
   programs.go = {
     enable = true;
-    env.GOPATH = ".local/share/go";
+    env.GOPATH = "${config.home.homeDirectory}/.local/share/go";
   };
 }

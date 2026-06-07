@@ -42,9 +42,6 @@
     pkgs.coreutils
 
     pkgs.gitmux
-
-    pkgs.watchman
-    pkgs.nmap
   ]
   ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods

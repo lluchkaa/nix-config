@@ -34,6 +34,7 @@ in
       grill-with-docs = "${matt-pocock-skills}/skills/engineering/grill-with-docs";
       improve-codebase-architecture = "${matt-pocock-skills}/skills/engineering/improve-codebase-architecture";
       skill-creator = "${anthropics-skills}/skills/skill-creator";
+      slack-triage = ./skills/slack-triage;
     };
     hooks = {
       "notify.sh" = builtins.replaceStrings [ "@iconsDir@" ] [ "${config.xdg.dataHome}/icons" ] (
