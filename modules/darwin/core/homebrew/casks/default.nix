@@ -25,6 +25,7 @@ _: {
         "todoist-app"
         # "tor-browser"
         "vial"
+        "viber"
         "visual-studio-code"
       ];
 }

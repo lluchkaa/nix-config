@@ -52,6 +52,10 @@
       url = "github:ChromeDevTools/chrome-devtools-mcp";
       flake = false;
     };
+    ponytail = {
+      url = "github:DietrichGebert/ponytail";
+      flake = false;
+    };
 
     claude-code-nix = {
       url = "github:sadjow/claude-code-nix";

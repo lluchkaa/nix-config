@@ -7,6 +7,7 @@
   caveman,
   matt-pocock-skills,
   chrome-devtools-mcp,
+  ponytail,
   ...
 }:
 let
@@ -28,10 +29,12 @@ in
       claude-plugins-official = claude-plugins;
       inherit caveman;
       chrome-devtools-plugins = chrome-devtools-mcp;
+      inherit ponytail;
+      # local path string keeps nix from copying to store; source type becomes "directory" instead of "github" but files are already installed
+      miggo-skills-marketplace = "/Users/lluchkaa/.claude/plugins/marketplaces/miggo-skills-marketplace";
     };
     skills = {
       grill-me = "${matt-pocock-skills}/skills/productivity/grill-me";
-      grill-with-docs = "${matt-pocock-skills}/skills/engineering/grill-with-docs";
       improve-codebase-architecture = "${matt-pocock-skills}/skills/engineering/improve-codebase-architecture";
       skill-creator = "${anthropics-skills}/skills/skill-creator";
       slack-triage = ./skills/slack-triage;
@@ -58,6 +61,8 @@ in
         )
         // {
           "chrome-devtools-mcp@chrome-devtools-plugins" = false;
+          "ponytail@ponytail" = true;
+          "clickhouse@claude-plugins-official" = true;
         };
       hooks = import ./hooks.nix;
       allowedChannelPlugins = [

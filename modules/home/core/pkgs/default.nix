@@ -42,6 +42,9 @@
     pkgs.coreutils
 
     pkgs.gitmux
+    pkgs.herdr
+    pkgs.superfile
+    pkgs.hunk
   ]
   ++ lib.optionals (os == "darwin") [
     pkgs.cocoapods

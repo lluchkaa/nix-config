@@ -9,6 +9,8 @@ _: {
       ".ignore/"
       ".worktrees/"
       ".direnv/"
+      ".venv/"
+      "node_modules/"
       "*.local.*"
       "*.bak"
     ];

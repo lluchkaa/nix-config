@@ -1,7 +1,7 @@
 _: {
   homebrew.brews = [
     "nvm"
-    "tw93/tap/mole"
-    "vjeantet/tap/alerter"
+    "mole"
+    # "vjeantet/tap/alerter"
   ];
 }
