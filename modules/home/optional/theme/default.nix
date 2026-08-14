@@ -20,7 +20,8 @@
   # in Rust). Re-enable once linux-builder is provisioned.
   # See https://nix.catppuccin.com/options/main/home/catppuccin/
   catppuccin = {
-    enable = os == "darwin";
+    enable = true;
+    autoEnable = os == "darwin";
 
     cava.enable = false;
     gh-dash.enable = false;

@@ -10,5 +10,6 @@
   # linux-builder. Per-user app themes still active via
   # modules/home/optional/theme.
   # See https://nix.catppuccin.com/options/main/nixos/catppuccin/
-  catppuccin.enable = false;
+  catppuccin.enable = true;
+  catppuccin.autoEnable = false;
 }

@@ -8,6 +8,7 @@
   imports = [
     ./aerospace
     ./claude-code
+    ./codex
     ./copilot
     ./direnv
     ./gh
@@ -16,6 +17,7 @@
     ./go
     ./gpg
     ./jujutsu
+    ./mcp
     ./neovim
     ./tmux
   ];
@@ -52,6 +54,7 @@
 
   programs = {
     btop.enable = true;
+    command-not-found.enable = true;
     fzf.enable = true;
     jq.enable = true;
     lazygit.enable = true;
