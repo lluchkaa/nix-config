@@ -6,6 +6,7 @@ _: {
         greedy = true;
       })
       [
+        "betterdisplay"
         "brave-browser"
         "claude"
         "cursor"

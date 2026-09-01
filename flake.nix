@@ -61,6 +61,11 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    codex-cli-nix = {
+      url = "github:sadjow/codex-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -68,10 +73,11 @@
       nixpkgs,
       jj-starship,
       claude-code-nix,
+      codex-cli-nix,
       ...
     }@inputs:
     let
-      overlays = import ./overlays { inherit jj-starship claude-code-nix; };
+      overlays = import ./overlays { inherit jj-starship claude-code-nix codex-cli-nix; };
 
       make = import ./lib/make.nix {
         inherit nixpkgs overlays inputs;

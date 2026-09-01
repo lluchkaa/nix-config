@@ -54,7 +54,6 @@
 
   programs = {
     btop.enable = true;
-    command-not-found.enable = true;
     fzf.enable = true;
     jq.enable = true;
     lazygit.enable = true;
