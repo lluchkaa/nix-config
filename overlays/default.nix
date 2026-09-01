@@ -1,4 +1,8 @@
-{ jj-starship, claude-code-nix, codex-cli-nix }:
+{
+  jj-starship,
+  claude-code-nix,
+  codex-cli-nix,
+}:
 [
   (import ./nix)
   (import ./dmenu)
