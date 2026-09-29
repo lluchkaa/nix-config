@@ -11,10 +11,10 @@
   ...
 }:
 let
-  claude-plugins-official = "claude-plugins-official";
+  claudePluginsOfficial = "claude-plugins";
   lsps = import ./lsps.nix {
     inherit pkgs;
-    inherit claude-plugins-official;
+    inherit claudePluginsOfficial;
   };
 in
 {
@@ -26,7 +26,7 @@ in
     context = ./CLAUDE.md;
     plugins = [ ];
     marketplaces = {
-      claude-plugins-official = claude-plugins;
+      inherit claude-plugins;
       inherit caveman;
       chrome-devtools-plugins = chrome-devtools-mcp;
       inherit ponytail;
@@ -62,12 +62,11 @@ in
         // {
           "chrome-devtools-mcp@chrome-devtools-plugins" = false;
           "ponytail@ponytail" = true;
-          "clickhouse@claude-plugins-official" = true;
         };
       hooks = import ./hooks.nix;
       allowedChannelPlugins = [
         {
-          marketplace = claude-plugins-official;
+          marketplace = claudePluginsOfficial;
           plugin = "telegram";
         }
       ];

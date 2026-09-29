@@ -19,6 +19,7 @@ _: {
         "keycastr"
         "nvidia-geforce-now"
         "obsidian"
+        "postman"
         "raycast"
         "raspberry-pi-imager"
         "shottr"
