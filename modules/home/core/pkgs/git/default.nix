@@ -22,8 +22,20 @@ _: {
       core = {
         ignorecase = false;
       };
+      fetch = {
+        prune = true;
+      };
       push = {
         autoSetupRemote = true;
+      };
+      pull = {
+        rebase = true;
+      };
+      rebase = {
+        autoStash = true;
+      };
+      rerere = {
+        enabled = true;
       };
     };
 
