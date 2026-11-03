@@ -56,11 +56,11 @@
     "chrome-devtools-mcp": {
       "flake": false,
       "locked": {
-        "lastModified": 1793626085,
-        "narHash": "sha256-+olbbjOYyCQdbT7xv25ZluE6vXL9U9RnFGjPFFO2OI0=",
+        "lastModified": 1793719610,
+        "narHash": "sha256-yqapYKR/9S/ZB/8ZZxsA/M7KSw2uRNyaHIOW5RajRIc=",
         "owner": "ChromeDevTools",
         "repo": "chrome-devtools-mcp",
-        "rev": "aade3be8f65d8afc941c97b498b9752ef562f181",
+        "rev": "81a037939b19a3588ac6a35e06d576af706a3b57",
         "type": "github"
       },
       "original": {
@@ -93,11 +93,11 @@
     "claude-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1793387052,
-        "narHash": "sha256-C8uTRCtKEvL7dz+dDbfs/DwU/uxH5YzYFDn0oo3BKnA=",
+        "lastModified": 1793724946,
+        "narHash": "sha256-4Oyaixf/ZqHRhWoBE5BIaZUBqR9nUM4E4gsNXwdmdJ8=",
         "owner": "anthropics",
         "repo": "claude-plugins-official",
-        "rev": "a7ba5b93db0c7c8d17f3f1d25853adca79598a1a",
+        "rev": "a2e251d9b97b909bf728b3e84fc8d17e6aba0063",
         "type": "github"
       },
       "original": {
