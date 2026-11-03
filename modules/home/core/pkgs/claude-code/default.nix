@@ -23,6 +23,7 @@ in
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
+    configDir = "${config.xdg.configHome}/claude";
     context = ./CLAUDE.md;
     plugins = [ ];
     marketplaces = {
@@ -30,11 +31,9 @@ in
       inherit caveman;
       chrome-devtools-plugins = chrome-devtools-mcp;
       inherit ponytail;
-      # local path string keeps nix from copying to store; source type becomes "directory" instead of "github" but files are already installed
-      miggo-skills-marketplace = "/Users/lluchkaa/.claude/plugins/marketplaces/miggo-skills-marketplace";
     };
     skills = {
-      grill-me = "${matt-pocock-skills}/skills/productivity/grill-me";
+      grilling = "${matt-pocock-skills}/skills/productivity/grilling";
       improve-codebase-architecture = "${matt-pocock-skills}/skills/engineering/improve-codebase-architecture";
       skill-creator = "${anthropics-skills}/skills/skill-creator";
       slack-triage = ./skills/slack-triage;
@@ -51,6 +50,7 @@ in
       }) (lib.filter (l: l.server != null) lsps)
     );
     settings = {
+      model = "sonnet";
       editorMode = "vim";
       enabledPlugins =
         lib.listToAttrs (

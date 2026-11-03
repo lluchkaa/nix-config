@@ -5,7 +5,7 @@
       hooks = [
         {
           type = "command";
-          command = "bash $HOME/.claude/hooks/notify.sh \"Claude Code\" \"Claude needs your attention\"";
+          command = "bash $HOME/.config/claude/hooks/notify.sh \"Claude Code\" \"Claude needs your attention\"";
         }
       ];
     }
@@ -16,7 +16,7 @@
       hooks = [
         {
           type = "command";
-          command = "bash $HOME/.claude/hooks/notify.sh \"Claude Code\" \"Task completed\"";
+          command = "bash $HOME/.config/claude/hooks/notify.sh \"Claude Code\" \"Task completed\"";
         }
       ];
     }
