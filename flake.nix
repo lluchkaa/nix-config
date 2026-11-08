@@ -11,6 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -89,7 +91,11 @@
     in
     {
       checks = nixpkgs.lib.genAttrs [ "aarch64-darwin" "aarch64-linux" "x86_64-linux" ] (
-        system: import ./tests { pkgs = import nixpkgs { inherit system; }; }
+        system:
+        import ./tests {
+          inherit inputs;
+          pkgs = import nixpkgs { inherit system; };
+        }
       );
 
       nixosConfigurations.vm-aarch64 = make {
@@ -99,11 +105,30 @@
         os = "linux";
       };
 
-      darwinConfigurations.macbook-pro-m1 = make {
-        name = "macbook-pro-m1";
-        system = "aarch64-darwin";
-        username = "lluchkaa";
-        os = "darwin";
+      darwinConfigurations = {
+        macbook-pro-m1-personal = make {
+          name = "macbook-pro-m1";
+          system = "aarch64-darwin";
+          username = "lluchkaa";
+          os = "darwin";
+        };
+        macbook-pro-work = make {
+          name = "macbook-pro-work";
+          system = "aarch64-darwin";
+          username = "yurii-work";
+          os = "darwin";
+        };
+
+        macbook-pro-m1 = make {
+          name = "macbook-pro-m1";
+          system = "aarch64-darwin";
+          username = "lluchkaa";
+          usernames = [
+            "lluchkaa"
+            "yurii-work"
+          ];
+          os = "darwin";
+        };
       };
     };
 }

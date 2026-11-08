@@ -8,12 +8,12 @@
   system,
   username,
   os,
+  usernames ? [ username ],
 }:
 let
   inherit (inputs)
     self
     nix-index-database
-    catppuccin
     ;
 
   systemFunc = if os == "darwin" then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
@@ -25,16 +25,17 @@ let
 
   hostConfigPath = ../hosts/${name};
   hostConfig = if builtins.pathExists hostConfigPath then hostConfigPath else _: { };
-  userOSConfig = ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix;
-  userHomeConfig = ../users/${username}/home.nix;
+  platformConfig = ../modules/${if os == "darwin" then "darwin" else "nixos"};
 in
 systemFunc {
   inherit system;
 
   specialArgs = {
+    inherit (inputs) catppuccin nix-homebrew;
     inherit
       self
       username
+      usernames
       os
       system
       ;
@@ -44,7 +45,31 @@ systemFunc {
     { nixpkgs.overlays = overlays; }
 
     hostConfig
-    userOSConfig
+    platformConfig
+    {
+      assertions = [
+        {
+          assertion = builtins.elem username usernames;
+          message = "The primary user must be included in usernames.";
+        }
+        {
+          assertion = builtins.length usernames == builtins.length (nixpkgs.lib.unique usernames);
+          message = "Usernames must be unique.";
+        }
+      ];
+    }
+    {
+      imports = nixpkgs.lib.concatMap (user: [
+        (
+          { lib, pkgs, ... }:
+          import ../modules/users/me {
+            inherit lib pkgs os;
+            username = user;
+          }
+        )
+        ../users/${user}/${if os == "darwin" then "darwin" else "nixos"}.nix
+      ]) usernames;
+    }
 
     homeManagerFunc
     {
@@ -52,16 +77,15 @@ systemFunc {
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {
-          inherit username os;
+          inherit os;
         }
         // inputs;
-        users.${username} = {
+        users = nixpkgs.lib.genAttrs usernames (user: {
+          _module.args.username = user;
           imports = [
-            userHomeConfig
-
-            catppuccin.homeModules.catppuccin
+            ../users/${user}/home.nix
           ];
-        };
+        });
       };
     }
 
@@ -71,6 +95,5 @@ systemFunc {
       else
         nix-index-database.nixosModules.nix-index
     )
-    (if os == "darwin" then { } else catppuccin.nixosModules.catppuccin)
   ];
 }

@@ -1,4 +1,6 @@
 {
+  lib,
+  config,
   pkgs,
   anthropics-skills,
   matt-pocock-skills,
@@ -16,10 +18,13 @@ let
   };
 in
 {
-  programs.codex = {
-    enable = true;
-    enableMcpIntegration = true;
-    context = " ";
-  }
-  // codingSkills.codex;
+  config = lib.mkIf config.programs.codex.enable {
+    programs.codex = lib.mkDefault (
+      {
+        enableMcpIntegration = true;
+        context = " ";
+      }
+      // codingSkills.codex
+    );
+  };
 }

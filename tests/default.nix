@@ -1,8 +1,18 @@
-{ pkgs }:
+{ pkgs, inputs }:
 let
-  sessionizer = builtins.head (import ../modules/home/core/pkgs/tmux { inherit pkgs; }).home.packages;
+  tmuxModule = import ../modules/home/core/pkgs/tmux {
+    inherit pkgs;
+    inherit (pkgs) lib;
+    config.programs.tmux.enable = true;
+  };
+  sessionizer = builtins.head (
+    builtins.filter (
+      package: package.name == "tmux-sessionizer"
+    ) tmuxModule.config.content.home.packages
+  );
 in
 assert import ./language-support.nix { inherit (pkgs) lib; };
+assert import ./profiles.nix { inherit pkgs inputs; };
 assert import ./node.nix { inherit (pkgs) lib; };
 assert pkgs.lib.versions.major pkgs.nodejs_26.version == "26";
 {

@@ -1,32 +1,68 @@
-{ ... }:
 {
-  imports = [
-    ../../modules/home/core
-    ../../modules/home/core/pkgs
-    ../../modules/home/core/shell
-    ../../modules/home/core/xdg
-    ../../modules/home/core/apps
+  pkgs,
+  lib,
+  os,
+  ...
+}:
+{
+  imports = [ ../../modules/home ];
 
-    ../../modules/home/optional/desktop/xserver
-    ../../modules/home/optional/icons
-    ../../modules/home/optional/theme
-  ];
-
-  programs.git = {
-    settings = {
-      user = {
-        name = "Yura Luchka";
-        email = "lluchkaa@gmail.com";
-      };
-    };
+  programs = {
+    aerospace.enable = os == "darwin";
+    chromium.enable = os == "linux";
+    claude-code.enable = true;
+    codex.enable = true;
+    direnv.enable = true;
+    gh.enable = true;
+    ghostty.enable = true;
+    git.enable = true;
+    go.enable = true;
+    gpg.enable = false;
+    jujutsu.enable = true;
+    mcp.enable = true;
+    neovim.enable = true;
+    tmux.enable = true;
+    btop.enable = true;
+    fzf.enable = true;
+    jq.enable = true;
+    lazygit.enable = true;
+    lazydocker.enable = true;
+    lazysql.enable = true;
+    ripgrep.enable = true;
   };
+  workstation.node.enable = true;
+  workstation.copilot.enable = true;
 
-  programs.jujutsu = {
-    settings = {
-      user = {
-        name = "Yura Luchka";
-        email = "lluchkaa@gmail.com";
-      };
-    };
+  home.packages =
+    with pkgs;
+    [
+      rustup
+      zig
+      ocaml
+      python3
+      openssl
+      sqlite
+      gcc
+      clang-tools
+      tree-sitter
+      luajit
+      nixfmt
+      uv
+      yq
+      coreutils
+      herdr
+      superfile
+      hunk
+    ]
+    ++ lib.optionals (os == "darwin") [ cocoapods ];
+
+  programs.git.settings.user = {
+    name = "Yura Luchka";
+    email = "lluchkaa@gmail.com";
+    useConfigOnly = true;
+  };
+  programs.jujutsu.settings.user = {
+    name = "Yura Luchka";
+    email = "lluchkaa@gmail.com";
   };
 }
