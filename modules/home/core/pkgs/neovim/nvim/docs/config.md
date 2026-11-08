@@ -40,7 +40,10 @@ lua/lluchkaa/
 
 - Uses **mason-org/mason.nvim** + **mason-org/mason-lspconfig.nvim** (repos moved from `williamboman/` in 2025)
 - Migrated to **Neovim 0.11+ native LSP API**: `vim.lsp.config()` + `vim.lsp.enable()` — `lspconfig[server].setup{}` is deprecated
-- mason-lspconfig v2 auto-enables installed servers; no `handlers` needed
+- Each server declares its installer owner beside its settings in `lsp.lua`.
+- `nixd` comes from the Neovim module’s `extraPackages` and is enabled directly.
+- All other declared servers, including `zls`, stay Mason-owned.
+- mason-lspconfig v2 auto-enables installed servers except those owned by Nix; no `handlers` needed
 - Capabilities provided by `blink.cmp.get_lsp_capabilities()`
 - Built-in keymaps used (0.11+): `grn` (rename), `gra` (code action), `grr` (references), `gri` (implementation), `gO` (document symbols)
 - Spell checking via `cspell_ls` (Mason: `:MasonInstall cspell-lsp`) — no plugin needed

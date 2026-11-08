@@ -12,13 +12,10 @@
 }:
 let
   claudePluginsOfficial = "claude-plugins";
-  lsps = import ./lsps.nix {
-    inherit pkgs;
-    inherit claudePluginsOfficial;
-  };
+  languageSupport = import ./lsps.nix { inherit pkgs lib; };
 in
 {
-  home.packages = map (l: l.package) (lib.filter (l: l.package != null) lsps);
+  home.packages = languageSupport.packages;
 
   programs.claude-code = {
     enable = true;
@@ -32,38 +29,15 @@ in
       chrome-devtools-plugins = chrome-devtools-mcp;
       inherit ponytail;
     };
-    skills = {
-      grilling = "${matt-pocock-skills}/skills/productivity/grilling";
-      improve-codebase-architecture = "${matt-pocock-skills}/skills/engineering/improve-codebase-architecture";
-      skill-creator = "${anthropics-skills}/skills/skill-creator";
-      slack-triage = ./skills/slack-triage;
-    };
-    hooks = {
-      "notify.sh" = builtins.replaceStrings [ "@iconsDir@" ] [ "${config.xdg.dataHome}/icons" ] (
-        builtins.readFile ./notify.sh
-      );
-    };
-    lspServers = lib.listToAttrs (
-      map (l: {
-        inherit (l.server) name;
-        value = removeAttrs l.server [ "name" ];
-      }) (lib.filter (l: l.server != null) lsps)
-    );
+    skills = import ../coding-skills { inherit pkgs anthropics-skills matt-pocock-skills; };
+    lspServers = languageSupport.servers;
     settings = {
       model = "sonnet";
       editorMode = "vim";
-      enabledPlugins =
-        lib.listToAttrs (
-          map (l: {
-            name = "${l.plugin}@${l.marketplace}";
-            value = true;
-          }) (lib.filter (l: l.plugin != null && l.enabled) lsps)
-        )
-        // {
-          "chrome-devtools-mcp@chrome-devtools-plugins" = false;
-          "ponytail@ponytail" = true;
-        };
-      hooks = import ./hooks.nix;
+      enabledPlugins = languageSupport.enabledPlugins // {
+        "chrome-devtools-mcp@chrome-devtools-plugins" = false;
+        "ponytail@ponytail" = true;
+      };
       allowedChannelPlugins = [
         {
           marketplace = claudePluginsOfficial;

@@ -19,6 +19,7 @@
     ./jujutsu
     ./mcp
     ./neovim
+    ./node
     ./tmux
   ];
 
@@ -26,7 +27,6 @@
     pkgs.rustup
     pkgs.zig
     pkgs.ocaml
-    pkgs.nodejs_24
     pkgs.python3
 
     pkgs.openssl
@@ -36,8 +36,6 @@
     pkgs.tree-sitter
     pkgs.luajit
     pkgs.nixfmt
-    pkgs.nixd
-    pkgs.pnpm
     pkgs.uv
 
     pkgs.yq

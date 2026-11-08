@@ -84,6 +84,10 @@
       };
     in
     {
+      checks = nixpkgs.lib.genAttrs [ "aarch64-darwin" "aarch64-linux" "x86_64-linux" ] (
+        system: import ./tests { pkgs = import nixpkgs { inherit system; }; }
+      );
+
       nixosConfigurations.vm-aarch64 = make {
         name = "vm-aarch64";
         system = "aarch64-linux";

@@ -43,10 +43,7 @@ return {
 
           -- cspell_ls: disable sign column icons (only keep underline/virtual text)
           if client and client.name == "cspell_ls" then
-            vim.diagnostic.config(
-              { signs = false, underline = false },
-              vim.lsp.diagnostic.get_namespace(client.id)
-            )
+            vim.diagnostic.config({ signs = false, underline = false }, vim.lsp.diagnostic.get_namespace(client.id))
           end
 
           if client and client.server_capabilities.documentHighlightProvider then
@@ -82,53 +79,57 @@ return {
 
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+      -- Each declaration owns both settings and installation. Nix packages are
+      -- provided by this Neovim module's extraPackages; zls remains Mason-owned.
       local servers = {
-        gopls = { filetypes = { "go", "gomod" } },
-        rust_analyzer = { filetypes = { "rust" } },
-        ts_ls = { filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
-        html = { filetypes = { "html" } },
-        cssls = { filetypes = { "css", "scss", "less" } },
-        ruff = { filetypes = { "python" } },
-        pyright = { filetypes = { "python" } },
-        clangd = { filetypes = { "c", "cpp", "objc", "objcpp" } },
-
-        -- installed via nix — not managed by Mason
-        zls = { filetypes = { "zig", "zir" } },
-        nixd = { filetypes = { "nix" } },
-
-        cspell_ls = {},
-
+        gopls = { owner = "mason", config = { filetypes = { "go", "gomod" } } },
+        rust_analyzer = { owner = "mason", config = { filetypes = { "rust" } } },
+        ts_ls = {
+          owner = "mason",
+          config = { filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
+        },
+        html = { owner = "mason", config = { filetypes = { "html" } } },
+        cssls = { owner = "mason", config = { filetypes = { "css", "scss", "less" } } },
+        ruff = { owner = "mason", config = { filetypes = { "python" } } },
+        pyright = { owner = "mason", config = { filetypes = { "python" } } },
+        clangd = { owner = "mason", config = { filetypes = { "c", "cpp", "objc", "objcpp" } } },
+        zls = { owner = "mason", config = { filetypes = { "zig", "zir" } } },
+        nixd = { owner = "nix", config = { filetypes = { "nix" } } },
+        cspell_ls = { owner = "mason", config = {} },
         lua_ls = {
-          filetypes = { "lua" },
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
+          owner = "mason",
+          config = {
+            filetypes = { "lua" },
+            settings = { Lua = { completion = { callSnippet = "Replace" } } },
           },
         },
       }
 
-      -- nixd is installed via nix (pkgs.nixd), not Mason
-      local nix_managed = { "nixd" }
-
-      -- Configure each server before mason-lspconfig enables them
-      for server_name, config in pairs(servers) do
-        config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
-        vim.lsp.config(server_name, config)
-        if vim.tbl_contains(nix_managed, server_name) then vim.lsp.enable(server_name) end
+      local mason_servers, nix_servers = {}, {}
+      -- Configure every server before either installer enables it.
+      for name, server in pairs(servers) do
+        local config = vim.tbl_deep_extend("force", {}, server.config, {
+          capabilities = capabilities,
+        })
+        vim.lsp.config(name, config)
+        if server.owner == "nix" then
+          table.insert(nix_servers, name)
+        else
+          assert(server.owner == "mason", "Unknown LSP installer for " .. name)
+          table.insert(mason_servers, name)
+        end
+      end
+      table.sort(mason_servers)
+      table.sort(nix_servers)
+      for _, name in ipairs(nix_servers) do
+        vim.lsp.enable(name)
       end
 
       require("mason").setup()
-
-      -- stylua must be installed manually: :MasonInstall stylua
-      -- mason-lspconfig v2 auto-enables installed servers via vim.lsp.enable()
       require("mason-lspconfig").setup({
-        ensure_installed = vim.tbl_filter(
-          function(s) return not vim.tbl_contains(nix_managed, s) end,
-          vim.tbl_keys(servers)
-        ),
+        ensure_installed = mason_servers,
+        -- Previously installed Mason copies must not also enable Nix servers.
+        automatic_enable = { exclude = nix_servers },
       })
     end,
   },

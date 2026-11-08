@@ -1,6 +1,7 @@
-_: {
+{ pkgs, ... }: {
   programs.neovim = {
     enable = true;
+    extraPackages = [ pkgs.nixd ];
   };
 
   xdg.configFile.nvim = {

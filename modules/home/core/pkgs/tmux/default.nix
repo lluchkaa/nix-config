@@ -44,7 +44,16 @@
   };
 
   home.packages = [
-    (pkgs.writeShellScriptBin "tmux-sessionizer" (builtins.readFile ./tmux-sessionizer))
+    (pkgs.writeShellApplication {
+      name = "tmux-sessionizer";
+      runtimeInputs = [
+        pkgs.coreutils
+        pkgs.findutils
+        pkgs.fzf
+        pkgs.tmux
+      ];
+      text = builtins.readFile ./tmux-sessionizer;
+    })
   ];
 
   home.shellAliases = {

@@ -58,22 +58,6 @@
       function zvm_after_init() {
         _zsh_autosuggest_bind_widgets
       }
-
-      # Lazy-load nvm: shim node/npm/npx/nvm; first call sources nvm.sh once.
-      export NVM_DIR="''${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
-      _nvm_lazy_load() {
-        unset -f nvm node npm npx
-        if [ -s "$NVM_DIR/nvm.sh" ]; then
-          \. "$NVM_DIR/nvm.sh"
-        elif [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
-          \. "/opt/homebrew/opt/nvm/nvm.sh"
-        fi
-      }
-      nvm()  { _nvm_lazy_load; nvm  "$@"; }
-      node() { _nvm_lazy_load; node "$@"; }
-      npm()  { _nvm_lazy_load; npm  "$@"; }
-      npx()  { _nvm_lazy_load; npx  "$@"; }
-
     '';
   };
 
