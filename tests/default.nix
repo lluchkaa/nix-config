@@ -6,6 +6,7 @@ assert import ./language-support.nix { inherit (pkgs) lib; };
 assert import ./node.nix { inherit (pkgs) lib; };
 assert pkgs.lib.versions.major pkgs.nodejs_26.version == "26";
 {
+  coding-skills = import ./coding-skills.nix { inherit pkgs; };
   architecture =
     pkgs.runCommand "configuration-architecture-checks"
       {

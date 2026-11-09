@@ -14,11 +14,19 @@
 let
   claudePluginsOfficial = "claude-plugins";
   languageSupport = import ./lsps.nix { inherit pkgs lib; };
+  codingSkills = import ../coding-skills {
+    inherit
+      pkgs
+      anthropics-skills
+      matt-pocock-skills
+      superpowers
+      ;
+  };
 in
 {
   home.packages = languageSupport.packages;
 
-  programs.claude-code = {
+  programs.claude-code = lib.recursiveUpdate {
     enable = true;
     enableMcpIntegration = true;
     configDir = "${config.xdg.configHome}/claude";
@@ -29,15 +37,12 @@ in
       inherit caveman;
       chrome-devtools-plugins = chrome-devtools-mcp;
       inherit ponytail;
-      superpowers-dev = superpowers;
     };
-    skills = import ../coding-skills { inherit pkgs anthropics-skills matt-pocock-skills; };
     lspServers = languageSupport.servers;
     settings = {
       model = "sonnet";
       editorMode = "vim";
       enabledPlugins = languageSupport.enabledPlugins // {
-        "superpowers@superpowers-dev" = true;
         "chrome-devtools-mcp@chrome-devtools-plugins" = false;
         "ponytail@ponytail" = true;
       };
@@ -53,5 +58,5 @@ in
         command = "starship statusline claude-code";
       };
     };
-  };
+  } codingSkills.claude;
 }
