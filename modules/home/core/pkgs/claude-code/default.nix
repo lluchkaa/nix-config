@@ -6,6 +6,7 @@
   anthropics-skills,
   caveman,
   matt-pocock-skills,
+  superpowers,
   chrome-devtools-mcp,
   ponytail,
   ...
@@ -28,6 +29,7 @@ in
       inherit caveman;
       chrome-devtools-plugins = chrome-devtools-mcp;
       inherit ponytail;
+      superpowers-dev = superpowers;
     };
     skills = import ../coding-skills { inherit pkgs anthropics-skills matt-pocock-skills; };
     lspServers = languageSupport.servers;
@@ -35,6 +37,7 @@ in
       model = "sonnet";
       editorMode = "vim";
       enabledPlugins = languageSupport.enabledPlugins // {
+        "superpowers@superpowers-dev" = true;
         "chrome-devtools-mcp@chrome-devtools-plugins" = false;
         "ponytail@ponytail" = true;
       };

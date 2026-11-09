@@ -307,7 +307,26 @@
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
-        "ponytail": "ponytail"
+        "ponytail": "ponytail",
+        "superpowers": "superpowers"
+      }
+    },
+    "superpowers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793744227,
+        "narHash": "sha256-rP5YsyGuPd9YSW/Fj3aukrq1bLuV+nwwQMK4JaZQgkI=",
+        "ref": "main",
+        "rev": "22f0b463e7a5e579904dd6211a520321035526f7",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/obra/superpowers"
+      },
+      "original": {
+        "ref": "main",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/obra/superpowers"
       }
     },
     "systems": {

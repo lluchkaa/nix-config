@@ -48,6 +48,10 @@
       url = "github:mattpocock/skills";
       flake = false;
     };
+    superpowers = {
+      url = "git+https://github.com/obra/superpowers?ref=main&shallow=1";
+      flake = false;
+    };
     chrome-devtools-mcp = {
       url = "github:ChromeDevTools/chrome-devtools-mcp";
       flake = false;
