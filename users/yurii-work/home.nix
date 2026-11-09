@@ -17,14 +17,12 @@ in
     aerospace.enable = os == "darwin";
     chromium.enable = os == "linux";
     claude-code.enable = true;
-    codex.enable = true;
     direnv.enable = true;
     gh.enable = true;
     ghostty.enable = true;
     git.enable = true;
     go.enable = true;
     gpg.enable = false;
-    jujutsu.enable = true;
     mcp.enable = true;
     neovim.enable = true;
     tmux.enable = true;
@@ -42,9 +40,6 @@ in
   home.packages =
     with pkgs;
     [
-      rustup
-      zig
-      ocaml
       python3
       openssl
       sqlite
@@ -57,8 +52,6 @@ in
       yq
       coreutils
       herdr
-      superfile
-      hunk
     ]
     ++ lib.optionals (os == "darwin") [ cocoapods ];
 

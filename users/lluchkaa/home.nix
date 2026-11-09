@@ -4,6 +4,12 @@
   os,
   ...
 }:
+let
+  gitUser = {
+    name = "Yura Luchka";
+    email = "lluchkaa@gmail.com";
+  };
+in
 {
   imports = [ ../../modules/home ];
 
@@ -56,13 +62,8 @@
     ]
     ++ lib.optionals (os == "darwin") [ cocoapods ];
 
-  programs.git.settings.user = {
-    name = "Yura Luchka";
-    email = "lluchkaa@gmail.com";
+  programs.git.settings.user = gitUser // {
     useConfigOnly = true;
   };
-  programs.jujutsu.settings.user = {
-    name = "Yura Luchka";
-    email = "lluchkaa@gmail.com";
-  };
+  programs.jujutsu.settings.user = gitUser;
 }
