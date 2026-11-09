@@ -16,6 +16,7 @@ _: {
         "google-chrome"
         "karabiner-elements"
         "keycastr"
+        "logi-options+"
         "nvidia-geforce-now"
         "obsidian"
         "postman"
