@@ -112,7 +112,7 @@
           username = "lluchkaa";
           os = "darwin";
         };
-        macbook-pro-work = make {
+        macbook-pro-m1-work = make {
           name = "macbook-pro-work";
           system = "aarch64-darwin";
           username = "yurii-work";
