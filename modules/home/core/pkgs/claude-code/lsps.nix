@@ -6,7 +6,7 @@ let
     {
       pluginEnabled = true;
       package = pkgs.typescript-language-server;
-      plugin = null;
+      plugin = "typescript-lsp";
       server = {
         name = "typescript-lsp";
         command = "typescript-language-server";
@@ -20,7 +20,7 @@ let
       };
     }
     {
-      pluginEnabled = false;
+      pluginEnabled = true;
       package = pkgs.gopls;
       plugin = "gopls-lsp";
       server = {
@@ -47,7 +47,7 @@ let
       };
     }
     {
-      pluginEnabled = false;
+      pluginEnabled = true;
       package = pkgs.lua-language-server;
       plugin = "lua-lsp";
       server = {
@@ -59,7 +59,7 @@ let
       };
     }
     {
-      pluginEnabled = false;
+      pluginEnabled = true;
       package = pkgs.rustup;
       plugin = "rust-analyzer-lsp";
       server = {
@@ -90,7 +90,7 @@ let
     {
       pluginEnabled = true;
       package = pkgs.pyright;
-      plugin = null;
+      plugin = "pyright-lsp";
       server = {
         name = "pyright";
         command = "pyright-langserver";

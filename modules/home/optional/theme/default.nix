@@ -1,11 +1,13 @@
 {
   os,
+  catppuccin,
   lib,
   pkgs,
   ...
 }:
 {
   imports = [
+    catppuccin.homeModules.catppuccin
     ./cursor
     ./fonts
   ];

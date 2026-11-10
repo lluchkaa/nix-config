@@ -1,33 +1,41 @@
-{ os, lib, ... }:
 {
-  programs.ghostty = {
-    enable = true;
-    settings = {
-      font-family = "Monaspace Krypton Var";
-      font-variation = "wght=300";
-      font-size = 13;
+  config,
+  os,
+  lib,
+  ...
+}:
+{
+  config = lib.mkIf config.programs.ghostty.enable {
+    programs.ghostty = lib.mkDefault (
+      {
+        settings = {
+          font-family = "Monaspace Krypton Var";
+          font-variation = "wght=300";
+          font-size = 13;
 
-      window-padding-balance = "true";
+          window-padding-balance = "true";
 
-      title = " ";
-      macos-titlebar-proxy-icon = "hidden";
-      window-decoration = "server";
+          title = " ";
+          macos-titlebar-proxy-icon = "hidden";
+          window-decoration = "server";
 
-      macos-icon = "custom-style";
-      macos-icon-frame = "plastic";
-      macos-icon-ghost-color = "#F38BA8";
-      macos-icon-screen-color = "#1E1E2E";
+          macos-icon = "custom-style";
+          macos-icon-frame = "plastic";
+          macos-icon-ghost-color = "#F38BA8";
+          macos-icon-screen-color = "#1E1E2E";
 
-      cursor-style-blink = false;
-      shell-integration-features = "no-cursor";
-      mouse-hide-while-typing = true;
+          cursor-style-blink = false;
+          shell-integration-features = "no-cursor";
+          mouse-hide-while-typing = true;
 
-      window-colorspace = "display-p3";
+          window-colorspace = "display-p3";
 
-      keybind = "cmd+t=unbind";
-    };
-  }
-  // lib.optionalAttrs (os == "darwin") {
-    package = null;
+          keybind = "cmd+t=unbind";
+        };
+      }
+      // lib.optionalAttrs (os == "darwin") {
+        package = null;
+      }
+    );
   };
 }

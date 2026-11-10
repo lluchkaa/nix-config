@@ -1,11 +1,18 @@
-{ pkgs, ... }: {
-  programs.neovim = {
-    enable = true;
-    extraPackages = [ pkgs.nixd ];
-  };
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  config = lib.mkIf config.programs.neovim.enable {
+    programs.neovim = lib.mkDefault {
+      extraPackages = [ pkgs.nixd ];
+    };
 
-  xdg.configFile.nvim = {
-    source = ./nvim;
-    recursive = true;
+    xdg.configFile.nvim = {
+      source = ./nvim;
+      recursive = true;
+    };
   };
 }

@@ -11,6 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -89,7 +91,11 @@
     in
     {
       checks = nixpkgs.lib.genAttrs [ "aarch64-darwin" "aarch64-linux" "x86_64-linux" ] (
-        system: import ./tests { pkgs = import nixpkgs { inherit system; }; }
+        system:
+        import ./tests {
+          inherit inputs;
+          pkgs = import nixpkgs { inherit system; };
+        }
       );
 
       nixosConfigurations.vm-aarch64 = make {

@@ -13,7 +13,6 @@ let
   inherit (inputs)
     self
     nix-index-database
-    catppuccin
     ;
 
   systemFunc = if os == "darwin" then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
@@ -25,13 +24,13 @@ let
 
   hostConfigPath = ../hosts/${name};
   hostConfig = if builtins.pathExists hostConfigPath then hostConfigPath else _: { };
-  userOSConfig = ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix;
-  userHomeConfig = ../users/${username}/home.nix;
+  platformConfig = ../modules/${if os == "darwin" then "darwin" else "nixos"};
 in
 systemFunc {
   inherit system;
 
   specialArgs = {
+    inherit (inputs) catppuccin nix-homebrew;
     inherit
       self
       username
@@ -44,7 +43,9 @@ systemFunc {
     { nixpkgs.overlays = overlays; }
 
     hostConfig
-    userOSConfig
+    platformConfig
+    ../modules/users/me
+    ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix
 
     homeManagerFunc
     {
@@ -57,9 +58,7 @@ systemFunc {
         // inputs;
         users.${username} = {
           imports = [
-            userHomeConfig
-
-            catppuccin.homeModules.catppuccin
+            ../users/${username}/home.nix
           ];
         };
       };
@@ -71,6 +70,5 @@ systemFunc {
       else
         nix-index-database.nixosModules.nix-index
     )
-    (if os == "darwin" then { } else catppuccin.nixosModules.catppuccin)
   ];
 }

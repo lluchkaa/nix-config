@@ -1,44 +1,45 @@
-_: {
-  programs.git = {
-    enable = true;
+{ config, lib, ... }: {
+  config = lib.mkIf config.programs.git.enable {
+    programs.git = lib.mkDefault {
 
-    signing.format = null;
+      signing.format = null;
 
-    ignores = [
-      ".DS_Store"
-      ".ignore/"
-      ".worktrees/"
-      ".direnv/"
-      ".venv/"
-      "node_modules/"
-      "*.local.*"
-      "*.bak"
-    ];
+      ignores = [
+        ".DS_Store"
+        ".ignore/"
+        ".worktrees/"
+        ".direnv/"
+        ".venv/"
+        "node_modules/"
+        "*.local.*"
+        "*.bak"
+      ];
 
-    settings = {
-      init = {
-        defaultBranch = "main";
+      settings = {
+        init = {
+          defaultBranch = "main";
+        };
+        core = {
+          ignorecase = false;
+        };
+        fetch = {
+          prune = true;
+        };
+        push = {
+          autoSetupRemote = true;
+        };
+        pull = {
+          rebase = true;
+        };
+        rebase = {
+          autoStash = true;
+        };
+        rerere = {
+          enabled = true;
+        };
       };
-      core = {
-        ignorecase = false;
-      };
-      fetch = {
-        prune = true;
-      };
-      push = {
-        autoSetupRemote = true;
-      };
-      pull = {
-        rebase = true;
-      };
-      rebase = {
-        autoStash = true;
-      };
-      rerere = {
-        enabled = true;
-      };
+
+      # rest should be set in users/*/home.nix file
     };
-
-    # rest should be set in users/*/home.nix file
   };
 }

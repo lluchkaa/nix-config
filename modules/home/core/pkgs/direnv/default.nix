@@ -1,9 +1,10 @@
-_: {
-  programs.direnv = {
-    enable = true;
-    config = {
-      disable_stdin = true;
+{ config, lib, ... }: {
+  config = lib.mkIf config.programs.direnv.enable {
+    programs.direnv = lib.mkDefault {
+      config = {
+        disable_stdin = true;
+      };
+      nix-direnv.enable = true;
     };
-    nix-direnv.enable = true;
   };
 }
