@@ -105,30 +105,11 @@
         os = "linux";
       };
 
-      darwinConfigurations = {
-        macbook-pro-m1-personal = make {
-          name = "macbook-pro-m1";
-          system = "aarch64-darwin";
-          username = "lluchkaa";
-          os = "darwin";
-        };
-        macbook-pro-m1-work = make {
-          name = "macbook-pro-work";
-          system = "aarch64-darwin";
-          username = "yurii-work";
-          os = "darwin";
-        };
-
-        macbook-pro-m1 = make {
-          name = "macbook-pro-m1";
-          system = "aarch64-darwin";
-          username = "lluchkaa";
-          usernames = [
-            "lluchkaa"
-            "yurii-work"
-          ];
-          os = "darwin";
-        };
+      darwinConfigurations.macbook-pro-m1 = make {
+        name = "macbook-pro-m1";
+        system = "aarch64-darwin";
+        username = "lluchkaa";
+        os = "darwin";
       };
     };
 }

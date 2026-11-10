@@ -8,7 +8,6 @@
   system,
   username,
   os,
-  usernames ? [ username ],
 }:
 let
   inherit (inputs)
@@ -35,7 +34,6 @@ systemFunc {
     inherit
       self
       username
-      usernames
       os
       system
       ;
@@ -46,30 +44,8 @@ systemFunc {
 
     hostConfig
     platformConfig
-    {
-      assertions = [
-        {
-          assertion = builtins.elem username usernames;
-          message = "The primary user must be included in usernames.";
-        }
-        {
-          assertion = builtins.length usernames == builtins.length (nixpkgs.lib.unique usernames);
-          message = "Usernames must be unique.";
-        }
-      ];
-    }
-    {
-      imports = nixpkgs.lib.concatMap (user: [
-        (
-          { lib, pkgs, ... }:
-          import ../modules/users/me {
-            inherit lib pkgs os;
-            username = user;
-          }
-        )
-        ../users/${user}/${if os == "darwin" then "darwin" else "nixos"}.nix
-      ]) usernames;
-    }
+    ../modules/users/me
+    ../users/${username}/${if os == "darwin" then "darwin" else "nixos"}.nix
 
     homeManagerFunc
     {
@@ -77,15 +53,14 @@ systemFunc {
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {
-          inherit os;
+          inherit username os;
         }
         // inputs;
-        users = nixpkgs.lib.genAttrs usernames (user: {
-          _module.args.username = user;
+        users.${username} = {
           imports = [
-            ../users/${user}/home.nix
+            ../users/${username}/home.nix
           ];
-        });
+        };
       };
     }
 

@@ -19,9 +19,8 @@ let
       ]
       ++ extraModules;
     }).config;
-  personal = home "lluchkaa" [ ];
-  work = home "yurii-work" [ ];
-  disabled = home "yurii-work" [
+  enabled = home "lluchkaa" [ ];
+  disabled = home "lluchkaa" [
     {
       programs = lib.genAttrs [ "claude-code" "codex" "neovim" "tmux" ] (_: {
         enable = lib.mkForce false;
@@ -30,7 +29,7 @@ let
       workstation.copilot.enable = lib.mkForce false;
     }
   ];
-  customized = home "yurii-work" [
+  customized = home "lluchkaa" [
     {
       programs = {
         git = {
@@ -51,39 +50,33 @@ let
       inherit (inputs) jj-starship claude-code-nix codex-cli-nix;
     };
   };
-  multi =
+  systemConfig =
     (make {
       name = "profile-test";
       system = pkgs.stdenv.hostPlatform.system;
       username = "lluchkaa";
-      usernames = [
-        "lluchkaa"
-        "yurii-work"
-      ];
       inherit os;
     }).config;
   packageNames = map (package: package.pname or package.name) disabled.home.packages;
 in
-assert multi.users.users.yurii-work.description == "Yurii Luchka (work)";
-assert multi.home-manager.users.lluchkaa.home.username == "lluchkaa";
-assert multi.home-manager.users.yurii-work.home.username == "yurii-work";
+assert builtins.attrNames inputs.self.darwinConfigurations == [ "macbook-pro-m1" ];
+assert builtins.attrNames systemConfig.home-manager.users == [ "lluchkaa" ];
 assert
-  multi.home-manager.users.lluchkaa.home.homeDirectory
-  != multi.home-manager.users.yurii-work.home.homeDirectory;
-assert os != "darwin" || (multi.nix-homebrew.enable && multi.nix-homebrew.user == "lluchkaa");
-assert personal.home.username == "lluchkaa";
-assert work.home.username == "yurii-work";
-assert personal.home.homeDirectory != work.home.homeDirectory;
-assert (work.programs.git.settings.user.email or null) != personal.programs.git.settings.user.email;
-assert work.programs.git.settings.user.useConfigOnly;
-assert work.programs.git.settings.user.name == "Yurii Luchka";
-assert work.programs.git.settings.user.email == "yurii@miggo.io";
+  builtins.attrNames inputs.self.darwinConfigurations.macbook-pro-m1.config.home-manager.users
+  == [ "lluchkaa" ];
+assert systemConfig.home-manager.users.lluchkaa.home.username == "lluchkaa";
 assert
-  work.programs.jujutsu.settings.user == {
-    name = "Yurii Luchka";
-    email = "yurii@miggo.io";
+  os != "darwin"
+  || (systemConfig.nix-homebrew.enable && systemConfig.nix-homebrew.user == "lluchkaa");
+assert enabled.home.username == "lluchkaa";
+assert enabled.programs.git.settings.user.useConfigOnly;
+assert enabled.programs.git.settings.user.email == "lluchkaa@gmail.com";
+assert
+  enabled.programs.jujutsu.settings.user == {
+    name = "Yura Luchka";
+    email = "lluchkaa@gmail.com";
   };
-assert os != "darwin" || multi.users.users.yurii-work.uid == 502;
+assert os != "darwin" || systemConfig.users.users.lluchkaa.uid == 501;
 assert !(disabled.xdg.configFile ? nvim);
 assert !(disabled.xdg.configFile ? "gitmux/gitmux.conf");
 assert !(disabled.home.shellAliases ? ts);

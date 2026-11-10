@@ -1,14 +1,10 @@
 {
-  lib,
   nix-homebrew,
   username,
-  usernames,
   ...
 }:
 let
-  selections = map (user: import ../../../../users/${user}/homebrew) usernames;
-  brews = lib.unique (lib.concatMap (selection: selection.brews) selections);
-  casks = lib.unique (lib.concatMap (selection: selection.casks) selections);
+  selection = import ../../../../users/${username}/homebrew;
 in
 {
   imports = [ nix-homebrew.darwinModules.nix-homebrew ];
@@ -21,12 +17,11 @@ in
   homebrew = {
     enable = true;
     user = username;
-    inherit brews;
+    inherit (selection) brews masApps;
     casks = map (name: {
       inherit name;
       greedy = true;
-    }) casks;
-    masApps = lib.mkMerge (map (selection: selection.masApps) selections);
+    }) selection.casks;
     onActivation = {
       autoUpdate = true;
       cleanup = "uninstall";
