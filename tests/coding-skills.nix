@@ -1,26 +1,37 @@
-{ pkgs }:
+{ pkgs, inputs }:
 let
-  inherit (pkgs) lib;
   sources = {
     inherit pkgs;
     anthropics-skills = "/sources/anthropics";
     matt-pocock-skills = ./fixtures/coding-skills/matt-pocock;
     superpowers = ./fixtures/coding-skills/superpowers;
   };
+  configure =
+    tool: extraSources:
+    (inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = sources // extraSources;
+      modules = [
+        ../modules/home/core/pkgs/${tool}
+        {
+          home = {
+            username = "test";
+            homeDirectory = "/home/test";
+            stateVersion = "24.11";
+          };
+          xdg.configHome = "/home/test/.config";
+          programs.${tool}.enable = true;
+        }
+      ];
+    }).config.programs.${tool};
   # Codex receives no Claude configuration or marketplace sources.
-  codex = (import ../modules/home/core/pkgs/codex sources).programs.codex;
-  claude =
-    (import ../modules/home/core/pkgs/claude-code (
-      sources
-      // {
-        inherit lib;
-        config.xdg.configHome = "/home/test/.config";
-        claude-plugins = "/sources/claude-plugins";
-        caveman = "/sources/caveman";
-        chrome-devtools-mcp = "/sources/chrome-devtools";
-        ponytail = "/sources/ponytail";
-      }
-    )).programs.claude-code;
+  codex = configure "codex" { };
+  claude = configure "claude-code" {
+    claude-plugins = "/sources/claude-plugins";
+    caveman = "/sources/caveman";
+    chrome-devtools-mcp = "/sources/chrome-devtools";
+    ponytail = "/sources/ponytail";
+  };
   transformed = claude.skills.improve-codebase-architecture;
 in
 # Exercise the distribution through the configurations its callers consume.
