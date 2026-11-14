@@ -32,6 +32,7 @@ systemFunc {
   inherit system;
 
   specialArgs = {
+    inherit (inputs) nix-homebrew;
     inherit
       self
       username

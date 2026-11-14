@@ -14,6 +14,7 @@ _: {
         "docker-desktop"
         "ghostty"
         "google-chrome"
+        "herdr-app"
         "karabiner-elements"
         "keycastr"
         "logi-options+"

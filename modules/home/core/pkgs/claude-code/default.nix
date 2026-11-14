@@ -46,6 +46,8 @@ in
         "chrome-devtools-mcp@chrome-devtools-plugins" = false;
         "ponytail@ponytail" = true;
       };
+      # Task board off: no per-turn CSV in ~/.config/ponytail/band.
+      pluginConfigs."ponytail@ponytail".options.ledger = false;
       allowedChannelPlugins = [
         {
           marketplace = claudePluginsOfficial;
@@ -59,4 +61,7 @@ in
       };
     };
   } codingSkills.claude;
+
+  # Hides ponytail's band above the prompt (read-only, so `/ponytail band` can't toggle it).
+  xdg.configFile."claude/.ponytail-band".text = "off\n";
 }
