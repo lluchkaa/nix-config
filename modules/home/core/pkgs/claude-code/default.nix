@@ -31,6 +31,7 @@ in
     enableMcpIntegration = true;
     configDir = "${config.xdg.configHome}/claude";
     context = ./CLAUDE.md;
+    mutableSettings = true;
     plugins = [ ];
     marketplaces = {
       inherit claude-plugins;
