@@ -1,6 +1,9 @@
 _: {
   programs.mcp = {
     enable = true;
-    servers = { };
+    servers.superlogical = {
+      type = "http";
+      url = "https://www.superlogical.com/rex/community-mcp";
+    };
   };
 }

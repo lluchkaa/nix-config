@@ -20,6 +20,7 @@ in
     enable = true;
     enableMcpIntegration = true;
     context = " ";
+    mutableSettings = true;
   }
   // codingSkills.codex;
 }

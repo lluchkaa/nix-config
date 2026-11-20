@@ -16,10 +16,12 @@
     ./git
     ./go
     ./gpg
+    ./herdr
     ./jujutsu
     ./mcp
     ./neovim
     ./node
+    ./rex
     ./tmux
   ];
 
