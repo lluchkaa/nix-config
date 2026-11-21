@@ -19,7 +19,7 @@ rex.bind(prefix .. "o", "pane.focus_next")
 rex.bind(prefix .. ";", "pane.focus_recent.in_tab")
 rex.bind(prefix .. "z", "pane.zoom")
 rex.bind(prefix .. "shift+1", "pane.move_to_new_tab") -- !
-rex.bind(prefix .. "x", "pane.close")
+rex.bind(prefix .. "x", "client.close")
 
 -- Tabs and sessions.
 rex.bind(prefix .. "c", "client.tab.new")
