@@ -8,6 +8,22 @@ rex.bind("repeat/escape", "client.mode.exit")
 
 local directions = { h = "left", j = "down", k = "up", l = "right" }
 for key, direction in pairs(directions) do
+  local chord = "ctrl+" .. key
+  local action = "navigate_" .. direction
+  rex.action({
+    name = action,
+    title = "Navigate " .. direction,
+    run = function()
+      local ok, process = pcall(rex.block.call, "com.superlogical.terminal", "process", {})
+      local name = ok and process.foreground and process.foreground.name or ""
+      if name:find("nvim", 1, true) or name:match("^tmux") then
+        rex.client.queue("pane.send_key", { key = chord })
+      else
+        rex.client.queue("pane.focus", { direction = direction })
+      end
+    end,
+  })
+  rex.bind(chord, action)
   rex.bind(prefix .. key, "pane.focus", { direction = direction })
   rex.bind(prefix .. "shift+" .. key, "pane.resize", { amount = 10, direction = direction })
   rex.bind("repeat/shift+" .. key, "pane.resize", { amount = 10, direction = direction })
